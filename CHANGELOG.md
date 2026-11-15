@@ -30,6 +30,14 @@
   laid up from your inventory and rolled, and Shift makes as many as you have for. What is left on your cursor after a
   step goes back into your inventory when the next step has no use for it (the rest of the rice once a nigiri is to be
   shaped), and stays when it does. Sneak to use the board as before.
+- Youkai's Feasts' small iron pot, short iron pot and stockpot are stations once there is water in them. Click with food on
+  your cursor and it comes down into the soup with a splash and floats there; soy sauce and cream are poured from their
+  bottle and bowl. Take the stockpot's ladle by its handle and stir: what floats goes round after it. The soup is drawn
+  as in Farmer's Delight's pot, in its own colour, and simmers over the fire. Your inventory shows lit only what the
+  pot still takes, and Shift puts in as many as it takes. A right click on the soup takes the last thing back out. The
+  recipe book lists the dishes of that pot with their time, and a dish picked there goes in from your inventory. While it
+  cooks, the badge shows the dish, whether the fire under it is lit and the seconds left; when it is done you hear a chime,
+  and the pot of the dish stands there as before. Sneak to use the pot as before.
 - [Barbeque's Delight](https://modrinth.com/mod/barbeques-delight-forge)'s grill is a station. Two skewers lie over its
   fire: lay them from your hand, the stack you let go over the grill or a recipe in its book. When a skewer's lower side
   is done it smokes round its edge; click it and it turns over, once, as Barbeque's Delight allows. Clicked earlier it
