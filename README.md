@@ -7,6 +7,7 @@
   <a href="https://www.curseforge.com/minecraft/mc-mods/hands-on-delight/files"><img alt="Minecraft 1.20.1 and 1.21.1" src="https://img.shields.io/badge/Minecraft-1.20.1%20%7C%201.21.1-62B47A"></a>
   <a href="https://files.minecraftforge.net"><img alt="Forge, NeoForge or Fabric" src="https://img.shields.io/badge/Loader-Forge%20%7C%20NeoForge%20%7C%20Fabric-DFA86A"></a>
   <a href="https://www.curseforge.com/minecraft/mc-mods/farmers-delight"><img alt="An addon for Farmer's Delight" src="https://img.shields.io/badge/Farmer's%20Delight-addon-d98a3a"></a>
+  <a href="https://discord.gg/mGkPKccJEf"><img alt="Discord: Pocky's Kitchen" src="https://img.shields.io/badge/Discord-Pocky's%20Kitchen-5865F2?logo=discord&logoColor=white"></a>
   <a href="LICENSE"><img alt="License MIT" src="https://img.shields.io/badge/License-MIT-blue"></a>
 </p>
 
@@ -246,6 +247,9 @@ dishes.
    [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api).
 3. [Diegesis](https://www.curseforge.com/minecraft/mc-mods/diegesis) and this mod in the `mods` folder, on the client and
    the server. A client without it keeps Farmer's Delight's own menus.
+
+Bug reports, questions and ideas for new stations are welcome in [Pocky's Kitchen](https://discord.gg/mGkPKccJEf), our
+Discord server.
 
 ## Building
 
