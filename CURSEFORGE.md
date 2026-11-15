@@ -6,25 +6,37 @@
 
 <p style="text-align:center"><em>Cook in <a href="https://www.curseforge.com/minecraft/mc-mods/farmers-delight">Farmer's Delight</a> with your own hands.</em></p>
 
-<p style="text-align:center"><strong>The cooking pot, the cutting board and the skillet open right where they stand, with no menu screen. You stir the soup with the spoon and chop with the knife yourself, and players nearby see what you cook.</strong></p>
+<p style="text-align:center"><strong>The cooking pot, the cutting board, the skillet and the stations of the addons open right where they stand, with no menu screen. You stir the soup with the spoon and chop with the knife yourself, and players nearby see what you cook.</strong></p>
 
-<p style="text-align:center"><img src="https://raw.githubusercontent.com/Pocky-l/handson-delight/main/docs/showcase/stir.gif" width="720" alt="Vegetables stirred by hand in the open cooking pot, the recipe book beside it"></p>
+<p style="text-align:center"><img src="https://raw.githubusercontent.com/Pocky-l/handson-delight/main/docs/showcase/pot.gif" width="720" alt="Ingredients fly into the open cooking pot and are stirred by hand until the pasta is done"></p>
 
 <p style="text-align:center"><span style="color:#e0884a"><strong>No menus</strong></span>, the blocks open in the world &nbsp;&middot;&nbsp; <span style="color:#e0884a"><strong>Every recipe</strong></span> of Farmer's Delight and its addons &nbsp;&middot;&nbsp; <span style="color:#e0884a"><strong>No new blocks or items</strong></span></p>
 
 <hr>
 
 <h2 style="text-align:center"><span style="color:#e0884a">The cutting board</span></h2>
-<p style="text-align:center"><img src="https://raw.githubusercontent.com/Pocky-l/handson-delight/main/docs/showcase/chop.gif" width="720" alt="A cabbage chopped with the knife on the cutting board"></p>
+<p style="text-align:center"><img src="https://raw.githubusercontent.com/Pocky-l/handson-delight/main/docs/showcase/board.gif" width="720" alt="A cabbage and a loaf of bread cut with the knife on the cutting board"></p>
 <p style="text-align:center"><em>Lay the food on the board and cut along the marks with the knife in hand.<br>One cut goes through sixteen at once, and the pieces fly into your inventory.</em></p>
 
-<h2 style="text-align:center"><span style="color:#e0884a">Burgers on the board</span></h2>
-<p style="text-align:center"><img src="https://raw.githubusercontent.com/Pocky-l/handson-delight/main/docs/showcase/burger.gif" width="720" alt="Bread, patty, cabbage, tomato and onion stacked into a hamburger on the cutting board"></p>
+<h2 style="text-align:center"><span style="color:#e0884a">The skillet</span></h2>
+<p style="text-align:center"><img src="https://raw.githubusercontent.com/Pocky-l/handson-delight/main/docs/showcase/skillet_toss.gif" width="720" alt="Chicken frying on the stove, turned over in the air by a toss of the skillet"></p>
+<p style="text-align:center"><em>Food fries on the side that lies in the pan. Toss the pan by its handle and it turns over in the air.</em></p>
+
+<h2 style="text-align:center"><span style="color:#e0884a">Sandwiches on the board</span></h2>
+<p style="text-align:center"><img src="https://raw.githubusercontent.com/Pocky-l/handson-delight/main/docs/showcase/sandwich_build.gif" width="720" alt="Bread, chicken cuts, cabbage, carrot and the top slice stacked into a chicken sandwich on the cutting board"></p>
 <p style="text-align:center"><em>Bread first, then whatever goes on it: the last layer turns the stack into the dish.<br>Sandwiches no longer take the crafting table, and those of addons are built the same way.</em></p>
 
-<h2 style="text-align:center"><span style="color:#e0884a">The skillet</span></h2>
-<p style="text-align:center"><img src="https://raw.githubusercontent.com/Pocky-l/handson-delight/main/docs/showcase/skillet.gif" width="720" alt="Beef patties turned over in the air by a toss of the skillet"></p>
-<p style="text-align:center"><em>Food fries on the side that lies in the pan. Toss the pan by its handle and it turns over in the air.</em></p>
+<h2 style="text-align:center"><span style="color:#e0884a">The keg</span></h2>
+<p style="text-align:center"><img src="https://raw.githubusercontent.com/Pocky-l/handson-delight/main/docs/showcase/keg.gif" width="720" alt="Water poured into the keg, wheat and a mushroom dropped in, then beer drawn from the tap into mugs"></p>
+<p style="text-align:center"><em><a href="https://modrinth.com/mod/brewin-and-chewin">Brewin' and Chewin'</a>'s keg opens under its lid. Pour the water in and drop in what ferments.<br>When the drink is ready, the tap fills one mug at a time.</em></p>
+
+<h2 style="text-align:center"><span style="color:#e0884a">The kettle</span></h2>
+<p style="text-align:center"><img src="https://raw.githubusercontent.com/Pocky-l/handson-delight/main/docs/showcase/kettle.gif" width="720" alt="Water, tea leaves and sugar put into the kettle on the stove, then tea poured from its spout into cups"></p>
+<p style="text-align:center"><em>Lift the lid of a kettle from <a href="https://modrinth.com/mod/gensokyo-delight-youkais-feasts">Gensokyo Delight: Youkai's Feasts</a> or <a href="https://modrinth.com/mod/farmers-respite">Farmer's Respite</a>, pour the water and drop the leaves in.<br>When the tea is brewed, tip the kettle by its handle and fill the cups.</em></p>
+
+<h2 style="text-align:center"><span style="color:#e0884a">Sushi on the cuisine board</span></h2>
+<p style="text-align:center"><img src="https://raw.githubusercontent.com/Pocky-l/handson-delight/main/docs/showcase/sushi.gif" width="720" alt="Nori, rice, soy sauce and cucumber laid on the cuisine board, rolled up and cut into maki with the knife"></p>
+<p style="text-align:center"><em><a href="https://modrinth.com/mod/gensokyo-delight-youkais-feasts">Youkai's Feasts</a>' cuisine board builds rolls step by step, and the book beside it shows each step.<br>Roll the sheet up from your side and cut the roll with the knife.</em></p>
 
 <h2 style="text-align:center"><span style="color:#e0884a">Stars and the recipe book</span></h2>
 <p style="text-align:center"><em>Stir in wide, steady rounds and stars fill over the dish, each one adding servings.<br>A recipe book beside every station shows what you can make right now. Put the stations side by side and the camera walks along them.</em></p>

@@ -12,9 +12,9 @@
 
 <p align="center"><i>Cook in <a href="https://www.curseforge.com/minecraft/mc-mods/farmers-delight">Farmer's Delight</a> with your own hands.</i></p>
 
-<p align="center"><b>The cooking pot, the cutting board, the skillet and the stove open right where they stand, with no menu screen. You stir the soup with the spoon and chop with the knife yourself, and players nearby see what you cook.</b></p>
+<p align="center"><b>The cooking pot, the cutting board, the skillet, the stove and the stations of the addons open right where they stand, with no menu screen. You stir the soup with the spoon and chop with the knife yourself, and players nearby see what you cook.</b></p>
 
-<p align="center"><img src="docs/showcase/stir.gif" alt="Vegetables stirred by hand in the open cooking pot, the recipe book beside it" width="720"></p>
+<p align="center"><img src="docs/showcase/pot.gif" alt="Ingredients fly into the open cooking pot and are stirred by hand until the pasta is done" width="720"></p>
 
 <p align="center"><b>No menus</b>, the blocks open in the world &middot; <b>Every recipe</b> of Farmer's Delight and its addons &middot; <b>No new blocks or items</b></p>
 
@@ -23,16 +23,28 @@ Built on [Diegesis](https://www.curseforge.com/minecraft/mc-mods/diegesis).
 ## Features
 
 <h3 align="center">The cutting board</h3>
-<p align="center"><img src="docs/showcase/chop.gif" alt="A cabbage chopped with the knife on the cutting board" width="720"></p>
+<p align="center"><img src="docs/showcase/board.gif" alt="A cabbage and a loaf of bread cut with the knife on the cutting board" width="720"></p>
 <p align="center"><i>Lay the food on the board and cut along the marks with the knife in hand.<br>One cut goes through sixteen at once, and the pieces fly into your inventory.</i></p>
 
-<h3 align="center">Burgers on the board</h3>
-<p align="center"><img src="docs/showcase/burger.gif" alt="Bread, patty, cabbage, tomato and onion stacked into a hamburger on the cutting board" width="720"></p>
+<h3 align="center">The skillet</h3>
+<p align="center"><img src="docs/showcase/skillet_toss.gif" alt="Chicken frying on the stove, turned over in the air by a toss of the skillet" width="720"></p>
+<p align="center"><i>Food fries on the side that lies in the pan. Toss the pan by its handle and it turns over in the air.</i></p>
+
+<h3 align="center">Sandwiches on the board</h3>
+<p align="center"><img src="docs/showcase/sandwich_build.gif" alt="Bread, chicken cuts, cabbage, carrot and the top slice stacked into a chicken sandwich on the cutting board" width="720"></p>
 <p align="center"><i>Bread first, then whatever goes on it: the last layer turns the stack into the dish.<br>Sandwiches no longer take the crafting table, and those of addons are built the same way.</i></p>
 
-<h3 align="center">The skillet</h3>
-<p align="center"><img src="docs/showcase/skillet.gif" alt="Beef patties turned over in the air by a toss of the skillet" width="720"></p>
-<p align="center"><i>Food fries on the side that lies in the pan. Toss the pan by its handle and it turns over in the air.</i></p>
+<h3 align="center">The keg</h3>
+<p align="center"><img src="docs/showcase/keg.gif" alt="Water poured into the keg, wheat and a mushroom dropped in, then beer drawn from the tap into mugs" width="720"></p>
+<p align="center"><i><a href="https://modrinth.com/mod/brewin-and-chewin">Brewin' and Chewin'</a>'s keg opens under its lid. Pour the water in and drop in what ferments.<br>When the drink is ready, the tap fills one mug at a time.</i></p>
+
+<h3 align="center">The kettle</h3>
+<p align="center"><img src="docs/showcase/kettle.gif" alt="Water, tea leaves and sugar put into the kettle on the stove, then tea poured from its spout into cups" width="720"></p>
+<p align="center"><i>Lift the lid of a kettle from <a href="https://modrinth.com/mod/gensokyo-delight-youkais-feasts">Gensokyo Delight: Youkai's Feasts</a> or <a href="https://modrinth.com/mod/farmers-respite">Farmer's Respite</a>, pour the water and drop the leaves in.<br>When the tea is brewed, tip the kettle by its handle and fill the cups.</i></p>
+
+<h3 align="center">Sushi on the cuisine board</h3>
+<p align="center"><img src="docs/showcase/sushi.gif" alt="Nori, rice, soy sauce and cucumber laid on the cuisine board, rolled up and cut into maki with the knife" width="720"></p>
+<p align="center"><i><a href="https://modrinth.com/mod/gensokyo-delight-youkais-feasts">Youkai's Feasts</a>' cuisine board builds rolls step by step, and the book beside it shows each step.<br>Roll the sheet up from your side and cut the roll with the knife.</i></p>
 
 ### In detail
 
