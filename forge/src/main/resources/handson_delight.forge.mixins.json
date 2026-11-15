@@ -10,6 +10,7 @@
     "CopperPotBlockMixin",
     "MonsterPotMixin",
     "MonsterPotBlockMixin",
+    "DungeonStoveBlockMixin",
     "AlchemistPotMixin",
     "AlchemistPotBlockMixin",
     "KegMixin",

@@ -49,6 +49,10 @@
 - [Chopper's Delight](https://www.curseforge.com/minecraft/mc-mods/choppers-delight)'s decorated cutting board, the one
   with a banner pattern, works like every other board now: click it to cut, put dishes together and stick a knife in.
   Its banner pattern stays on it while you work.
+- [Dungeons Delight](https://modrinth.com/mod/dungeons_delight)'s dungeon stove is a station like
+  Farmer's Delight's stove: lay food on its grill, turn each piece at the half and take it off when it is done. Food
+  put on it from the world stays and cooks too: in Dungeons Delight 1.3.2 the stove dropped nothing it was given and
+  cooked nothing.
 
 ### Fixed
 - Food thrown into [Brewin' and Chewin'](https://modrinth.com/mod/brewin-and-chewin)'s keg ferments when its recipe wants
@@ -70,6 +74,10 @@
   the cutting board makes its dishes again: the hamburger, the sandwiches and every addon dish were missing from its
   book and could not be laid up on it. ModernFix cleared the list of dishes before the board read it
   ([#24](https://github.com/Pocky-l/handson-delight/issues/24)).
+- The cutting board opens from whichever side you stand at, facing you, with the food in the middle of the board
+  beside its handle. Before, the camera always went round to the side the board was placed from.
+- Dungeons Delight's monster pot is full of its green ooze again, as it is in the world, instead of plain water. What
+  cooks in it only shades the ooze.
 
 ## [1.4.1+1.20.1] - 2026-11-14
 
