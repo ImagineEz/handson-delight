@@ -102,6 +102,10 @@
   dishes keep their places in the list: a dish you were making no longer jumped to another page.
 
 ### Fixed
+- Raw chicken could stay whole on the cutting board after its cuts in modpacks with
+  [PizzaCraft](https://modrinth.com/mod/pizzacraft), which cuts it into more pieces than Farmer's Delight does. Your game
+  and the server could pick different recipes for it, so the board drew two cuts while the server waited for a third. Both
+  now pick the same one, for chicken and anything else two mods cut.
 - A dish with more ingredients than the recipe book's page has room for (seven and more on the cutting board) ran off the
   bottom of the page. A bar beside them now scrolls them a row at a time: drag its grip, click beside it, or turn the mouse
   wheel over the page.

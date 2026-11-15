@@ -583,6 +583,34 @@ public final class BoardTests {
         });
     }
 
+    /**
+     * An item two recipes cut is planned by the recipes' ids, never by a recipe manager's order: a 1.20.1 client keeps its recipes in
+     * hash maps of its own, in another order than its server, and drew two marks on raw chicken where the server waited for a third
+     * (PizzaCraft cuts it into four pieces as well; GitHub #26). The second recipe's id lies before Farmer's Delight's in any hash map
+     * up to 32768 buckets, so the client's map gives it first.
+     */
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public static void aClientPlansTheMarksItsServerPlans(GameTestHelper helper) {
+        Level level = helper.getLevel();
+        ItemStack chicken = new ItemStack(Items.CHICKEN);
+        CuttingBoardRecipe wings = new CuttingBoardRecipe(HandsOnDelight.id("test_chicken_wings_5808"), "", Ingredient.of(Items.CHICKEN),
+                Ingredient.of(fd("iron_knife")), NonNullList.of(ChanceResult.EMPTY, new ChanceResult(new ItemStack(fd("chicken_cuts"), 2), 1.0F),
+                        new ChanceResult(new ItemStack(Items.FEATHER, 2), 1.0F), new ChanceResult(new ItemStack(Items.BONE_MEAL), 1.0F)), "");
+        List<Recipe<?>> recipes = new ArrayList<>(level.getRecipeManager().getRecipes());
+        recipes.add(wings);
+        RecipeManager client = new RecipeManager();
+        client.replaceRecipes(recipes);
+        Optional<?> first = client.getAllRecipesFor((RecipeType) FarmersDelightContent.CUTTING.get()).stream()
+                .filter(recipe -> ((CuttingBoardRecipe) recipe).getIngredients().get(0).test(chicken)).findFirst();
+        helper.assertTrue(first.orElse(null) == wings, "the client's map gives the four pieces first");
+        int marks = Cutting.plan(level, chicken).marks();
+        helper.assertTrue(marks == 2, "Farmer's Delight's own recipe plans the chicken on the server: two marks, not " + marks);
+        int clientMarks = Cutting.plan(client, level, chicken).marks();
+        helper.assertTrue(clientMarks == marks, "and on the client, by its id first: " + marks + " marks, not " + clientMarks);
+        helper.succeed();
+    }
+
+
     public static void anEmptyHandCutsWithTheKnifeInTheInventory(GameTestHelper helper) {
         Board setup = board(helper);
         setup.carry(new ItemStack(fd("cabbage"), 2));
