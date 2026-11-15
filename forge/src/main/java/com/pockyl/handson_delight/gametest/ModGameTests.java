@@ -7,7 +7,7 @@ import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
 import com.pockyl.handson_delight.HandsOnDelight;
 
-/** {@link PotTests}, {@link CopperPotTests}, {@link MonsterPotTests}, {@link AlchemistPotTests}, {@link KegTests}, {@link KettleTests}, {@link YoukaiKettleTests}, {@link BoardTests}, {@link SkilletTests}, {@link StoveTests} and {@link RecipeAudit} on Forge. */
+/** {@link PotTests}, {@link CopperPotTests}, {@link MonsterPotTests}, {@link AlchemistPotTests}, {@link KegTests}, {@link KettleTests}, {@link YoukaiKettleTests}, {@link YoukaiBoardTests}, {@link BoardTests}, {@link SkilletTests}, {@link StoveTests} and {@link RecipeAudit} on Forge. */
 @GameTestHolder(HandsOnDelight.MOD_ID)
 @PrefixGameTestTemplate(false)
 public final class ModGameTests {
@@ -657,6 +657,31 @@ public final class ModGameTests {
     @GameTest(template = "empty")
     public static void youkaiKettleReadsItsRecipes(GameTestHelper helper) {
         YoukaiKettleTests.youkaiKettleReadsItsRecipes(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void youkaiBoardReadsItsRecipes(GameTestHelper helper) {
+        YoukaiBoardTests.youkaiBoardReadsItsRecipes(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void youkaiNigiriIsShapedAndTopped(GameTestHelper helper) {
+        YoukaiBoardTests.youkaiNigiriIsShapedAndTopped(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void youkaiMakiFromTheBookIsRolledAndCut(GameTestHelper helper) {
+        YoukaiBoardTests.youkaiMakiFromTheBookIsRolledAndCut(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void youkaiBoardTakesTheLastStepBack(GameTestHelper helper) {
+        YoukaiBoardTests.youkaiBoardTakesTheLastStepBack(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void youkaiBookMakesSeveralDishes(GameTestHelper helper) {
+        YoukaiBoardTests.youkaiBookMakesSeveralDishes(helper);
     }
 
     @GameTest(template = "empty")

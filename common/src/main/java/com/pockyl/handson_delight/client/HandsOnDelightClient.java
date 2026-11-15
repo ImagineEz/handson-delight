@@ -11,6 +11,7 @@ import com.pockyl.handson_delight.station.CookingPotStation;
 import com.pockyl.handson_delight.station.CuttingBoardStation;
 import com.pockyl.handson_delight.station.KegStation;
 import com.pockyl.handson_delight.station.BasinStation;
+import com.pockyl.handson_delight.station.CuisineBoardStation;
 import com.pockyl.handson_delight.station.GrillStation;
 import com.pockyl.handson_delight.station.KettleStation;
 import com.pockyl.handson_delight.station.SkilletStation;
@@ -47,6 +48,7 @@ public final class HandsOnDelightClient {
         DiegesisClient.registerBehavior(KettleStation.YOUKAI_ID, KettleBehavior::new);
         DiegesisClient.registerBehavior(GrillStation.ID, GrillBehavior::new);
         DiegesisClient.registerBehavior(BasinStation.ID, BasinBehavior::new);
+        DiegesisClient.registerBehavior(CuisineBoardStation.ID, CuisineBehavior::new);
         DiegesisClient.registerBehavior(CuttingBoardStation.ID, BoardBehavior::new);
         DiegesisClient.registerBehavior(SkilletStation.ID, SkilletBehavior::new);
         DiegesisClient.registerBehavior(StoveStation.ID, StoveBehavior::new);

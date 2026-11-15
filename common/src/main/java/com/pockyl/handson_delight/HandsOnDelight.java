@@ -8,6 +8,7 @@ import com.pockyl.handson_delight.station.CookingPotStation;
 import com.pockyl.handson_delight.station.CuttingBoardStation;
 import com.pockyl.handson_delight.station.KegStation;
 import com.pockyl.handson_delight.station.BasinStation;
+import com.pockyl.handson_delight.station.CuisineBoardStation;
 import com.pockyl.handson_delight.station.GrillStation;
 import com.pockyl.handson_delight.station.KettleStation;
 import com.pockyl.handson_delight.station.SkilletStation;
@@ -47,6 +48,9 @@ public final class HandsOnDelight {
         }
         if (HandsOnConfig.basin()) {
             BasinStation.register();
+        }
+        if (HandsOnConfig.cuisineBoard()) {
+            CuisineBoardStation.register();
         }
     }
 
