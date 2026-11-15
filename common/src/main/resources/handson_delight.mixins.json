@@ -34,7 +34,9 @@
     "StationRenderersMixin",
     "StoveSmokeMixin",
     "AddonStoveSmokeMixin",
-    "CampfireSmokeMixin"
+    "CampfireSmokeMixin",
+    "GrillSmokeMixin",
+    "GrillSizzleMixin"
   ],
   "injectors": {
     "defaultRequire": 1

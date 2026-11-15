@@ -16,7 +16,8 @@ import java.util.Set;
  */
 public final class OptionalMixins implements IMixinConfigPlugin {
     private static final String PACKAGE = "com.pockyl.handson_delight.mixin.";
-    private static final Set<String> OPTIONAL = Set.of(PACKAGE + "KubeJsRecipesMixin", PACKAGE + "AddonStoveSmokeMixin");
+    private static final Set<String> OPTIONAL = Set.of(PACKAGE + "KubeJsRecipesMixin", PACKAGE + "AddonStoveSmokeMixin",
+            PACKAGE + "GrillSmokeMixin", PACKAGE + "GrillSizzleMixin");
     /** The Forge mixins into addons' own stations (Miner's Delight's copper pot, Dungeons Delight's monster pot, the keg). */
     private static final String ADDON_STATIONS = "com.pockyl.handson_delight.forge.mixin.";
 

@@ -72,6 +72,14 @@ Built on [Diegesis](https://www.curseforge.com/minecraft/mc-mods/diegesis).
   brews over the fire, with steam rising from the spout. Done, the kettle whistles. Click the spout with a bottle and
   the kettle is lifted by its handle and tipped to pour one; with an empty hand a bottle is offered from your
   inventory, and Shift pours every cup there is.
+- **Grill** of [Barbeque's Delight](https://modrinth.com/mod/barbeques-delight-forge). Two skewers lie over its fire.
+  One smokes when its lower side is done: click it to turn it over, once. Click a skewer with a powder to shake it over
+  or with a sauce to dab it on, and the seasoning stays on it. A skewer left on after it is done darkens, smokes and
+  burns, as in Barbeque's Delight.
+- **Ingredients basin** of [Barbeque's Delight](https://modrinth.com/mod/barbeques-delight-forge). Put the meat in one
+  compartment and the side in the other. A stick from your inventory lies ready on its rim: click it and the pieces go
+  onto it one after another, the side from the other compartment, nothing in your off hand. Shift makes as many as
+  there is food for.
 - **A kitchen.** Rest the cursor at the edge of the screen beside another station and the camera moves over to it. A, D
   and the arrow keys do the same.
 - **For everyone.** Players nearby see the soup simmer, the spoon go round and the food land on the board.
@@ -80,7 +88,7 @@ Built on [Diegesis](https://www.curseforge.com/minecraft/mc-mods/diegesis).
 
 | Action | How |
 |---|---|
-| Open a station | Right-click the pot, board, skillet, stove, keg or kettle |
+| Open a station | Right-click the pot, board, skillet, stove, keg, kettle, grill or basin |
 | Use the block as in Farmer's Delight | Sneak + right-click |
 | Stir | Click the spoon's handle, move the mouse, click again to put it down |
 | Serve | Click the soup with a bowl |
@@ -125,6 +133,7 @@ which each player sets in their own file.
 | `cooking_pot`, `cutting_board`, `skillet`, `stove` | `true` | The station of that block. Off, the block works as in Farmer's Delight |
 | `keg` | `true` | Brewin' and Chewin's keg as a station. Off, the keg keeps its own menu |
 | `kettle` | `true` | Farmer's Respite's kettle as a station. Off, the kettle keeps its own menu |
+| `grill`, `basin` | `true` | Barbeque's Delight's grill and ingredients basin as stations. Off, they are used as before |
 | `remove_crafting_recipes` | `true` | Farmer's Delight's food crafts are made on the board only |
 | `stirring_required` | `true` | Food you put into the pot waits for the spoon while you are at it |
 | `recipe_book` | `true` | The recipe book beside the stations |

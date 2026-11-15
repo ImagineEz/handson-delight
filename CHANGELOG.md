@@ -14,6 +14,16 @@
   Sneaking keeps the kettle's own menu.
 - `kettle_time` in `config/handson_delight.properties` makes drinks take longer or shorter in Farmer's Respite's kettle,
   however they got into it.
+- [Barbeque's Delight](https://modrinth.com/mod/barbeques-delight-forge)'s grill is a station. Two skewers lie over its
+  fire: lay them from your hand, the stack you let go over the grill or a recipe in its book. When a skewer's lower side
+  is done it smokes round its edge; click it and it turns over, once, as Barbeque's Delight allows. Clicked earlier it
+  only twitches. Click a skewer with a powder and it is shaken over it, with a sauce and it is dabbed on, and the
+  seasoning stays on the skewer in its colour. Left on after it is done, a skewer darkens and smokes harder until it
+  burns. Sneak to use the grill as before.
+- Its ingredients basin is a station too. Put the meat in one compartment and the side in the other. A stick from your
+  inventory lies ready on the rim: click it and the pieces hop onto it one after another, the side coming from the other
+  compartment, so nothing has to be held in the off hand. Shift makes as many skewers as there is food for, and a
+  recipe picked in its book fills the compartments from your inventory.
 - [Chopper's Delight](https://www.curseforge.com/minecraft/mc-mods/choppers-delight)'s decorated cutting board, the one
   with a banner pattern, works like every other board now: click it to cut, put dishes together and stick a knife in.
   Its banner pattern stays on it while you work.
