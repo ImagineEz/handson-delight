@@ -1,5 +1,6 @@
 package com.pockyl.handson_delight.forge.mixin;
 
+import com.phantomwing.choppersdelight.block.entity.DecoratedCuttingBoardBlockEntity;
 import com.phantomwing.choppersdelight.block.entity.ModCuttingBoardBlockEntity;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
@@ -24,27 +25,36 @@ import com.pockyl.handson_delight.station.CuttingBoardStation;
 import com.pockyl.handson_delight.station.KitchenBoard;
 
 /**
- * Chopper's Delight's cutting boards of every wood as {@link KitchenBoard}s: copies of Farmer's Delight's board, one slot, a tool stuck
- * in, Farmer's Delight's cutting recipes, so the station works at them as at Farmer's Delight's. A dish being put together is kept
- * in the board as in Farmer's Delight's.
+ * Chopper's Delight's cutting boards of every wood and its decorated board (a board with a banner pattern) as {@link KitchenBoard}s:
+ * copies of Farmer's Delight's board, one slot, a tool stuck in, Farmer's Delight's cutting recipes, so the station works at them as
+ * at Farmer's Delight's. A dish being put together is kept in the board as in Farmer's Delight's.
  */
 @Pseudo
-@Mixin(value = ModCuttingBoardBlockEntity.class, remap = false)
+@Mixin(value = {ModCuttingBoardBlockEntity.class, DecoratedCuttingBoardBlockEntity.class}, remap = false)
 abstract class ChoppersBoardMixin implements KitchenBoard {
     @Unique
     private static final String LAYERS = HandsOnDelight.MOD_ID + ":layers";
 
-    @Shadow
+    @Shadow(remap = false)
     @Final
     private ItemStackHandler inventory;
-    @Shadow
+    @Shadow(remap = false)
     private boolean isItemCarvingBoard;
     @Unique
     private final NonNullList<ItemStack> handson$layers = NonNullList.withSize(CuttingBoardStation.MOST_LAYERS, ItemStack.EMPTY);
 
+    @Shadow(remap = false)
+    public abstract int getMaxStackSize();
+
+    @Shadow(remap = false)
+    public abstract boolean carveToolOnBoard(ItemStack tool);
+
+    @Shadow(remap = false)
+    public abstract boolean processStoredItemUsingTool(ItemStack tool, Player player);
+
     @Unique
-    private ModCuttingBoardBlockEntity handson$self() {
-        return (ModCuttingBoardBlockEntity) (Object) this;
+    private BlockEntity handson$self() {
+        return (BlockEntity) (Object) this;
     }
 
     @Override
@@ -69,22 +79,27 @@ abstract class ChoppersBoardMixin implements KitchenBoard {
 
     @Override
     public int handson$maxStack() {
-        return handson$self().getMaxStackSize();
+        return getMaxStackSize();
     }
 
     @Override
     public boolean handson$carve(ItemStack tool) {
-        return handson$self().carveToolOnBoard(tool);
+        return carveToolOnBoard(tool);
     }
 
     @Override
     public boolean handson$cut(ItemStack tool, Player player) {
-        return handson$self().processStoredItemUsingTool(tool, player);
+        return processStoredItemUsingTool(tool, player);
     }
 
     @Override
     public BlockEntity handson$blockEntity() {
         return handson$self();
+    }
+
+    @Override
+    public boolean handson$rendersBoard() {
+        return (Object) this instanceof DecoratedCuttingBoardBlockEntity;
     }
 
     @Override

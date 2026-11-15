@@ -18,7 +18,8 @@
     "CopperPotQuietMixin",
     "CopperPotSteamMixin",
     "MonsterPotQuietMixin",
-    "MonsterPotSteamMixin"
+    "MonsterPotSteamMixin",
+    "DecoratedBoardContentMixin"
   ],
   "injectors": {
     "defaultRequire": 1
