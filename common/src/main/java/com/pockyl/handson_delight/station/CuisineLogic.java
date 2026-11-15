@@ -126,8 +126,10 @@ public final class CuisineLogic implements StationLogic {
             }
             return;
         }
-        if (!back.isEmpty() && !player.getInventory().add(back.copy())) {
-            player.drop(back.copy(), false);
+        // What does not fit drops, and only that: the inventory keeps the part it took.
+        ItemStack given = back.copy();
+        if (!given.isEmpty() && !player.getInventory().add(given)) {
+            player.drop(given, false);
         }
         CompoundTag data = new CompoundTag();
         data.put(CuisineBoardStation.STACK, back.save(new CompoundTag()));
@@ -185,8 +187,9 @@ public final class CuisineLogic implements StationLogic {
         ListTag pieces = new ListTag();
         for (ItemStack result : results) {
             pieces.add(result.save(new CompoundTag()));
-            if (!player.getInventory().add(result.copy())) {
-                player.drop(result.copy(), false);
+            ItemStack given = result.copy();
+            if (!player.getInventory().add(given)) {
+                player.drop(given, false);
             }
         }
         CompoundTag data = new CompoundTag();

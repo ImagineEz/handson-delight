@@ -67,7 +67,7 @@ abstract class RecipeManagerMixin {
     @Inject(method = APPLY, at = @At("TAIL"))
     private void handson$keepAssembled(Map<ResourceLocation, JsonElement> recipes, ResourceManager resources, ProfilerFiller profiler,
             CallbackInfo callback) {
-        AssemblyRecipes.load(handson$taken, ((RecipeManagerAccessor) this).handson$byName());
+        AssemblyRecipes.load(handson$taken, (RecipeManager) (Object) this);
         handson$taken.clear();
     }
 }

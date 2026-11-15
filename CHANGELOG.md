@@ -141,6 +141,20 @@
 - On some computers (seen on a Mac) a block beside the station could cover the recipe book. The book is now drawn over
   everything there too, only without smoothing its edges
   ([#9](https://github.com/Pocky-l/handson-delight/issues/9)).
+- A glass bottle or a stick can be laid on the cutting board again in modpacks where an addon also cuts something with
+  it ([Fright's Delight](https://modrinth.com/mod/frights-delight) cuts with a bottle), so melon juice, bottled drinks,
+  skewers and popsicles are built by hand. Held over what it cuts, it still cuts.
+- The dish picked in the cutting board's book is the one made, also when another addon's dish takes the same
+  ingredients.
+- The cutting board makes each dish exactly as the modpack's recipe has it. A KubeJS script that removes a recipe and
+  adds it again under the same name, or a [CraftTweaker](https://modrinth.com/mod/crafttweaker) script that removes or
+  changes one, no longer leaves the board and its book on the old recipe.
+- Players who join without the mod keep Farmer's Delight's sandwiches and the other board dishes in their recipe book.
+  They lost them at every login, and with `doLimitedCrafting` could no longer craft them.
+- A server no longer crashes when another mod's stand-in player crafts or uses a stove.
+- With a station turned off in `config/handson_delight.properties`, its pot or kettle keeps its own look, spoon included.
+- Food that changes its look by NBT or CustomModelData is cut and coloured at the stations as it looks.
+- A resource pack that retextures white concrete no longer shows through the recipe book.
 
 ## [1.4.1+1.20.1] - 2026-11-14
 

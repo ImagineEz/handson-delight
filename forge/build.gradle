@@ -164,6 +164,15 @@ if (kubejs) {
     }
 }
 
+// -Pcrafttweaker runs the game tests with CraftTweaker and a script that removes a Farmer's Delight dish: CraftTweaker runs its scripts
+// after the recipe manager has loaded, and the board must lose the dish as well (RecipeEditTests).
+var crafttweaker = providers.gradleProperty('crafttweaker').isPresent()
+if (crafttweaker) {
+    dependencies {
+        modRuntimeOnly 'maven.modrinth:crafttweaker:8GR4gItx' // CraftTweaker 14.0.60
+    }
+}
+
 var syncDevMods = tasks.register('syncDevMods', Sync) {
     from(configurations.devMods)
     into 'run/gametest/mods'
@@ -173,6 +182,7 @@ var syncDevMods = tasks.register('syncDevMods', Sync) {
 var prepareGameTestServer = tasks.register('prepareGameTestServer') {
     var dir = project.file('run/gametest')
     inputs.property('kubejs', kubejs)
+    inputs.property('crafttweaker', crafttweaker)
     outputs.file(new File(dir, 'server.properties'))
     doLast {
         dir.mkdirs()
@@ -182,14 +192,30 @@ var prepareGameTestServer = tasks.register('prepareGameTestServer') {
         var script = new File(dir, 'kubejs/server_scripts/handson_delight_test.js')
         if (kubejs) {
             script.parentFile.mkdirs()
-            // A modpack's own dish: a script's recipe, brought to the board by tagging its result.
+            // A modpack's own dish: a script's recipe, brought to the board by tagging its result. A modpack's edits of Farmer's
+            // Delight's dishes: an ingredient and a result replaced, a recipe removed and added anew under its id (RecipeEditTests).
             script.text = [
-                    "ServerEvents.recipes(event => event.shapeless('minecraft:mushroom_stew', "
-                            + "['minecraft:bowl', 'minecraft:crimson_fungus', 'minecraft:red_mushroom']).id('kubejs:fungus_stew'))",
+                    "ServerEvents.recipes(event => {",
+                    "  event.shapeless('minecraft:mushroom_stew', ['minecraft:bowl', 'minecraft:crimson_fungus', 'minecraft:red_mushroom'])"
+                            + ".id('kubejs:fungus_stew')",
+                    "  event.replaceInput({id: 'farmersdelight:bacon_sandwich'}, '#forge:crops/tomato', 'minecraft:apple')",
+                    "  event.replaceOutput({id: 'farmersdelight:egg_sandwich'}, 'farmersdelight:egg_sandwich', "
+                            + "'farmersdelight:bacon_sandwich')",
+                    "  event.remove({id: 'farmersdelight:chicken_sandwich'})",
+                    "  event.shapeless('farmersdelight:chicken_sandwich', ['#forge:bread', 'minecraft:cooked_chicken', 'minecraft:apple'])"
+                            + ".id('farmersdelight:chicken_sandwich')",
+                    "})",
                     "ServerEvents.tags('item', event => event.add('handson_delight:assembled', 'minecraft:mushroom_stew'))"
             ].join(System.lineSeparator()) + System.lineSeparator()
         } else {
             script.delete()
+        }
+        var tweak = new File(dir, 'scripts/handson_delight_test.zs')
+        if (crafttweaker) {
+            tweak.parentFile.mkdirs()
+            tweak.text = 'craftingTable.removeByName("farmersdelight:chicken_sandwich");' + System.lineSeparator()
+        } else {
+            tweak.delete()
         }
     }
 }

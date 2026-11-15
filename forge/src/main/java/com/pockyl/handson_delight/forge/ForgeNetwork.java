@@ -1,6 +1,7 @@
 package com.pockyl.handson_delight.forge;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkEvent;
@@ -29,8 +30,10 @@ final class ForgeNetwork {
                 .add();
     }
 
+    /** Whether the client has the channel; false for a connection without a network channel (another mod's mock player). */
     static boolean present(ServerPlayer player) {
-        return CHANNEL.isRemotePresent(player.connection.connection);
+        Connection connection = player.connection.connection;
+        return connection != null && connection.channel() != null && CHANNEL.isRemotePresent(connection);
     }
 
     static void send(ServerPlayer player) {

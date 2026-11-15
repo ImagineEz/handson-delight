@@ -101,6 +101,21 @@ public final class FabricBoardTests implements FabricGameTest {
         BoardTests.aKnifeIsNoLayer(helper);
     }
 
+    @GameTest(template = FabricGameTest.EMPTY_STRUCTURE)
+    public void everyDishIsLaidByHand(GameTestHelper helper) {
+        BoardTests.everyDishIsLaidByHand(helper);
+    }
+
+    @GameTest(template = FabricGameTest.EMPTY_STRUCTURE)
+    public void aToolThatIsALayerCutsOnlyWhatItCuts(GameTestHelper helper) {
+        BoardTests.aToolThatIsALayerCutsOnlyWhatItCuts(helper);
+    }
+
+    @GameTest(template = FabricGameTest.EMPTY_STRUCTURE)
+    public void aPickedDishWinsOverAnotherOfTheSameLayers(GameTestHelper helper) {
+        BoardTests.aPickedDishWinsOverAnotherOfTheSameLayers(helper);
+    }
+
     @GameTest(template = FabricGameTest.EMPTY_STRUCTURE, timeoutTicks = 100)
     public void aHamTakesTwoChopsAndFeedsTheCook(GameTestHelper helper) {
         BoardTests.aHamTakesTwoChopsAndFeedsTheCook(helper);

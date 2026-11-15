@@ -60,8 +60,11 @@ final class RecipeBook implements NodePainter {
     private static final ResourceLocation PAPER = HandsOnDelight.id("textures/entity/recipe_book_paper.png");
     @SuppressWarnings("removal")
     private static final ResourceLocation ARROWS = new ResourceLocation("textures/gui/book.png");
-    @SuppressWarnings("removal")
-    private static final ResourceLocation WHITE = new ResourceLocation("minecraft", "block/white_concrete");
+    /**
+     * The flat sprite that wells and bars are tinted from: this mod's own, in the off-white of white concrete that their colours were
+     * chosen against, so that a resource pack that retextures concrete does not show through the book.
+     */
+    private static final ResourceLocation WHITE = HandsOnDelight.id("block/white");
     private static final Quaternionf LYING = new Matrix3f(0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F).getNormalizedRotation(new Quaternionf());
     /** How big against the model's own pixels. */
     private static final float SIZE = 0.72F;

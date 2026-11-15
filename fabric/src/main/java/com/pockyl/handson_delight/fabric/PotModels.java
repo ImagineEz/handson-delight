@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 import com.pockyl.handson_delight.FarmersDelightContent;
+import com.pockyl.handson_delight.HandsOnConfig;
 import com.pockyl.handson_delight.HandsOnDelight;
 
 import java.io.IOException;
@@ -24,14 +25,20 @@ import java.util.Optional;
  * where any other copy of it can win: a resource pack that remodels Farmer's Delight, or Farmer's Delight's own file when the loader
  * lists it after this mod (development runs shuffle the mods). The pot then covered the soup and kept a second spoon that does
  * nothing. Its models are therefore read from this mod's copy of the file; a resource pack's textures still apply to them.
+ * <p>
+ * The file lies outside the mod's own {@code assets}, so it is used only while the pot's station is on: with the station off the pot
+ * is Farmer's Delight's again, with its own spoon, since no station draws one.
  */
 final class PotModels {
-    private static final String FILE = "assets/farmersdelight/blockstates/cooking_pot.json";
+    private static final String FILE = "pot_pack/assets/farmersdelight/blockstates/cooking_pot.json";
 
     private PotModels() {
     }
 
     static void register() {
+        if (!HandsOnConfig.cookingPot()) {
+            return;
+        }
         ModelLoadingPlugin.register(context -> {
             Block pot = FarmersDelightContent.COOKING_POT.get();
             if (pot == Blocks.AIR) {

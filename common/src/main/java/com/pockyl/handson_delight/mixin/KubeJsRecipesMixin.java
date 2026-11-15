@@ -19,8 +19,8 @@ import java.util.Map;
 /**
  * KubeJS for 1.20.1 loads the recipes itself as soon as a server script listens to its recipe event, and cancels the recipe manager's
  * own loading, so {@link RecipeManagerMixin} never sees its end: without this the board would make no dishes in such a modpack. The
- * board's recipes are found in the same JSON and read once KubeJS has put the recipes into the manager. Applied only with KubeJS
- * installed ({@code OptionalMixins}).
+ * board's recipes are found in the same JSON and read once KubeJS has put the recipes into the manager, as KubeJS made them: a recipe
+ * a script removed and added anew under its id is not in that JSON. Applied only with KubeJS installed ({@code OptionalMixins}).
  * <p>
  * What was found is kept in a static field: ModernFix clears every instance map and collection of the event when {@code post}
  * returns, and in a modpack that often runs before this mixin's end, so an instance field would be read empty (GitHub #24). The
@@ -41,7 +41,7 @@ abstract class KubeJsRecipesMixin {
 
     @Inject(method = "post", at = @At("TAIL"), require = 0)
     private void handson$keepAssembled(RecipeManager manager, Map<ResourceLocation, JsonElement> recipes, CallbackInfo callback) {
-        AssemblyRecipes.load(handson$taken, ((RecipeManagerAccessor) manager).handson$byName());
+        AssemblyRecipes.load(handson$taken, manager);
         handson$taken.clear();
     }
 }

@@ -335,6 +335,21 @@ public final class ModGameTests {
     }
 
     @GameTest(template = "empty", timeoutTicks = 100)
+    public static void everyDishIsLaidByHand(GameTestHelper helper) {
+        BoardTests.everyDishIsLaidByHand(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 100)
+    public static void aToolThatIsALayerCutsOnlyWhatItCuts(GameTestHelper helper) {
+        BoardTests.aToolThatIsALayerCutsOnlyWhatItCuts(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 100)
+    public static void aPickedDishWinsOverAnotherOfTheSameLayers(GameTestHelper helper) {
+        BoardTests.aPickedDishWinsOverAnotherOfTheSameLayers(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 100)
     public static void aHamTakesTwoChopsAndFeedsTheCook(GameTestHelper helper) {
         BoardTests.aHamTakesTwoChopsAndFeedsTheCook(helper);
     }
@@ -797,5 +812,15 @@ public final class ModGameTests {
     @GameTest(template = "empty")
     public static void aRecipeFromTheBookFillsAndSkewers(GameTestHelper helper) {
         BasinTests.aRecipeFromTheBookFillsAndSkewers(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void cutPiecesThatDoNotFitDropOnce(GameTestHelper helper) {
+        FullInventoryTests.cutPiecesThatDoNotFitDropOnce(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 100)
+    public static void aStoveWithFewerPlacesGrillsOnThoseItHas(GameTestHelper helper) {
+        SmallStoveTests.aStoveWithFewerPlacesGrillsOnThoseItHas(helper);
     }
 }
