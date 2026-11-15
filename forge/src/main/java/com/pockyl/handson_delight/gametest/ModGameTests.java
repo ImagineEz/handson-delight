@@ -7,7 +7,7 @@ import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
 import com.pockyl.handson_delight.HandsOnDelight;
 
-/** {@link PotTests}, {@link CopperPotTests}, {@link MonsterPotTests}, {@link AlchemistPotTests}, {@link KegTests}, {@link KettleTests}, {@link YoukaiKettleTests}, {@link YoukaiBoardTests}, {@link YoukaiPotTests}, {@link YoukaiSteamerTests}, {@link BoardTests}, {@link SkilletTests}, {@link StoveTests} and {@link RecipeAudit} on Forge. */
+/** {@link PotTests}, {@link CopperPotTests}, {@link MonsterPotTests}, {@link AlchemistPotTests}, {@link KegTests}, {@link KettleTests}, {@link YoukaiKettleTests}, {@link YoukaiBoardTests}, {@link YoukaiPotTests}, {@link YoukaiSteamerTests}, {@link YoukaiTankTests}, {@link BoardTests}, {@link SkilletTests}, {@link StoveTests} and {@link RecipeAudit} on Forge. */
 @GameTestHolder(HandsOnDelight.MOD_ID)
 @PrefixGameTestTemplate(false)
 public final class ModGameTests {
@@ -337,6 +337,11 @@ public final class ModGameTests {
     @GameTest(template = "empty", timeoutTicks = 100)
     public static void aHamTakesTwoChopsAndFeedsTheCook(GameTestHelper helper) {
         BoardTests.aHamTakesTwoChopsAndFeedsTheCook(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 100)
+    public static void rawChickenFallsIntoItsCuts(GameTestHelper helper) {
+        BoardTests.rawChickenFallsIntoItsCuts(helper);
     }
 
     @GameTest(template = "empty", timeoutTicks = 100)
@@ -717,6 +722,31 @@ public final class ModGameTests {
     @GameTest(template = "empty")
     public static void youkaiSteamerIsOneTower(GameTestHelper helper) {
         YoukaiSteamerTests.youkaiSteamerIsOneTower(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void anEmptyYoukaiPotTakesItsWaterAtTheStation(GameTestHelper helper) {
+        YoukaiPotTests.anEmptyYoukaiPotTakesItsWaterAtTheStation(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void youkaiTankReadsItsRecipes(GameTestHelper helper) {
+        YoukaiTankTests.youkaiTankReadsItsRecipes(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void youkaiTankLidIsItsBlocks(GameTestHelper helper) {
+        YoukaiTankTests.youkaiTankLidIsItsBlocks(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 100)
+    public static void youkaiMioFermentsAndIsDipped(GameTestHelper helper) {
+        YoukaiTankTests.youkaiMioFermentsAndIsDipped(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 100)
+    public static void youkaiTeaLeavesTurnBlack(GameTestHelper helper) {
+        YoukaiTankTests.youkaiTeaLeavesTurnBlack(helper);
     }
 
     @GameTest(template = "empty")

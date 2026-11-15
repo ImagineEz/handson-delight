@@ -21,6 +21,8 @@
     "YoukaiCuisineBoardMixin",
     "YoukaiPotMixin",
     "YoukaiSteamerMixin",
+    "YoukaiTankMixin",
+    "YoukaiFermentRecipeAccess",
     "ChoppersBoardMixin",
     "ChoppersBoardBlockMixin"
   ],
@@ -33,7 +35,8 @@
     "AlchemistPotSteamMixin",
     "KettleQuietMixin",
     "DecoratedBoardContentMixin",
-    "YoukaiPotSoupMixin"
+    "YoukaiPotSoupMixin",
+    "YoukaiHintsMixin"
   ],
   "injectors": {
     "defaultRequire": 1
