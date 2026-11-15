@@ -92,6 +92,9 @@
 
 ### Changed
 - The recipe book opens almost twice as fast.
+- A recipe clicked in a station's book is only picked now: its page opens on the right so you can read what it needs.
+  Click it again to lay it out from your inventory (with Shift as many as you have for). Before, the first click already
+  took the food out of your inventory.
 - The mouse wheel over a recipe book's list turns its pages.
 - Every station's recipe book names the dish or the ingredient under the cursor, as a slot does.
 - The book opens again at the recipe you picked last, at that station or at one like it, as long as what lies in the
@@ -127,6 +130,13 @@
   beside its handle. Before, the camera always went round to the side the board was placed from.
 - Dungeons Delight's monster pot is full of its green ooze again, as it is in the world, instead of plain water. What
   cooks in it only shades the ooze.
+- At Miner's Delight's copper pot, milk, an egg or sugar that went in comes back out with a click on the soup, as at
+  Farmer's Delight's pot, and they are poured, cracked and shaken in by hand there too.
+- Clicking the keg's tap with an empty hand no longer takes an empty bucket from your inventory and draws the keg's
+  liquid into it: only a mug or bottle is offered. A bucket on your cursor still fills, and shows as one drink, not four.
+- On some computers (seen on a Mac) a block beside the station could cover the recipe book. The book is now drawn over
+  everything there too, only without smoothing its edges
+  ([#9](https://github.com/Pocky-l/handson-delight/issues/9)).
 
 ## [1.4.1+1.20.1] - 2026-11-14
 

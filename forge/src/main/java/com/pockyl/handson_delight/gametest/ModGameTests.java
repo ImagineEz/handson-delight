@@ -485,6 +485,11 @@ public final class ModGameTests {
     }
 
     @GameTest(template = "empty")
+    public static void everyPotSceneHasEveryPart(GameTestHelper helper) {
+        PotSceneTests.everyPotSceneHasEveryPart(helper);
+    }
+
+    @GameTest(template = "empty")
     public static void theCopperPotHoldsFourIngredients(GameTestHelper helper) {
         CopperPotTests.theCopperPotHoldsFourIngredients(helper);
     }
@@ -652,6 +657,11 @@ public final class ModGameTests {
     @GameTest(template = "empty")
     public static void youkaiKettleLidIsTheStations(GameTestHelper helper) {
         YoukaiKettleTests.youkaiKettleLidIsTheStations(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void youkaiKettleWaterStaysFromAnEmptyHand(GameTestHelper helper) {
+        YoukaiKettleTests.youkaiKettleWaterStaysFromAnEmptyHand(helper);
     }
 
     @GameTest(template = "empty", timeoutTicks = 100)
