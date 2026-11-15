@@ -21,12 +21,17 @@ import java.util.Map;
  * own loading, so {@link RecipeManagerMixin} never sees its end: without this the board would make no dishes in such a modpack. The
  * board's recipes are found in the same JSON and read once KubeJS has put the recipes into the manager. Applied only with KubeJS
  * installed ({@code OptionalMixins}).
+ * <p>
+ * What was found is kept in a static field: ModernFix clears every instance map and collection of the event when {@code post}
+ * returns, and in a modpack that often runs before this mixin's end, so an instance field would be read empty (GitHub #24). The
+ * high priority applies this mixin after ModernFix's, so its end always runs second, as in such a modpack, and the game tests
+ * with {@code -Pkubejs} (ModernFix included) see that order.
  */
 @Pseudo
-@Mixin(targets = "dev.latvian.mods.kubejs.recipe.RecipesEventJS", remap = false)
+@Mixin(targets = "dev.latvian.mods.kubejs.recipe.RecipesEventJS", remap = false, priority = 2000)
 abstract class KubeJsRecipesMixin {
     @Unique
-    private final Map<ResourceLocation, JsonObject> handson$taken = new HashMap<>();
+    private static final Map<ResourceLocation, JsonObject> handson$taken = new HashMap<>();
 
     @Inject(method = "post", at = @At("HEAD"), require = 0)
     private void handson$findAssembled(RecipeManager manager, Map<ResourceLocation, JsonElement> recipes, CallbackInfo callback) {

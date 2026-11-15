@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.4.2+1.20.1] - Unreleased
+## [1.5.0+1.20.1] - Unreleased
 
 ### New
 - [Farmer's Respite](https://modrinth.com/mod/farmers-respite)'s kettle opens as a station. Click its lid to lift it
@@ -66,6 +66,10 @@
 - Cutting a pumpkin, a melon or another block on the cutting board, the knife hung inside it instead of over it, and
   stood off the line the cursor pointed at, so the line was hard to hit. The knife now stands over the top of what it
   cuts, right under the cursor.
+- In modpacks with KubeJS and [ModernFix](https://modrinth.com/mod/modernfix) (Society: Sunlit Valley and many more),
+  the cutting board makes its dishes again: the hamburger, the sandwiches and every addon dish were missing from its
+  book and could not be laid up on it. ModernFix cleared the list of dishes before the board read it
+  ([#24](https://github.com/Pocky-l/handson-delight/issues/24)).
 
 ## [1.4.1+1.20.1] - 2026-11-14
 

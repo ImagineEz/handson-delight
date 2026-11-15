@@ -150,7 +150,8 @@ if (providers.gradleProperty('culinary').isPresent()) {
 }
 
 // -Pkubejs runs the game tests with KubeJS and a server script listening to its recipe event: KubeJS for 1.20.1 then loads the
-// recipes itself and cancels the game's own loading, and the board must still find its dishes (KubeJsRecipesMixin).
+// recipes itself and cancels the game's own loading, and the board must still find its dishes (KubeJsRecipesMixin). ModernFix
+// comes along: most modpacks have it, and it clears the KubeJS event's maps before the mixin reads what it found (GitHub #24).
 var kubejs = providers.gradleProperty('kubejs').isPresent()
 if (kubejs) {
     dependencies {
@@ -158,6 +159,7 @@ if (kubejs) {
                 'kubejs:hVR2xUSr',                // KubeJS 2001.6.5-build.26
                 'rhino:uNALdylI',                 // Rhino 2001.2.3-build.10, needed by KubeJS
                 'architectury-api:1MKTLiiG',      // Architectury 9.2.14, needed by KubeJS
+                'modernfix:OM5gX4LT',             // ModernFix 5.27.91
         ].each { modRuntimeOnly "maven.modrinth:${it}" }
     }
 }
