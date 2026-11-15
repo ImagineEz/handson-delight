@@ -33,6 +33,8 @@ public final class HandsOnConfig {
             "cuisine_board: Youkai's Feasts' cuisine board as a station, when that mod is there. Off, it is used as before.",
             "youkai_pots: Youkai's Feasts' small iron pot, short iron pot and stockpot as stations, when that mod is there.",
             "  Off, they are used as before. They keep their own cooking times.",
+            "youkai_steamer: Youkai's Feasts' steamer (its pot, racks and lid) as a station, when that mod is there. Off, it is",
+            "  used as before. It keeps its own steaming times.",
             "remove_crafting_recipes: Farmer's Delight's food crafts (sandwiches, salads, rolls, pies, feasts) are made on the",
             "  cutting board only, not in a crafting grid.",
             "  Machines (Create, AE2, Refined Storage) craft them either way.",
@@ -59,6 +61,7 @@ public final class HandsOnConfig {
     private static boolean basin = true;
     private static boolean cuisineBoard = true;
     private static boolean youkaiPots = true;
+    private static boolean youkaiSteamer = true;
     private static boolean removeCraftingRecipes = true;
     private static boolean stirringRequired = true;
     private static boolean recipeBook = true;
@@ -93,6 +96,7 @@ public final class HandsOnConfig {
         basin = read(values, "basin", basin);
         cuisineBoard = read(values, "cuisine_board", cuisineBoard);
         youkaiPots = read(values, "youkai_pots", youkaiPots);
+        youkaiSteamer = read(values, "youkai_steamer", youkaiSteamer);
         removeCraftingRecipes = read(values, "remove_crafting_recipes", removeCraftingRecipes);
         stirringRequired = read(values, "stirring_required", stirringRequired);
         recipeBook = read(values, "recipe_book", recipeBook);
@@ -184,6 +188,10 @@ public final class HandsOnConfig {
 
     public static boolean youkaiPots() {
         return youkaiPots;
+    }
+
+    public static boolean youkaiSteamer() {
+        return youkaiSteamer;
     }
 
     /**

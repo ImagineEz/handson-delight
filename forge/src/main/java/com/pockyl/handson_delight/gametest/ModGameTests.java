@@ -7,7 +7,7 @@ import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
 import com.pockyl.handson_delight.HandsOnDelight;
 
-/** {@link PotTests}, {@link CopperPotTests}, {@link MonsterPotTests}, {@link AlchemistPotTests}, {@link KegTests}, {@link KettleTests}, {@link YoukaiKettleTests}, {@link YoukaiBoardTests}, {@link YoukaiPotTests}, {@link BoardTests}, {@link SkilletTests}, {@link StoveTests} and {@link RecipeAudit} on Forge. */
+/** {@link PotTests}, {@link CopperPotTests}, {@link MonsterPotTests}, {@link AlchemistPotTests}, {@link KegTests}, {@link KettleTests}, {@link YoukaiKettleTests}, {@link YoukaiBoardTests}, {@link YoukaiPotTests}, {@link YoukaiSteamerTests}, {@link BoardTests}, {@link SkilletTests}, {@link StoveTests} and {@link RecipeAudit} on Forge. */
 @GameTestHolder(HandsOnDelight.MOD_ID)
 @PrefixGameTestTemplate(false)
 public final class ModGameTests {
@@ -702,6 +702,21 @@ public final class ModGameTests {
     @GameTest(template = "empty", timeoutTicks = 300)
     public static void youkaiSmallPotCooksFromTheBook(GameTestHelper helper) {
         YoukaiPotTests.youkaiSmallPotCooksFromTheBook(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 300)
+    public static void youkaiSteamerSteamsAPotato(GameTestHelper helper) {
+        YoukaiSteamerTests.youkaiSteamerSteamsAPotato(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void youkaiSteamerLaysTheTower(GameTestHelper helper) {
+        YoukaiSteamerTests.youkaiSteamerLaysTheTower(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void youkaiSteamerIsOneTower(GameTestHelper helper) {
+        YoukaiSteamerTests.youkaiSteamerIsOneTower(helper);
     }
 
     @GameTest(template = "empty")

@@ -16,6 +16,7 @@ import com.pockyl.handson_delight.station.GrillStation;
 import com.pockyl.handson_delight.station.KettleStation;
 import com.pockyl.handson_delight.station.SkilletStation;
 import com.pockyl.handson_delight.station.StoveStation;
+import com.pockyl.handson_delight.station.SteamerStation;
 import com.pockyl.handson_delight.station.YoukaiPotStation;
 
 import java.util.ArrayList;
@@ -54,6 +55,7 @@ public final class HandsOnDelightClient {
         DiegesisClient.registerBehavior(YoukaiPotStation.SMALL_ID, view -> new YoukaiPotBehavior(view, YoukaiPotBehavior.Size.SMALL));
         DiegesisClient.registerBehavior(YoukaiPotStation.SHORT_ID, view -> new YoukaiPotBehavior(view, YoukaiPotBehavior.Size.SHORT));
         DiegesisClient.registerBehavior(YoukaiPotStation.STOCKPOT_ID, view -> new YoukaiPotBehavior(view, YoukaiPotBehavior.Size.STOCKPOT));
+        DiegesisClient.registerBehavior(SteamerStation.ID, SteamerBehavior::new);
         DiegesisClient.registerBehavior(CuttingBoardStation.ID, BoardBehavior::new);
         DiegesisClient.registerBehavior(SkilletStation.ID, SkilletBehavior::new);
         DiegesisClient.registerBehavior(StoveStation.ID, StoveBehavior::new);

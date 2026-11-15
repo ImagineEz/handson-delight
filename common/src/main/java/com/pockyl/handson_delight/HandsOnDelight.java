@@ -13,6 +13,7 @@ import com.pockyl.handson_delight.station.GrillStation;
 import com.pockyl.handson_delight.station.KettleStation;
 import com.pockyl.handson_delight.station.SkilletStation;
 import com.pockyl.handson_delight.station.StoveStation;
+import com.pockyl.handson_delight.station.SteamerStation;
 import com.pockyl.handson_delight.station.YoukaiPotStation;
 
 /** Turns the menus of Farmer's Delight into stations of Diegesis. The mod registers nothing: blocks and items stay theirs. */
@@ -55,6 +56,9 @@ public final class HandsOnDelight {
         }
         if (HandsOnConfig.youkaiPots()) {
             YoukaiPotStation.register();
+        }
+        if (HandsOnConfig.youkaiSteamer()) {
+            SteamerStation.register();
         }
     }
 

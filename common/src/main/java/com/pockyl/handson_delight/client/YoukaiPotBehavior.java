@@ -762,7 +762,7 @@ public final class YoukaiPotBehavior implements StationBehavior {
     }
 
     /** A line of digits and colons centred under the bar, a pixel between characters. */
-    private static void text(MeshShape.Builder shape, String text) {
+    static void text(MeshShape.Builder shape, String text) {
         int width = -1;
         for (char c : text.toCharArray()) {
             width += (c == ':' ? 1 : 3) + 1;
@@ -775,7 +775,7 @@ public final class YoukaiPotBehavior implements StationBehavior {
         }
     }
 
-    private static void glyph(MeshShape.Builder shape, String[] rows, int left, int top) {
+    static void glyph(MeshShape.Builder shape, String[] rows, int left, int top) {
         for (int row = 0; row < rows.length; row++) {
             for (int column = 0; column < rows[row].length(); column++) {
                 if (rows[row].charAt(column) == '#') {
@@ -786,7 +786,7 @@ public final class YoukaiPotBehavior implements StationBehavior {
     }
 
     /** Shows {@code stack} on {@code node}, {@code size} pixels across, built from its icon where it has one. */
-    private static void show(NodeView node, ItemStack stack, float size) {
+    static void show(NodeView node, ItemStack stack, float size) {
         Optional<ItemVoxels.Icon> icon = ItemVoxels.icon(stack);
         if (icon.isPresent()) {
             node.setVisual(null);
