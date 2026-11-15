@@ -1,7 +1,6 @@
 # Changelog
 
-## [1.5.0+1.20.1] - Unreleased
-
+## [1.5.0+1.20.1] - 2026-11-15
 ### New
 - [Farmer's Respite](https://modrinth.com/mod/farmers-respite)'s kettle opens as a station. Click its lid to lift it
   off and set it on the stove beside the kettle; pour a bucket of water or milk in at the opening and drop the leaves
