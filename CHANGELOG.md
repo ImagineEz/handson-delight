@@ -24,11 +24,29 @@
   inventory lies ready on the rim: click it and the pieces hop onto it one after another, the side coming from the other
   compartment, so nothing has to be held in the off hand. Shift makes as many skewers as there is food for, and a
   recipe picked in its book fills the compartments from your inventory.
+- [Farmer's Spell 'n Spell Book](https://modrinth.com/mod/farmers-spell)'s alchemist pot is a pot station: its stick
+  stirs, things float and boil in it, and it cooks its own recipes first and Farmer's Delight's after. A scroll of
+  [Iron's Spells 'n Spellbooks](https://modrinth.com/mod/irons-spells-n-spellbooks) clicked on the pot hangs open over
+  its back rim, and so does one in your hand when you open it; click it to take it back. Its school shows on the pot: a
+  fire scroll burns under it like a campfire and heats it, ice frosts the rim, lightning crackles over the liquid, holy
+  light rises from it, gluttony makes it boil harder. A dish that needs a school waits for its scroll: the scroll blinks
+  on the badge, and the book lists it with the dish. Picking such a dish in the book hangs a matching scroll from your
+  inventory. Sneaking keeps the pot's own menu.
 - [Chopper's Delight](https://www.curseforge.com/minecraft/mc-mods/choppers-delight)'s decorated cutting board, the one
   with a banner pattern, works like every other board now: click it to cut, put dishes together and stick a knife in.
   Its banner pattern stays on it while you work.
 
 ### Fixed
+- Food thrown into [Brewin' and Chewin'](https://modrinth.com/mod/brewin-and-chewin)'s keg ferments when its recipe wants
+  two or three of the same thing: three beef for jerky, two fish for kippers, two sea pickles, two cocoa beans. They
+  lay together in one stack, and the keg found no recipe in them. Food thrown in before the liquid is laid out again
+  once it is poured.
+- Food thrown into the cooking pot together cooks the dish it makes again. Two of the same ingredient (two sugars for a
+  candy cane) lie together in the pot, and some dishes never started or the pot offered another dish of the same food.
+  When the food in the pot makes more than one dish, the pot cooks the one that uses it up, and a dish picked in the
+  book stays the one it cooks.
+- The stations' books no longer list dishes nobody can make: an addon recipe asking for an ingredient no item is never
+  cooked, but sat in the book looking complete.
 - Farmer's Respite's kettle on a stove or a campfire shows its tray again, drawn with Farmer's Delight's own: its own
   model asked for tray textures Farmer's Delight no longer has. With the lid off, its opening is open.
 - Cutting a pumpkin, a melon or another block on the cutting board, the knife hung inside it instead of over it, and

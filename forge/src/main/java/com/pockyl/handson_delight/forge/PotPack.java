@@ -27,7 +27,7 @@ import java.util.Set;
  * open, its spoon in the station's hand, and this mod is not ordered after Miner's Delight, so only the pack is sure to win; so does
  * Dungeons Delight's monster pot. Farmer's Respite's kettle comes
  * the same way: its opening under the lid is a real one, and its tray is Farmer's Delight's heating tray, where its own model names
- * tray textures Farmer's Delight no longer has.
+ * tray textures Farmer's Delight no longer has. Farmer's Spell's alchemist pot comes the same way: its dark top is a real opening.
  * <p>
  * Vanilla Delight dyes the pot: it empties the block's models and draws the pot from its block entity with its own models, one
  * per colour and support, which are Farmer's Delight's pot again. This mod's versions of them (its pot in Vanilla Delight's
@@ -39,11 +39,12 @@ final class PotPack {
     private static final Set<ResourceLocation> STATES = Set.of(new ResourceLocation("farmersdelight", "blockstates/cooking_pot.json"),
             new ResourceLocation("miners_delight", "blockstates/copper_pot.json"),
             new ResourceLocation("dungeonsdelight", "blockstates/monster_pot.json"),
-            new ResourceLocation("farmersrespite", "blockstates/kettle.json"));
+            new ResourceLocation("farmersrespite", "blockstates/kettle.json"),
+            new ResourceLocation("farmers_spell", "blockstates/alchemist_pot.json"));
     private static final String DYED_NAMESPACE = "vanilladelight";
     private static final String DYED_MODELS = "models/block/cooking_pot_";
     private static final Set<String> NAMESPACES = Set.of("farmersdelight", "miners_delight", "dungeonsdelight", "farmersrespite",
-            DYED_NAMESPACE);
+            "farmers_spell", DYED_NAMESPACE);
 
     private PotPack() {
     }

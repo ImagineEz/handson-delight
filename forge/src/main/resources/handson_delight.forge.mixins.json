@@ -10,6 +10,8 @@
     "CopperPotBlockMixin",
     "MonsterPotMixin",
     "MonsterPotBlockMixin",
+    "AlchemistPotMixin",
+    "AlchemistPotBlockMixin",
     "KegMixin",
     "KettleMixin",
     "ChoppersBoardMixin",
@@ -20,6 +22,8 @@
     "CopperPotSteamMixin",
     "MonsterPotQuietMixin",
     "MonsterPotSteamMixin",
+    "AlchemistPotQuietMixin",
+    "AlchemistPotSteamMixin",
     "KettleQuietMixin",
     "DecoratedBoardContentMixin"
   ],

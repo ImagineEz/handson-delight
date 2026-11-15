@@ -7,7 +7,7 @@ import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
 import com.pockyl.handson_delight.HandsOnDelight;
 
-/** {@link PotTests}, {@link CopperPotTests}, {@link MonsterPotTests}, {@link KegTests}, {@link KettleTests}, {@link BoardTests}, {@link SkilletTests}, {@link StoveTests} and {@link RecipeAudit} on Forge. */
+/** {@link PotTests}, {@link CopperPotTests}, {@link MonsterPotTests}, {@link AlchemistPotTests}, {@link KegTests}, {@link KettleTests}, {@link BoardTests}, {@link SkilletTests}, {@link StoveTests} and {@link RecipeAudit} on Forge. */
 @GameTestHolder(HandsOnDelight.MOD_ID)
 @PrefixGameTestTemplate(false)
 public final class ModGameTests {
@@ -42,6 +42,36 @@ public final class ModGameTests {
     @GameTest(template = "empty", timeoutTicks = 100)
     public static void anEmptyHandWithoutAKnifeCutsNothing(GameTestHelper helper) {
         BoardTests.anEmptyHandWithoutAKnifeCutsNothing(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void twoAlikeThrownInMakeTheirDish(GameTestHelper helper) {
+        PotTests.twoAlikeThrownInMakeTheirDish(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void theFullerDishOnceItsLastIngredientIsIn(GameTestHelper helper) {
+        PotTests.theFullerDishOnceItsLastIngredientIsIn(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void aTagTakesWhatTheOtherIngredientsLeave(GameTestHelper helper) {
+        PotTests.aTagTakesWhatTheOtherIngredientsLeave(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void theBookKeepsThePickedDish(GameTestHelper helper) {
+        PotTests.theBookKeepsThePickedDish(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void aDishNobodyCanMakeIsNotOffered(GameTestHelper helper) {
+        PotTests.aDishNobodyCanMakeIsNotOffered(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void everyDishFromItsFoodThrownIn(GameTestHelper helper) {
+        PotTests.everyDishFromItsFoodThrownIn(helper);
     }
 
     @GameTest(template = "empty")
@@ -484,6 +514,56 @@ public final class ModGameTests {
         MonsterPotTests.aHopperFedMonsterPotCooksByItself(helper);
     }
 
+    private static boolean spellSchools;
+
+    /**
+     * Iron's Spells reads every spell's school from its config, which a server builds when it syncs data packs to joining players:
+     * a game test server has none, so every spell would be of its default school. Its sync is fired once, to no player.
+     */
+    private static void spellSchools(GameTestHelper helper) {
+        if (!spellSchools && net.minecraftforge.fml.ModList.get().isLoaded("irons_spellbooks")) {
+            spellSchools = true;
+            net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(
+                    new net.minecraftforge.event.OnDatapackSyncEvent(helper.getLevel().getServer().getPlayerList(), null));
+        }
+    }
+
+    @GameTest(template = "empty")
+    public static void theAlchemistPotIsAPotStation(GameTestHelper helper) {
+        spellSchools(helper);
+        AlchemistPotTests.theAlchemistPotIsAPotStation(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void aScrollHangsOverThePot(GameTestHelper helper) {
+        spellSchools(helper);
+        AlchemistPotTests.aScrollHangsOverThePot(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 400)
+    public static void aSchoolRecipeWaitsForItsScroll(GameTestHelper helper) {
+        spellSchools(helper);
+        AlchemistPotTests.aSchoolRecipeWaitsForItsScroll(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void aFireScrollHeatsThePot(GameTestHelper helper) {
+        spellSchools(helper);
+        AlchemistPotTests.aFireScrollHeatsThePot(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void theBookHangsTheScrollADishNeeds(GameTestHelper helper) {
+        spellSchools(helper);
+        AlchemistPotTests.theBookHangsTheScrollADishNeeds(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 400)
+    public static void aHopperFedAlchemistPotCooksByItself(GameTestHelper helper) {
+        spellSchools(helper);
+        AlchemistPotTests.aHopperFedAlchemistPotCooksByItself(helper);
+    }
+
     @GameTest(template = "empty")
     public static void aDishOfMoreThanFourIsNotFilledIn(GameTestHelper helper) {
         CopperPotTests.aDishOfMoreThanFourIsNotFilledIn(helper);
@@ -512,6 +592,21 @@ public final class ModGameTests {
     @GameTest(template = "empty", timeoutTicks = 100)
     public static void saltyFollyWantsACoolKeg(GameTestHelper helper) {
         KegTests.saltyFollyWantsACoolKeg(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 100)
+    public static void pickledPicklesFromFoodThrownInBeforeTheHoney(GameTestHelper helper) {
+        KegTests.pickledPicklesFromFoodThrownInBeforeTheHoney(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void everyKegRecipeFromItsFoodThrownIn(GameTestHelper helper) {
+        KegTests.everyKegRecipeFromItsFoodThrownIn(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 100)
+    public static void jerkyFromThreeBeefThrownIn(GameTestHelper helper) {
+        KegTests.jerkyFromThreeBeefThrownIn(helper);
     }
 
     @GameTest(template = "empty", timeoutTicks = 100)
