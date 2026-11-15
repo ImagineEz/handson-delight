@@ -14,6 +14,12 @@
   Sneaking keeps the kettle's own menu.
 - `kettle_time` in `config/handson_delight.properties` makes drinks take longer or shorter in Farmer's Respite's kettle,
   however they got into it.
+- [Gensokyo Delight: Youkai's Feasts](https://modrinth.com/mod/gensokyo-delight-youkais-feasts)'s kettle opens as a station the same way. Until now nothing showed inside it, only a percentage
+  when you looked at it. Lift the lid, pour the water in and drop four leaves in, one by one or straight from the book.
+  The water comes to the boil first. You see it warm up, bubble more and more and steam from the spout, and the badge
+  counts that time too. Boiled with nothing in it, the kettle whistles. Then the leaves steep and the water turns into
+  tea. Pour it from the spout into bottles, one at a time or every bottle with Shift. When you leave, the lid goes back
+  on, as the kettle looks in the world. Sneak to use the kettle as before.
 - [Barbeque's Delight](https://modrinth.com/mod/barbeques-delight-forge)'s grill is a station. Two skewers lie over its
   fire: lay them from your hand, the stack you let go over the grill or a recipe in its book. When a skewer's lower side
   is done it smokes round its edge; click it and it turns over, once, as Barbeque's Delight allows. Clicked earlier it

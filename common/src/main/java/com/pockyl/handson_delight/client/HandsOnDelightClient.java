@@ -44,6 +44,7 @@ public final class HandsOnDelightClient {
         DiegesisClient.registerLiquid(HandsOnDelight.id("drink"), LiquidLook.of(0xC0B08850));
         KegLiquids.register();
         DiegesisClient.registerBehavior(KettleStation.ID, KettleBehavior::new);
+        DiegesisClient.registerBehavior(KettleStation.YOUKAI_ID, KettleBehavior::new);
         DiegesisClient.registerBehavior(GrillStation.ID, GrillBehavior::new);
         DiegesisClient.registerBehavior(BasinStation.ID, BasinBehavior::new);
         DiegesisClient.registerBehavior(CuttingBoardStation.ID, BoardBehavior::new);

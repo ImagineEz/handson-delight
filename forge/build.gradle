@@ -84,6 +84,9 @@ dependencies {
     // Farmer's Spell's alchemist pot is a station too, its scroll an Iron's Spells scroll: compiled against both only.
     modCompileOnly "maven.modrinth:farmers-spell:${farmers_spell_version}"
     modCompileOnly "maven.modrinth:irons-spells-n-spellbooks:${irons_spellbooks_version}"
+    // Youkai's Feasts' kettle is a station too: compiled against it only (its drinks; the kettle itself is reached by name, as its
+    // classes build on the L2 libraries nested in its jar).
+    modCompileOnly "maven.modrinth:gensokyo-delight-youkais-feasts:${youkais_feasts_version}"
     devMods "com.pockyl.diegesis:forge:${diegesis_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
@@ -127,6 +130,7 @@ if (providers.gradleProperty('addons').isPresent()) {
                     'geckolib:aC5KMoNg',              // GeckoLib 4.8.4, needed by Iron's Spells
                     'curios:IPQlZkz1',                // Curios API 5.14.1+1.20.1, needed by Iron's Spells
                     'playeranimator:xe2EVE6q',        // playerAnimator 1.0.2-rc1+1.20, needed by Iron's Spells
+                    "gensokyo-delight-youkais-feasts:${youkais_feasts_version}", // Youkai's Feasts 0.5.2: its kettle (L2 libraries inside)
             ].each { modRuntimeOnly "maven.modrinth:${it}" }
         }
     }

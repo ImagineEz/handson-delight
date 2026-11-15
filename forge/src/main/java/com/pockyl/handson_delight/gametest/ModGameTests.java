@@ -7,7 +7,7 @@ import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
 import com.pockyl.handson_delight.HandsOnDelight;
 
-/** {@link PotTests}, {@link CopperPotTests}, {@link MonsterPotTests}, {@link AlchemistPotTests}, {@link KegTests}, {@link KettleTests}, {@link BoardTests}, {@link SkilletTests}, {@link StoveTests} and {@link RecipeAudit} on Forge. */
+/** {@link PotTests}, {@link CopperPotTests}, {@link MonsterPotTests}, {@link AlchemistPotTests}, {@link KegTests}, {@link KettleTests}, {@link YoukaiKettleTests}, {@link BoardTests}, {@link SkilletTests}, {@link StoveTests} and {@link RecipeAudit} on Forge. */
 @GameTestHolder(HandsOnDelight.MOD_ID)
 @PrefixGameTestTemplate(false)
 public final class ModGameTests {
@@ -620,6 +620,11 @@ public final class ModGameTests {
     }
 
     @GameTest(template = "empty")
+    public static void everyKettleRecipeFromItsLeavesThrownIn(GameTestHelper helper) {
+        KettleTests.everyKettleRecipeFromItsLeavesThrownIn(helper);
+    }
+
+    @GameTest(template = "empty")
     public static void theKettlesLidIsTheBlocksOwn(GameTestHelper helper) {
         KettleTests.theLidIsTheBlocksOwn(helper);
     }
@@ -637,6 +642,21 @@ public final class ModGameTests {
     @GameTest(template = "empty", timeoutTicks = 100)
     public static void kettleTimeScalesTheBrew(GameTestHelper helper) {
         KettleTests.kettleTimeScalesTheBrew(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void youkaiKettleLidIsTheStations(GameTestHelper helper) {
+        YoukaiKettleTests.youkaiKettleLidIsTheStations(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 100)
+    public static void youkaiBlackTeaBoilsBrewsAndIsPoured(GameTestHelper helper) {
+        YoukaiKettleTests.youkaiBlackTeaBoilsBrewsAndIsPoured(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void youkaiKettleReadsItsRecipes(GameTestHelper helper) {
+        YoukaiKettleTests.youkaiKettleReadsItsRecipes(helper);
     }
 
     @GameTest(template = "empty")

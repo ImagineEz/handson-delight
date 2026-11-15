@@ -26,7 +26,8 @@ public final class HandsOnConfig {
             "Hands-On Delight. Restart the game or the server after a change.",
             "cooking_pot, cutting_board, skillet, stove: the station of that block. Off, the block works as in Farmer's Delight.",
             "keg: Brewin' and Chewin's keg as a station, when that mod is there. Off, the keg keeps its own menu.",
-            "kettle: Farmer's Respite's kettle as a station, when that mod is there. Off, the kettle keeps its own menu.",
+            "kettle: the kettles of Farmer's Respite and Youkai's Feasts as stations, when those mods are there. Off, each",
+            "  kettle is used as before.",
             "grill, basin: Barbeque's Delight's grill and ingredients basin as stations, when that mod is there. Off, they are",
             "  used as before.",
             "remove_crafting_recipes: Farmer's Delight's food crafts (sandwiches, salads, rolls, pies, feasts) are made on the",
@@ -42,6 +43,7 @@ public final class HandsOnConfig {
             "skillet_time, stove_time: the same for food fried in the skillet and grilled on the stove at the station.",
             "  Food put in with Farmer's Delight's own right click (sneaking, a player without this mod) keeps its time.",
             "kettle_time: the same for drinks brewed in Farmer's Respite's kettle, however they got into it.",
+            "  Youkai's Feasts' kettle keeps its own times.",
             "The recipe book shows the times as they are on the server.");
 
     private static boolean cookingPot = true;
