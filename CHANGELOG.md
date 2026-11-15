@@ -3,11 +3,24 @@
 ## [1.4.2+1.20.1] - Unreleased
 
 ### New
+- [Farmer's Respite](https://modrinth.com/mod/farmers-respite)'s kettle opens as a station. Click its lid to lift it
+  off and set it on the stove beside the kettle; pour a bucket of water or milk in at the opening and drop the leaves
+  in. They float, soak and sink to the bottom, and the water takes their colour as it brews. Steam rises from the
+  spout while the kettle is on the fire, more as the brew nears done. When it is done the kettle whistles softly with
+  a jet of steam, also for anyone passing by, and keeps boiling. Click the spout with a bottle: you pick the kettle up,
+  turn it side on and tip it, and the tea runs into a glass mug and rises in it. With an empty hand a bottle is offered
+  from your inventory, and Shift pours every cup there is. Its badge shows what brews, whether the fire under it is
+  lit, the time left, and then how many cups are in it. Its recipes are in the book with what they are brewed in.
+  Sneaking keeps the kettle's own menu.
+- `kettle_time` in `config/handson_delight.properties` makes drinks take longer or shorter in Farmer's Respite's kettle,
+  however they got into it.
 - [Chopper's Delight](https://www.curseforge.com/minecraft/mc-mods/choppers-delight)'s decorated cutting board, the one
   with a banner pattern, works like every other board now: click it to cut, put dishes together and stick a knife in.
   Its banner pattern stays on it while you work.
 
 ### Fixed
+- Farmer's Respite's kettle on a stove or a campfire shows its tray again, drawn with Farmer's Delight's own: its own
+  model asked for tray textures Farmer's Delight no longer has. With the lid off, its opening is open.
 - Cutting a pumpkin, a melon or another block on the cutting board, the knife hung inside it instead of over it, and
   stood off the line the cursor pointed at, so the line was hard to hit. The knife now stands over the top of what it
   cuts, right under the cursor.

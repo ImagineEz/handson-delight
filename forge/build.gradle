@@ -79,6 +79,8 @@ dependencies {
     modCompileOnly "maven.modrinth:dungeons_delight:${dungeons_delight_version}"
     // Chopper's Delight's boards are board stations too: compiled against it only.
     modCompileOnly "maven.modrinth:choppers-delight:${choppers_delight_version}"
+    // Farmer's Respite's kettle is a station too: compiled against it only.
+    modCompileOnly "maven.modrinth:farmers-respite:${farmers_respite_version}"
     devMods "com.pockyl.diegesis:forge:${diegesis_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
@@ -103,7 +105,7 @@ if (providers.gradleProperty('addons').isPresent()) {
                 "choppers-delight:${choppers_delight_version}", // Chopper's Delight 1.2.3: cutting boards of every wood
                 'delightful:HbEQIqIu',            // Delightful 3.8.1-1.20.1
                 'nethers-delight:MTDQhZd2',       // Nether's Delight 1.20.1-4.0
-                'farmers-respite:kucmCxP0',       // Farmer's Respite 1.20.1-2.1
+                "farmers-respite:${farmers_respite_version}", // Farmer's Respite 1.20.1-2.1: its kettle
                 'frights-delight:r31i2Fd1',       // Fright's Delight 1.4.8: a bone cut into the skewers its kebabs are served on
         ].each { modRuntimeOnly "maven.modrinth:${it}" }
         // -Paddons=wide adds the next most downloaded addons that need no other mods: more food, own crafts and tags.

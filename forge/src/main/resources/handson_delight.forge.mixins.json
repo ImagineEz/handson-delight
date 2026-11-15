@@ -11,6 +11,7 @@
     "MonsterPotMixin",
     "MonsterPotBlockMixin",
     "KegMixin",
+    "KettleMixin",
     "ChoppersBoardMixin",
     "ChoppersBoardBlockMixin"
   ],
@@ -19,6 +20,7 @@
     "CopperPotSteamMixin",
     "MonsterPotQuietMixin",
     "MonsterPotSteamMixin",
+    "KettleQuietMixin",
     "DecoratedBoardContentMixin"
   ],
   "injectors": {

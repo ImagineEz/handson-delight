@@ -7,7 +7,7 @@ import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
 import com.pockyl.handson_delight.HandsOnDelight;
 
-/** {@link PotTests}, {@link CopperPotTests}, {@link MonsterPotTests}, {@link KegTests}, {@link BoardTests}, {@link SkilletTests}, {@link StoveTests} and {@link RecipeAudit} on Forge. */
+/** {@link PotTests}, {@link CopperPotTests}, {@link MonsterPotTests}, {@link KegTests}, {@link KettleTests}, {@link BoardTests}, {@link SkilletTests}, {@link StoveTests} and {@link RecipeAudit} on Forge. */
 @GameTestHolder(HandsOnDelight.MOD_ID)
 @PrefixGameTestTemplate(false)
 public final class ModGameTests {
@@ -522,5 +522,25 @@ public final class ModGameTests {
     @GameTest(template = "empty", timeoutTicks = 120)
     public static void theLidKeepsThingsOutAndTheBrewWaitsUnderIt(GameTestHelper helper) {
         KegTests.theLidKeepsThingsOutAndTheBrewWaitsUnderIt(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void theKettlesLidIsTheBlocksOwn(GameTestHelper helper) {
+        KettleTests.theLidIsTheBlocksOwn(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 100)
+    public static void greenTeaBrewsAndIsPouredFromTheSpout(GameTestHelper helper) {
+        KettleTests.greenTeaBrewsAndIsPouredFromTheSpout(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void leavesDroppedInLieAsTheRecipeWants(GameTestHelper helper) {
+        KettleTests.leavesDroppedInLieAsTheRecipeWants(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 100)
+    public static void kettleTimeScalesTheBrew(GameTestHelper helper) {
+        KettleTests.kettleTimeScalesTheBrew(helper);
     }
 }

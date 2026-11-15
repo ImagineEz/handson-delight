@@ -25,7 +25,9 @@ import java.util.Set;
  * and kept a second spoon that does nothing. This mod's file therefore also comes as a hidden built-in pack fixed above all
  * others, holding that one file; a pack's textures still apply to the pot's models. Miner's Delight's copper pot comes the same way:
  * open, its spoon in the station's hand, and this mod is not ordered after Miner's Delight, so only the pack is sure to win; so does
- * Dungeons Delight's monster pot.
+ * Dungeons Delight's monster pot. Farmer's Respite's kettle comes
+ * the same way: its opening under the lid is a real one, and its tray is Farmer's Delight's heating tray, where its own model names
+ * tray textures Farmer's Delight no longer has.
  * <p>
  * Vanilla Delight dyes the pot: it empties the block's models and draws the pot from its block entity with its own models, one
  * per colour and support, which are Farmer's Delight's pot again. This mod's versions of them (its pot in Vanilla Delight's
@@ -36,10 +38,12 @@ final class PotPack {
     @SuppressWarnings("removal")
     private static final Set<ResourceLocation> STATES = Set.of(new ResourceLocation("farmersdelight", "blockstates/cooking_pot.json"),
             new ResourceLocation("miners_delight", "blockstates/copper_pot.json"),
-            new ResourceLocation("dungeonsdelight", "blockstates/monster_pot.json"));
+            new ResourceLocation("dungeonsdelight", "blockstates/monster_pot.json"),
+            new ResourceLocation("farmersrespite", "blockstates/kettle.json"));
     private static final String DYED_NAMESPACE = "vanilladelight";
     private static final String DYED_MODELS = "models/block/cooking_pot_";
-    private static final Set<String> NAMESPACES = Set.of("farmersdelight", "miners_delight", "dungeonsdelight", DYED_NAMESPACE);
+    private static final Set<String> NAMESPACES = Set.of("farmersdelight", "miners_delight", "dungeonsdelight", "farmersrespite",
+            DYED_NAMESPACE);
 
     private PotPack() {
     }

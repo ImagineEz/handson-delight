@@ -67,6 +67,11 @@ Built on [Diegesis](https://www.curseforge.com/minecraft/mc-mods/diegesis).
   colour turning to the drink's. A thermometer on its badge shows how warm the keg is and how warm the recipe wants it.
   Click the tap with a tankard or a bottle to draw a drink and watch it run in and rise under its head of foam; with an
   empty hand one is offered from your inventory, and Shift draws as many as there are.
+- **Kettle** of [Farmer's Respite](https://modrinth.com/mod/farmers-respite). Lift its lid off onto the stove, pour
+  a bucket in at the opening and drop the leaves in: they float, soak and sink, giving the water their colour while it
+  brews over the fire, with steam rising from the spout. Done, the kettle whistles. Click the spout with a bottle and
+  the kettle is lifted by its handle and tipped to pour one; with an empty hand a bottle is offered from your
+  inventory, and Shift pours every cup there is.
 - **A kitchen.** Rest the cursor at the edge of the screen beside another station and the camera moves over to it. A, D
   and the arrow keys do the same.
 - **For everyone.** Players nearby see the soup simmer, the spoon go round and the food land on the board.
@@ -75,7 +80,7 @@ Built on [Diegesis](https://www.curseforge.com/minecraft/mc-mods/diegesis).
 
 | Action | How |
 |---|---|
-| Open a station | Right-click the pot, board, skillet, stove or keg |
+| Open a station | Right-click the pot, board, skillet, stove, keg or kettle |
 | Use the block as in Farmer's Delight | Sneak + right-click |
 | Stir | Click the spoon's handle, move the mouse, click again to put it down |
 | Serve | Click the soup with a bowl |
@@ -103,6 +108,8 @@ the stoves of [End's Delight](https://www.curseforge.com/minecraft/mc-mods/ends-
 [Miner's Delight](https://modrinth.com/mod/miners-delight)'s copper pot,
 [Dungeons Delight](https://modrinth.com/mod/dungeons_delight)'s monster pot and every cutting board of
 [Chopper's Delight](https://modrinth.com/mod/choppers-delight), the decorated one too, each in its own look.
+[Farmer's Respite](https://modrinth.com/mod/farmers-respite)'s kettle opens as a station too, its tray on a stove
+drawn with Farmer's Delight's own.
 [Barbeque's Delight](https://modrinth.com/mod/barbeques-delight-forge)'s kebabs and bibimbap are put together on the
 board and keep the seasoning of their skewers.
 
@@ -117,10 +124,12 @@ which each player sets in their own file.
 |---|---|---|
 | `cooking_pot`, `cutting_board`, `skillet`, `stove` | `true` | The station of that block. Off, the block works as in Farmer's Delight |
 | `keg` | `true` | Brewin' and Chewin's keg as a station. Off, the keg keeps its own menu |
+| `kettle` | `true` | Farmer's Respite's kettle as a station. Off, the kettle keeps its own menu |
 | `remove_crafting_recipes` | `true` | Farmer's Delight's food crafts are made on the board only |
 | `stirring_required` | `true` | Food you put into the pot waits for the spoon while you are at it |
 | `recipe_book` | `true` | The recipe book beside the stations |
 | `cooking_pot_time`, `skillet_time`, `stove_time` | `1.0` | How long food takes at that station: `2.0` twice as long, `0.5` half, from `0.1` to `10`. The pot's covers food left alone and fed by hoppers too |
+| `kettle_time` | `1.0` | The same for drinks brewed in Farmer's Respite's kettle, at the station, in its menu or fed by a hopper |
 
 ## Modpacks
 
