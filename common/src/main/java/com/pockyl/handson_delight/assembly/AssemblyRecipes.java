@@ -285,7 +285,8 @@ public final class AssemblyRecipes {
     /**
      * Whether {@code grid} is a player's crafting table or inventory grid, which does not make {@code recipe}: the board does.
      * Automation crafts with grids of its own (Create's crafters, AE2's assemblers, Refined Storage) and goes on making it, as without
-     * this mod. So does a player whose client lacks the mod: it cannot open the board, the crafting table stays theirs.
+     * this mod. So does a player whose client lacks the mod, or has the board's station off: it cannot open the board, the crafting
+     * table stays theirs.
      */
     public static boolean notInThisGrid(Recipe<?> recipe, Container grid) {
         if (!(grid instanceof TransientCraftingContainer table) || !HandsOnConfig.removeCraftingRecipes()
@@ -295,7 +296,7 @@ public final class AssemblyRecipes {
         AbstractContainerMenu menu = ((TransientCraftingContainerAccessor) table).handson$menu();
         Player player = menu instanceof CraftingMenu crafting ? ((CraftingMenuAccessor) crafting).handson$player()
                 : menu instanceof InventoryMenu inventory ? ((InventoryMenuAccessor) inventory).handson$owner() : null;
-        return player != null && !(player instanceof ServerPlayer server && !Platform.INSTANCE.hasThisMod(server));
+        return player != null && !(player instanceof ServerPlayer server && !Platform.INSTANCE.hasBoard(server));
     }
 
     /**

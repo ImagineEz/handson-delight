@@ -3,12 +3,14 @@ package com.pockyl.handson_delight.forge;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
+import com.pockyl.handson_delight.HandsOnConfig;
 import com.pockyl.handson_delight.assembly.BoardDishes;
 
 import java.util.function.Supplier;
@@ -18,6 +20,11 @@ final class ForgeNetwork {
     private static final String VERSION = "1";
     private static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(BoardDishes.CHANNEL, () -> VERSION,
             NetworkRegistry.acceptMissingOr(VERSION), NetworkRegistry.acceptMissingOr(VERSION));
+    /**
+     * {@link BoardDishes#NO_BOARD}: a dedicated server always has it, to see which clients name it; a game client has it only with
+     * the board's station off. Null in a game whose board is on: its own server and the players of a LAN game count as having it.
+     */
+    private static SimpleChannel noBoard;
 
     private ForgeNetwork() {
     }
@@ -28,12 +35,21 @@ final class ForgeNetwork {
                 .decoder(buffer -> new Dishes(BoardDishes.read(buffer)))
                 .consumerNetworkThread(ForgeNetwork::handle)
                 .add();
+        if (FMLEnvironment.dist.isDedicatedServer() || !HandsOnConfig.cuttingBoard()) {
+            noBoard = NetworkRegistry.newSimpleChannel(BoardDishes.NO_BOARD, () -> VERSION, NetworkRegistry.acceptMissingOr(VERSION),
+                    NetworkRegistry.acceptMissingOr(VERSION));
+        }
     }
 
     /** Whether the client has the channel; false for a connection without a network channel (another mod's mock player). */
     static boolean present(ServerPlayer player) {
         Connection connection = player.connection.connection;
         return connection != null && connection.channel() != null && CHANNEL.isRemotePresent(connection);
+    }
+
+    /** Whether the client has the mod and does not name {@link BoardDishes#NO_BOARD}. */
+    static boolean hasBoard(ServerPlayer player) {
+        return present(player) && (noBoard == null || !noBoard.isRemotePresent(player.connection.connection));
     }
 
     static void send(ServerPlayer player) {

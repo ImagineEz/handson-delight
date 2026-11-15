@@ -35,6 +35,7 @@ public final class RecipeBookTests {
     public static void aPlayerWithoutANetworkChannelHasNoClientWithTheMod(GameTestHelper helper) {
         ServerPlayer npc = channelless(helper);
         helper.assertFalse(Platform.INSTANCE.hasThisMod(npc), "a connection without a channel is no client with the mod");
+        helper.assertFalse(Platform.INSTANCE.hasBoard(npc), "nor one with the board");
         helper.assertTrue(npc.getRecipeBook().addRecipes(List.of(hamburger(helper)), npc) == 1, "its book learns the hamburger");
         helper.succeed();
     }

@@ -10,11 +10,15 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import com.pockyl.handson_delight.gametest.BoardTests;
+import com.pockyl.handson_delight.gametest.FullInventoryTests;
 import com.pockyl.handson_delight.gametest.RecipeAudit;
 
 import java.util.Arrays;
 
-/** {@link BoardTests} on Fabric: they run when the game starts with {@code -Dfabric-api.gametest}. */
+/**
+ * {@link BoardTests} and the board's {@link FullInventoryTests} on Fabric: they run when the game starts with
+ * {@code -Dfabric-api.gametest}.
+ */
 public final class FabricBoardTests implements FabricGameTest {
     @GameTest(template = FabricGameTest.EMPTY_STRUCTURE)
     public void burgersLeaveTheCraftingTable(GameTestHelper helper) {
@@ -27,8 +31,18 @@ public final class FabricBoardTests implements FabricGameTest {
     }
 
     @GameTest(template = FabricGameTest.EMPTY_STRUCTURE)
+    public void aKnifeThatBreaksOnTheLastCutLeavesThePieces(GameTestHelper helper) {
+        FullInventoryTests.aKnifeThatBreaksOnTheLastCutLeavesThePieces(helper);
+    }
+
+    @GameTest(template = FabricGameTest.EMPTY_STRUCTURE)
     public void aTaggedCraftOfAnyModComesToTheBoard(GameTestHelper helper) {
         BoardTests.aTaggedCraftOfAnyModComesToTheBoard(helper);
+    }
+
+    @GameTest(template = FabricGameTest.EMPTY_STRUCTURE)
+    public void aPouredWaterBottleLeavesItsBottle(GameTestHelper helper) {
+        BoardTests.aPouredWaterBottleLeavesItsBottle(helper);
     }
 
     @GameTest(template = FabricGameTest.EMPTY_STRUCTURE)

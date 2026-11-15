@@ -22,11 +22,15 @@ import net.minecraft.world.inventory.TransientCraftingContainer;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -183,8 +187,9 @@ public final class BoardTests {
                 .orElseThrow()).orElseThrow();
         helper.assertTrue(cake.result().is(Items.CAKE) && cake.ingredients().size() == 9 && cake.kind() == AssemblyRecipes.Base.WHEAT,
                 "a shaped craft keeps its shape");
-        helper.assertTrue(AssemblyRecipes.fromCraft((CraftingRecipe) recipes.byKey(ResourceLocation.tryParse("minecraft:bread")).orElseThrow()).isEmpty(),
-                "one kind of thing is no dish");
+        // Culinary Compat takes the bread out of the crafting table.
+        recipes.byKey(ResourceLocation.tryParse("minecraft:bread")).filter(CraftingRecipe.class::isInstance).ifPresent(bread ->
+                helper.assertTrue(AssemblyRecipes.fromCraft((CraftingRecipe) bread).isEmpty(), "one kind of thing is no dish"));
         if (Platform.INSTANCE.isLoaded("kubejs")) {
             helper.assertTrue(AssemblyRecipes.isMadeOnTheBoard(ResourceLocation.tryParse("kubejs:fungus_stew")),
                     "a script's recipe with a tagged result is made on the board");
@@ -194,6 +199,29 @@ public final class BoardTests {
             helper.assertTrue(!AssemblyRecipes.isMadeOnTheBoard(ResourceLocation.tryParse("minecraft:mushroom_stew")),
                     "an untagged vanilla dish stays in the crafting table");
         }
+        helper.succeed();
+    }
+
+    /**
+     * A craft with a water bottle (Delightful's dough of flour and water) leaves the cook the empty bottle, as one with a water bucket
+     * leaves the bucket, though the crafting table keeps it: water is poured, the glass stays in the hand.
+     */
+    public static void aPouredWaterBottleLeavesItsBottle(GameTestHelper helper) {
+        ItemStack water = PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER);
+        Item dough = BuiltInRegistries.ITEM.get(FarmersDelightContent.id("wheat_dough"));
+        ShapelessRecipe craft = new ShapelessRecipe(HandsOnDelight.id("test_dough_from_water_bottle"), "", CraftingBookCategory.MISC,
+                new ItemStack(dough, 3), NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.WHEAT), Ingredient.of(Items.WHEAT),
+                        Ingredient.of(Items.WHEAT), Ingredient.of(water)));
+        AssemblyRecipes.Assembly dish = AssemblyRecipes.fromCraft(craft).orElseThrow();
+        List<ItemStack> layers = new ArrayList<>();
+        layers.add(new ItemStack(Items.WHEAT));
+        layers.add(new ItemStack(Items.WHEAT));
+        layers.add(water.copy());
+        layers.add(new ItemStack(Items.WHEAT));
+        Assembling.Made made = Assembling.make(dish, layers, helper.getLevel(), 1);
+        helper.assertTrue(made.rounds() == 1 && made.dishes().size() == 1 && made.dishes().get(0).is(dough), "the dough is made");
+        helper.assertTrue(made.leftovers().size() == 1 && made.leftovers().get(0).is(Items.GLASS_BOTTLE)
+                && made.layers().stream().allMatch(ItemStack::isEmpty), "the water is poured in and its bottle goes back to the cook");
         helper.succeed();
     }
 

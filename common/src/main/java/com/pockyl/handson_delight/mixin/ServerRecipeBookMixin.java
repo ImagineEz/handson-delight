@@ -32,7 +32,7 @@ abstract class ServerRecipeBookMixin extends RecipeBook {
 
     @Inject(method = "addRecipes", at = @At("HEAD"), cancellable = true)
     private void handson$notTheBoards(Collection<Recipe<?>> recipes, ServerPlayer player, CallbackInfoReturnable<Integer> callback) {
-        if (!HandsOnConfig.removeCraftingRecipes() || !Platform.INSTANCE.hasThisMod(player) || recipes.stream().noneMatch(recipe -> AssemblyRecipes.isMadeOnTheBoard(recipe.getId()))) {
+        if (!HandsOnConfig.removeCraftingRecipes() || !Platform.INSTANCE.hasBoard(player) || recipes.stream().noneMatch(recipe -> AssemblyRecipes.isMadeOnTheBoard(recipe.getId()))) {
             // A client without the mod crafts sandwiches in the grid, and its book shows them.
             return;
         }
@@ -46,7 +46,7 @@ abstract class ServerRecipeBookMixin extends RecipeBook {
      */
     @Inject(method = "sendInitialRecipeBook", at = @At("HEAD"))
     private void handson$forgetTheBoards(ServerPlayer player, CallbackInfo callback) {
-        if (!HandsOnConfig.removeCraftingRecipes() || !Platform.INSTANCE.hasThisMod(player)) {
+        if (!HandsOnConfig.removeCraftingRecipes() || !Platform.INSTANCE.hasBoard(player)) {
             return;
         }
         // A plain loop: a method reference to this would name the mixin class itself, which never exists at run time.

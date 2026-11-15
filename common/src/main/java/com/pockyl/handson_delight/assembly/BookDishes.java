@@ -5,6 +5,7 @@ import net.minecraft.stats.ServerRecipeBook;
 import net.minecraft.world.item.crafting.Recipe;
 
 import com.pockyl.handson_delight.HandsOnConfig;
+import com.pockyl.handson_delight.platform.Platform;
 
 import java.util.List;
 
@@ -16,9 +17,9 @@ public final class BookDishes {
     private BookDishes() {
     }
 
-    /** Takes the board's dishes out of the book of a player whose client has the mod, and tells the client. */
+    /** Takes the board's dishes out of the book of a player whose client has the mod and its board, and tells the client. */
     public static void forget(ServerPlayer player) {
-        if (!HandsOnConfig.removeCraftingRecipes()) {
+        if (!HandsOnConfig.removeCraftingRecipes() || !Platform.INSTANCE.hasBoard(player)) {
             return;
         }
         ServerRecipeBook book = player.getRecipeBook();

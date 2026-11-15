@@ -99,6 +99,11 @@ public final class ForgePlatform implements Platform {
     }
 
     @Override
+    public boolean hasBoard(ServerPlayer player) {
+        return player instanceof FakePlayer || player.connection == null || ForgeNetwork.hasBoard(player);
+    }
+
+    @Override
     public Path configDir() {
         return FMLPaths.CONFIGDIR.get();
     }

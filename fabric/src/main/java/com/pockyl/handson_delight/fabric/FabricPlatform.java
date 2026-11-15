@@ -98,6 +98,12 @@ public final class FabricPlatform implements Platform {
         return player instanceof FakePlayer || player.connection == null || ServerPlayNetworking.canSend(player, BoardDishes.CHANNEL);
     }
 
+    @Override
+    public boolean hasBoard(ServerPlayer player) {
+        return player instanceof FakePlayer || player.connection == null
+                || ServerPlayNetworking.canSend(player, BoardDishes.CHANNEL) && !ServerPlayNetworking.canSend(player, BoardDishes.NO_BOARD);
+    }
+
     /**
      * Sent before the client has named its channels (the recipes follow at once), so whether it has the mod is not known yet. A client
      * without it drops the packet.
