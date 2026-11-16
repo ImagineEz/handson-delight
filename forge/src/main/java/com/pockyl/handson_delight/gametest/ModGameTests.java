@@ -360,6 +360,11 @@ public final class ModGameTests {
     }
 
     @GameTest(template = "empty", timeoutTicks = 100)
+    public static void anOrderTheBookDoesNotUseMakesTheDish(GameTestHelper helper) {
+        BoardTests.anOrderTheBookDoesNotUseMakesTheDish(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 100)
     public static void aToolThatIsALayerCutsOnlyWhatItCuts(GameTestHelper helper) {
         BoardTests.aToolThatIsALayerCutsOnlyWhatItCuts(helper);
     }
@@ -417,6 +422,11 @@ public final class ModGameTests {
     @GameTest(template = "empty", timeoutTicks = 100)
     public static void everyCutIsTheStations(GameTestHelper helper) {
         BoardTests.everyCutIsTheStations(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 100)
+    public static void breadAnAddonCutsIsSliced(GameTestHelper helper) {
+        BoardTests.breadAnAddonCutsIsSliced(helper);
     }
 
     @GameTest(template = "empty", timeoutTicks = 100)
