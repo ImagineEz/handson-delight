@@ -4,8 +4,10 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.fml.loading.FMLEnvironment;
+import net.minecraftforge.network.ConnectionData;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkEvent;
+import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
@@ -21,8 +23,9 @@ final class ForgeNetwork {
     private static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(BoardDishes.CHANNEL, () -> VERSION,
             NetworkRegistry.acceptMissingOr(VERSION), NetworkRegistry.acceptMissingOr(VERSION));
     /**
-     * {@link BoardDishes#NO_BOARD}: a dedicated server always has it, to see which clients name it; a game client has it only with
-     * the board's station off. Null in a game whose board is on: its own server and the players of a LAN game count as having it.
+     * {@link BoardDishes#NO_BOARD}: a game client has it only with the board's station off, and names it to the server it joins; a
+     * dedicated server has it too. The server reads it from the channels the client named, which a LAN host whose own board is on
+     * has too, though its game never made the channel.
      */
     private static SimpleChannel noBoard;
 
@@ -49,7 +52,19 @@ final class ForgeNetwork {
 
     /** Whether the client has the mod and does not name {@link BoardDishes#NO_BOARD}. */
     static boolean hasBoard(ServerPlayer player) {
-        return present(player) && (noBoard == null || !noBoard.isRemotePresent(player.connection.connection));
+        return present(player) && !namesNoBoard(player.connection.connection);
+    }
+
+    /**
+     * Whether the client named {@link BoardDishes#NO_BOARD}. Asking the channel itself, a LAN host whose board is on (it never made
+     * the channel) counted every guest as having the board, so a guest with the board off lost the dishes from the crafting grid.
+     */
+    private static boolean namesNoBoard(Connection connection) {
+        ConnectionData data = NetworkHooks.getConnectionData(connection);
+        if (data != null) {
+            return data.getChannels().containsKey(BoardDishes.NO_BOARD);
+        }
+        return noBoard != null && noBoard.isRemotePresent(connection);
     }
 
     static void send(ServerPlayer player) {

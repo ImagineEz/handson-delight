@@ -235,6 +235,11 @@ public final class ModGameTests {
     }
 
     @GameTest(template = "empty")
+    public static void stackedInTheWorldBecomeLayers(GameTestHelper helper) {
+        BoardTests.stackedInTheWorldBecomeLayers(helper);
+    }
+
+    @GameTest(template = "empty")
     public static void anIgnoredChopIsAnswered(GameTestHelper helper) {
         BoardTests.anIgnoredChopIsAnswered(helper);
     }

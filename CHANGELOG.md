@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.1+1.20.1] - Unreleased
+### Fixed
+- [Farmer's Respite](https://modrinth.com/mod/farmers-respite)'s kettle could keep 250 mB that would not pour out or let a new batch in ([#31](https://github.com/Pocky-l/handson-delight/issues/31)).
+- A milk bucket on the cooking pot makes [Brazilian Delight](https://modrinth.com/mod/braziliandelight)'s milk pot again, so its heavy cream can be made.
+- Things stacked on the cutting board in the world with [Culinary Compat](https://modrinth.com/mod/culinary-compat) show at the station and are cut together there.
+- In a LAN game, a guest who turned the cutting board off can craft its dishes in the crafting grid again.
+- Switching quickly between neighbouring stations no longer breaks the recipe book or keeps turning its pages.
+
 ## [1.5.0+1.20.1] - 2026-11-15
 ### New
 - [Farmer's Respite](https://modrinth.com/mod/farmers-respite)'s kettle is a station: lift the lid, pour the water in,
@@ -145,7 +153,7 @@
 - Things that are cut with a knife into what meals are served on are cut at the board, with their marks and a page in
   its book: [Fright's Delight](https://www.curseforge.com/minecraft/mc-mods/frights-delight)'s bone becomes the shards
   for its kebabs.
-- [Culinary Compat](https://www.curseforge.com/minecraft/mc-mods/culinary-compat)'s cutting board dishes, such as the
+- [Culinary Compat](https://modrinth.com/mod/culinary-compat)'s cutting board dishes, such as the
   fruit yogurts of [Pam's HarvestCraft 2](https://www.curseforge.com/minecraft/mc-mods/pams-harvestcraft-2-food-core),
   are made at the board: lay what they take, then click the stack with a knife, or with an empty hand and a knife in
   your inventory. They are in the board's book.

@@ -1230,6 +1230,34 @@ public final class BoardTests {
         helper.succeed();
     }
 
+    /**
+     * What Culinary Compat stacked on the board's item in the world, in its own slots (-Pculinary), becomes the station's layers when
+     * the station opens, the item at the bottom: the station shows it, and the knife does not cut the hidden stack together (a player's board
+     * "conflicting" with Culinary Compat).
+     */
+    public static void stackedInTheWorldBecomeLayers(GameTestHelper helper) {
+        if (!Platform.INSTANCE.isLoaded("culinarycompat")) {
+            helper.succeed();
+            return;
+        }
+        Board setup = board(helper);
+        Platform.INSTANCE.setItem(setup.board, new ItemStack(Items.CARROT));
+        try {
+            Object extras = setup.board.getClass().getMethod("culinarycompat$getExtras").invoke(setup.board);
+            extras.getClass().getMethod("setStackInSlot", int.class, ItemStack.class).invoke(extras, 0, new ItemStack(Items.POTATO));
+            extras.getClass().getMethod("setStackInSlot", int.class, ItemStack.class).invoke(extras, 1, new ItemStack(Items.BEETROOT));
+        } catch (ReflectiveOperationException e) {
+            throw new IllegalStateException("Culinary Compat's extra slots on the board", e);
+        }
+        setup.logic.onOpen(setup.station, setup.cook);
+        List<ItemStack> layers = BoardLogic.layers(setup.station.state());
+        helper.assertTrue(layers.size() == 3 && layers.get(0).is(Items.CARROT) && layers.get(2).is(Items.BEETROOT),
+                "the board's item and what lay on it are the layers, bottom first");
+        helper.assertTrue(setup.onBoard().isEmpty() && Platform.INSTANCE.takeStackedOnBoard(setup.board).isEmpty(),
+                "and nothing is left hidden in either mod's slots");
+        helper.succeed();
+    }
+
     /** A chop the board does not take is answered, so the cook's client can close the cut it drew at once. */
     public static void anIgnoredChopIsAnswered(GameTestHelper helper) {
         Board setup = board(helper);

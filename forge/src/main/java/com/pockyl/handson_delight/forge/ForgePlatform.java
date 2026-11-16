@@ -21,11 +21,14 @@ import com.pockyl.handson_delight.FarmersDelightContent;
 import com.pockyl.handson_delight.platform.Platform;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 /** Farmer's Delight on Forge: the pot keeps its items in Forge's item handler. */
 public final class ForgePlatform implements Platform {
+    private static final String CULINARY_COMPAT = "culinarycompat";
+
     @Override
     public ItemStack getItem(CookingPotBlockEntity pot, int slot) {
         return pot.getInventory().getStackInSlot(slot);
@@ -58,6 +61,32 @@ public final class ForgePlatform implements Platform {
     @Override
     public void setItem(CuttingBoardBlockEntity board, ItemStack stack) {
         ((IItemHandlerModifiable) board.getInventory()).setStackInSlot(0, stack);
+    }
+
+    @Override
+    public List<ItemStack> takeStackedOnBoard(CuttingBoardBlockEntity board) {
+        if (!isLoaded(CULINARY_COMPAT)) {
+            return List.of();
+        }
+        IItemHandlerModifiable extras;
+        try {
+            // Added to Farmer's Delight's board by Culinary Compat's mixin; read by name, none of its classes on our classpath.
+            extras = board.getClass().getMethod("culinarycompat$getExtras").invoke(board) instanceof IItemHandlerModifiable handler ? handler : null;
+        } catch (ReflectiveOperationException | RuntimeException e) {
+            return List.of();
+        }
+        if (extras == null) {
+            return List.of();
+        }
+        List<ItemStack> taken = new ArrayList<>();
+        for (int slot = 0; slot < extras.getSlots(); slot++) {
+            ItemStack stack = extras.getStackInSlot(slot);
+            if (!stack.isEmpty()) {
+                taken.add(stack.copy());
+                extras.setStackInSlot(slot, ItemStack.EMPTY);
+            }
+        }
+        return taken;
     }
 
     @Override
