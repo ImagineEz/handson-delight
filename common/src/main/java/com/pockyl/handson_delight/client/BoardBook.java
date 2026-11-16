@@ -4,6 +4,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -66,9 +67,10 @@ final class BoardBook implements RecipeBook.Source {
     public List<RecipeBook.Tab> tabs(StationView view) {
         List<RecipeBook.Tab> tabs = new ArrayList<>();
         // Everything under a compass, as in vanilla's recipe book.
-        tabs.add(new RecipeBook.Tab(null, new ItemStack(Items.COMPASS)));
+        tabs.add(new RecipeBook.Tab(null, new ItemStack(Items.COMPASS), Component.translatable("handson_delight.book.tab.all")));
         if (!dishes(view).isEmpty()) {
-            tabs.add(new RecipeBook.Tab(DISHES, new ItemStack(BuiltInRegistries.ITEM.get(FarmersDelightContent.id("hamburger")))));
+            tabs.add(new RecipeBook.Tab(DISHES, new ItemStack(BuiltInRegistries.ITEM.get(FarmersDelightContent.id("hamburger"))),
+                    Component.translatable("handson_delight.book.tab.dishes")));
         }
         Map<Item, Integer> others = new HashMap<>();
         boolean knife = false;
@@ -80,11 +82,12 @@ final class BoardBook implements RecipeBook.Source {
             }
         }
         if (knife) {
-            tabs.add(new RecipeBook.Tab(KNIFE, new ItemStack(BuiltInRegistries.ITEM.get(FarmersDelightContent.id("iron_knife")))));
+            tabs.add(new RecipeBook.Tab(KNIFE, new ItemStack(BuiltInRegistries.ITEM.get(FarmersDelightContent.id("iron_knife"))),
+                    Component.translatable("handson_delight.book.tab.knife")));
         }
         others.entrySet().stream().max(Map.Entry.<Item, Integer>comparingByValue()
                         .thenComparing(entry -> BuiltInRegistries.ITEM.getKey(entry.getKey()).toString(), Comparator.reverseOrder()))
-                .ifPresent(most -> tabs.add(new RecipeBook.Tab(TOOLS, new ItemStack(most.getKey()))));
+                .ifPresent(most -> tabs.add(new RecipeBook.Tab(TOOLS, new ItemStack(most.getKey()), Component.translatable("handson_delight.book.tab.tools"))));
         return tabs;
     }
 
