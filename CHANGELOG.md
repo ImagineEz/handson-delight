@@ -18,6 +18,8 @@
 
 ### Fixed
 - Joining a world crashed on Fabric.
+- Food fried in the skillet or grilled on the stove waits as it is: with [More Delight](https://modrinth.com/mod/more-delight)
+  a fried egg no longer goes on cooking into an omelette ([#33](https://github.com/Pocky-l/handson-delight/issues/33)).
 - The cutting board takes what a dish needs in any order: a bowl, bread or a tortilla laid after the rest slides in under it.
   Dishes of [Culinary Compat](https://modrinth.com/mod/culinary-compat) and other mods no longer need their first ingredient first.
 - [Farmer's Respite](https://modrinth.com/mod/farmers-respite)'s kettle could keep 250 mB that would not pour out or let a new batch in ([#31](https://github.com/Pocky-l/handson-delight/issues/31)).

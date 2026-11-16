@@ -37,4 +37,9 @@ public final class FabricSkilletTests implements FabricGameTest {
     public void theFryingTimeFollowsTheConfig(GameTestHelper helper) {
         SkilletTests.theFryingTimeFollowsTheConfig(helper);
     }
+
+    @GameTest(template = FabricGameTest.EMPTY_STRUCTURE, timeoutTicks = 600)
+    public void friedFoodFriesNoFurther(GameTestHelper helper) {
+        SkilletTests.friedFoodFriesNoFurther(helper);
+    }
 }
