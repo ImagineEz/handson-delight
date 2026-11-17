@@ -18,6 +18,8 @@
 
 ### Fixed
 - Joining a world crashed on Fabric.
+- Shift-using a keg's tap no longer hangs the server when [Brewin' and Chewin'](https://modrinth.com/mod/brewin-and-chewin)'s
+  own output slot is full. Thanks to LeDok ([#39](https://github.com/Pocky-l/handson-delight/pull/39)).
 - Food fried in the skillet or grilled on the stove waits as it is: with [More Delight](https://modrinth.com/mod/more-delight)
   a fried egg no longer goes on cooking into an omelette ([#33](https://github.com/Pocky-l/handson-delight/issues/33)).
 - A full cooking pot, keg or kettle takes what its dish still needs: a second stack of tomatoes that filled both vegetable
