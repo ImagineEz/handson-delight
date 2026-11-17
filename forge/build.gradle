@@ -145,6 +145,7 @@ if (providers.gradleProperty('culinary').isPresent()) {
                 'cooking-for-blockheads:W87tG8sG',          // Cooking for Blockheads 16.0.15
                 'balm:dDN38ae7',                            // Balm 7.3.44, needed by Cooking for Blockheads
                 'pams-harvestcraft-2-food-core:RLPfpN1a',   // Pam's HarvestCraft 2: Food Core 1.0.5
+                'pams-harvestcraft-2-food-extended:ZHPzQtqH', // Pam's HarvestCraft 2: Food Extended 1.0.1 (filed for 1.20-1.20.4)
         ].each { modRuntimeOnly "maven.modrinth:${it}" }
     }
 }
