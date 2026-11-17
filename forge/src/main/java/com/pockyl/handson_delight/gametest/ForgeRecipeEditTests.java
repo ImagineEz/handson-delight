@@ -23,4 +23,14 @@ public final class ForgeRecipeEditTests {
     public static void aScriptsEditsReachTheBoard(GameTestHelper helper) {
         RecipeEditTests.aScriptsEditsReachTheBoard(helper);
     }
+
+    @GameTest(template = "empty")
+    public static void aDatapacksEditsOfPamsCraftsReachTheBoard(GameTestHelper helper) {
+        RecipeEditTests.aDatapacksEditsOfPamsCraftsReachTheBoard(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 1200, batch = "reload")
+    public static void aReloadSendsCulinaryCompatsDishes(GameTestHelper helper) {
+        RecipeEditTests.aReloadSendsCulinaryCompatsDishes(helper);
+    }
 }

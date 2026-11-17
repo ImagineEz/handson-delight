@@ -31,6 +31,8 @@
 - [Farmer's Respite](https://modrinth.com/mod/farmers-respite)'s kettle could keep 250 mB that would not pour out or let a new batch in ([#31](https://github.com/Pocky-l/handson-delight/issues/31)).
 - A milk bucket on the cooking pot makes [Brazilian Delight](https://modrinth.com/mod/braziliandelight)'s milk pot again, so its heavy cream can be made.
 - Things stacked on the cutting board in the world with [Culinary Compat](https://modrinth.com/mod/culinary-compat) show at the station and are cut together there.
+- After `/reload`, JEI and EMI show [Culinary Compat](https://modrinth.com/mod/culinary-compat)'s dishes on the cutting board
+  without rejoining.
 - In a LAN game, a guest who turned the cutting board off can craft its dishes in the crafting grid again.
 - Switching quickly between neighbouring stations no longer breaks the recipe book or keeps turning its pages.
 

@@ -139,7 +139,8 @@ if (providers.gradleProperty('addons').isPresent()) {
 // -Pculinary runs the game tests with Culinary Compat, which turns Pam's HarvestCraft crafts that need its cutting board into cuts of
 // several things at once on Farmer's Delight's board, made at the board's station too. It does so only with Cooking for Blockheads.
 // The rest is the pack of the player who reported it (Discord, 2026-11-16).
-if (providers.gradleProperty('culinary').isPresent()) {
+var culinary = providers.gradleProperty('culinary').isPresent()
+if (culinary) {
     dependencies {
         [
                 'culinary-compat:BjWAP4cd',                 // Culinary Compat! 1.1.0
@@ -191,7 +192,10 @@ var prepareGameTestServer = tasks.register('prepareGameTestServer') {
     var dir = project.file('run/gametest')
     inputs.property('kubejs', kubejs)
     inputs.property('crafttweaker', crafttweaker)
+    inputs.property('culinary', culinary)
     outputs.file(new File(dir, 'server.properties'))
+    // The world with its datapack is deleted between addon sets: always written anew.
+    outputs.upToDateWhen { false }
     doLast {
         dir.mkdirs()
         new File(dir, 'server.properties').text = [
@@ -212,6 +216,8 @@ var prepareGameTestServer = tasks.register('prepareGameTestServer') {
                     "  event.remove({id: 'farmersdelight:chicken_sandwich'})",
                     "  event.shapeless('farmersdelight:chicken_sandwich', ['#forge:bread', 'minecraft:cooked_chicken', 'minecraft:apple'])"
                             + ".id('farmersdelight:chicken_sandwich')",
+                    // With -Pculinary: a Pam craft Culinary Compat cuts together, edited before it reads it.
+                    "  event.replaceInput({id: 'pamhc2foodcore:caramelyogurtitem'}, '#forge:caramel', 'minecraft:honey_bottle')",
                     "})",
                     "ServerEvents.tags('item', event => event.add('handson_delight:assembled', 'minecraft:mushroom_stew'))"
             ].join(System.lineSeparator()) + System.lineSeparator()
@@ -221,9 +227,27 @@ var prepareGameTestServer = tasks.register('prepareGameTestServer') {
         var tweak = new File(dir, 'scripts/handson_delight_test.zs')
         if (crafttweaker) {
             tweak.parentFile.mkdirs()
-            tweak.text = 'craftingTable.removeByName("farmersdelight:chicken_sandwich");' + System.lineSeparator()
+            tweak.text = ['craftingTable.removeByName("farmersdelight:chicken_sandwich");',
+                          // With -Pculinary: a Pam craft Culinary Compat cuts together.
+                          'craftingTable.removeByName("pamhc2foodcore:chocolateyogurtitem");'
+            ].join(System.lineSeparator()) + System.lineSeparator()
         } else {
             tweak.delete()
+        }
+        // A modpack's datapack edits Pam's crafts that Culinary Compat cuts together: one changed, one taken out (RecipeEditTests).
+        var pack = new File(dir, 'world/datapacks/handson_culinary_test')
+        if (culinary) {
+            var recipes = new File(pack, 'data/pamhc2foodcore/recipes')
+            recipes.mkdirs()
+            new File(pack, 'pack.mcmeta').text = '{"pack": {"pack_format": 15, "description": "Hands-On Delight test edits"}}'
+            new File(recipes, 'applesauceitem.json').text = '{"type": "minecraft:crafting_shapeless", "ingredients": [' +
+                    '{"tag": "forge:tool_cuttingboard"}, {"tag": "forge:crops/apple"}, {"tag": "forge:crops/apple"}, ' +
+                    '{"item": "minecraft:honey_bottle"}], "result": {"item": "pamhc2foodcore:applesauceitem"}}'
+            new File(recipes, 'appleyogurtitem.json').text = '{"type": "minecraft:crafting_shapeless", ' +
+                    '"conditions": [{"type": "forge:false"}], "ingredients": [{"item": "minecraft:apple"}], ' +
+                    '"result": {"item": "pamhc2foodcore:appleyogurtitem"}}'
+        } else {
+            pack.deleteDir()
         }
     }
 }

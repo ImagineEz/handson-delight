@@ -34,15 +34,29 @@ public final class BoardDishes {
     private static volatile boolean craftedToo;
     private static ListTag readFrom;
     private static List<AssemblyRecipes.Assembly> dishes = List.of();
+    /** The dishes as they go out now, on the server: read once for every player, at the moment the packet is sent. */
+    private static volatile ListTag outgoing;
 
     private BoardDishes() {
+    }
+
+    /** On the server, as the packet is about to go out: the dishes it carries are the board's as they are now. */
+    public static void prepare() {
+        outgoing = AssemblyRecipes.book();
+    }
+
+    /** What the last packet carried or carries, on the server; empty before the first. */
+    public static ListTag outgoing() {
+        ListTag book = outgoing;
+        return book == null ? new ListTag() : book;
     }
 
     /** The packet, on the server. */
     public static void write(FriendlyByteBuf buffer) {
         CompoundTag payload = new CompoundTag();
+        ListTag book = outgoing == null ? AssemblyRecipes.book() : outgoing;
         // Without the board's station nothing is made there: the viewers show the crafting recipes alone.
-        payload.put("dishes", HandsOnConfig.cuttingBoard() ? AssemblyRecipes.book() : new ListTag());
+        payload.put("dishes", HandsOnConfig.cuttingBoard() ? book : new ListTag());
         payload.putBoolean(CRAFTED_TOO, !HandsOnConfig.removeCraftingRecipes());
         payload.put(TIMES, CookingTimes.write());
         buffer.writeNbt(payload);

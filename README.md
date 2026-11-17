@@ -237,7 +237,7 @@ ServerEvents.tags('item', event => event.add('handson_delight:assembled', 'mypac
 A dish takes two to nine ingredients, of more than one kind. The board chooses what goes down first and how the dish is
 finished from its ingredients; to choose it yourself, tag the result `handson_delight:tossed` (a salad),
 `handson_delight:arranged` (a plated meal), `handson_delight:wrapped` (rolled in bread) or `handson_delight:frozen` (a
-popsicle). `handson_delight:not_assembled` keeps a dish in the crafting table. Autocrafters still make the board's
+popsicle). `handson_delight:not_assembled` keeps a dish in the crafting table, or off the board when another mod cuts it together. Autocrafters still make the board's
 dishes.
 
 ## Installation

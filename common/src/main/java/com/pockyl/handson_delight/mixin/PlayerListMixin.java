@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.pockyl.handson_delight.assembly.AssemblyRecipes;
+import com.pockyl.handson_delight.assembly.BoardDishes;
 import com.pockyl.handson_delight.platform.Platform;
 
 import java.util.List;
@@ -28,13 +29,19 @@ abstract class PlayerListMixin {
     @Inject(method = "placeNewPlayer", at = @At(value = "NEW",
             target = "net/minecraft/network/protocol/game/ClientboundUpdateRecipesPacket"))
     private void handson$boardDishesOnJoin(Connection connection, ServerPlayer player, CallbackInfo callback) {
+        BoardDishes.prepare();
         Platform.INSTANCE.sendBoardDishes(player);
     }
 
-    @Inject(method = "reloadResources", at = @At("HEAD"))
+    /**
+     * After a reload, just before the tags go out: after Forge's datapack sync, where Culinary Compat adds its cuts of several things
+     * anew, so the viewers get those too without a rejoin.
+     */
+    @Inject(method = "reloadResources", at = @At(value = "NEW", target = "net/minecraft/network/protocol/game/ClientboundUpdateTagsPacket"))
     private void handson$boardDishesOnReload(CallbackInfo callback) {
         // The tags were bound again after the recipes loaded: the board's dishes are chosen with the new ones.
         AssemblyRecipes.tagsChanged();
+        BoardDishes.prepare();
         for (ServerPlayer player : players) {
             Platform.INSTANCE.sendBoardDishes(player);
         }
