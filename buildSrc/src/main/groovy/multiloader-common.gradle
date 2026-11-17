@@ -46,6 +46,16 @@ repositories {
         }
         filter { includeGroup('maven.modrinth') }
     }
+    // Addons only on CurseForge, for test runs (-Pculinary: Pam's Crops and Trees, Croptopia).
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'CurseMaven'
+                url = 'https://cursemaven.com'
+            }
+        }
+        filter { includeGroup('curse.maven') }
+    }
     // Recipe viewers: JEI, EMI, and REI with the libraries its API needs.
     exclusiveContent {
         forRepository {
