@@ -29,7 +29,9 @@
     "HearthKegMixin",
     "HearthKegAccess",
     "HearthCaskMixin",
-    "HearthCaskAccess"
+    "HearthCaskAccess",
+    "NetherStoveMixin",
+    "NetherStoveBlockMixin"
   ],
   "client": [
     "CopperPotQuietMixin",
@@ -41,7 +43,8 @@
     "KettleQuietMixin",
     "DecoratedBoardContentMixin",
     "YoukaiPotSoupMixin",
-    "YoukaiHintsMixin"
+    "YoukaiHintsMixin",
+    "NetherStoveSmokeMixin"
   ],
   "injectors": {
     "defaultRequire": 1

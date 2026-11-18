@@ -17,6 +17,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import vectorwing.farmersdelight.common.block.AbstractStoveBlock;
@@ -27,7 +28,6 @@ import com.pockyl.diegesis.api.station.StationContext;
 import com.pockyl.diegesis.api.station.StationType;
 import com.pockyl.handson_delight.FarmersDelightContent;
 import com.pockyl.handson_delight.HandsOnConfig;
-import com.pockyl.handson_delight.platform.Platform;
 import com.pockyl.handson_delight.station.Grill;
 import com.pockyl.handson_delight.station.StoveCooking;
 import com.pockyl.handson_delight.station.StoveLogic;
@@ -46,7 +46,7 @@ public final class StoveTests {
     private StoveTests() {
     }
 
-    private record Top(Station station, StoveLogic logic, AbstractStoveBlockEntity stove, Player cook) {
+    private record Top(Station station, StoveLogic logic, BlockEntity stove, Player cook) {
         void act(String action, CompoundTag data) {
             logic.onCustomAction(station, cook, action, data);
         }
@@ -63,7 +63,7 @@ public final class StoveTests {
         }
 
         ItemStack on(int place) {
-            return Platform.INSTANCE.getItem(stove, place);
+            return StoveCooking.item(stove, place);
         }
 
         Grill grill() {
@@ -80,7 +80,7 @@ public final class StoveTests {
         helper.setBlock(at, block.defaultBlockState().setValue(AbstractStoveBlock.LIT, true));
         BlockPos pos = helper.absolutePos(at);
         Station station = new Station(helper.getLevel(), pos);
-        AbstractStoveBlockEntity stove = (AbstractStoveBlockEntity) helper.getLevel().getBlockEntity(pos);
+        BlockEntity stove = helper.getLevel().getBlockEntity(pos);
         return new Top(station, new StoveLogic(station), stove, helper.makeMockPlayer());
     }
 
@@ -166,7 +166,7 @@ public final class StoveTests {
 
     public static void farmersDelightsWayStaysItsOwn(GameTestHelper helper) {
         Top top = stove(helper);
-        top.stove.placeFood(top.cook, new ItemStack(Items.BEEF), 600);
+        ((AbstractStoveBlockEntity) top.stove).placeFood(top.cook, new ItemStack(Items.BEEF), 600);
         helper.assertTrue(top.on(0).is(Items.BEEF) && !top.grill().byHand(0), "Farmer's Delight's own right click: its way");
         helper.runAfterDelay(20, () -> {
             helper.assertTrue(((StoveTop) top.stove).handson$progress()[0] > 10, "and it counts its own time");
@@ -209,7 +209,7 @@ public final class StoveTests {
             BlockState state = block.defaultBlockState();
             helper.setBlock(at, state);
             helper.assertTrue(StoveStation.TYPE.matches(state), BuiltInRegistries.BLOCK.getKey(block) + " opens as the station");
-            helper.assertTrue(helper.getBlockEntity(at) instanceof AbstractStoveBlockEntity,
+            helper.assertTrue(StoveCooking.isStove(helper.getBlockEntity(at)),
                     BuiltInRegistries.BLOCK.getKey(block) + " grills on a stove's block entity");
         }
         helper.succeed();
@@ -250,6 +250,37 @@ public final class StoveTests {
         int[] saved = StoveCooking.savedTimes(top.stove);
         helper.assertTrue(saved[0] == half && saved[1] == 600, "its own way keeps the half: " + saved[0] + ", " + saved[1]);
         helper.succeed();
+    }
+
+    /**
+     * Nether's Delight's blackstone stove has a copy of Farmer's Delight's stove of its own: pieces laid by hand grill, wait to be turned
+     * and, done, wait on the grill as on Farmer's Delight's (its own cooking would throw them off: the station finishes them); the grill
+     * is saved with it, and handed to its own way a done piece comes off. Passes at once without the addon.
+     */
+    public static void theBlackstoneStoveGrillsByHand(GameTestHelper helper) {
+        Block blackstone = BuiltInRegistries.BLOCK.get(new ResourceLocation("nethersdelight", "blackstone_stove"));
+        if (blackstone == net.minecraft.world.level.block.Blocks.AIR) {
+            helper.succeed();
+            return;
+        }
+        Top top = stove(helper, blackstone);
+        helper.assertTrue(StoveStation.TYPE.matches(top.stove.getBlockState()), "it opens as the stove station");
+        top.place(Items.BEEF, 2);
+        helper.assertTrue(top.on(0).is(Items.BEEF) && top.on(1).is(Items.BEEF) && top.grill().byHand(0), "both laid by hand");
+        helper.runAfterDelay(BEEF_SIDE + 10, () -> {
+            helper.assertTrue(top.grill().waits(0), "the lower side is done, the piece waits");
+            top.at(StoveStation.ACTION_TURN, 0);
+        });
+        helper.runAfterDelay(2 * BEEF_SIDE + 25, () -> {
+            helper.assertTrue(top.on(0).is(Items.COOKED_BEEF) && top.grill().ready(0), "turned once, it is done and waits on the grill");
+            BlockPos pos = top.stove.getBlockPos();
+            helper.assertTrue(helper.getLevel().getEntitiesOfClass(ItemEntity.class, new AABB(pos).inflate(3.0)).isEmpty(),
+                    "nothing was thrown off the grill");
+            helper.assertTrue(top.stove.saveWithoutMetadata().contains("handson_delight:grill"), "the grill is saved with the stove");
+            StoveCooking.handToFarmersDelight(top.stove);
+            helper.assertTrue(top.on(0).isEmpty() && !top.grill().byHand(1), "handed to its own way, the done one comes off");
+            helper.succeed();
+        });
     }
 
     /**
@@ -304,7 +335,7 @@ public final class StoveTests {
         helper.assertTrue(top.on(0).isEmpty() && top.cook.inventoryMenu.getCarried().getCount() == 3, "no egg on the grill");
         helper.assertTrue(top.station.effects.contains(StoveStation.EFFECT_REFUSED), "it bounces back to the hand");
         helper.assertFalse(StoveCooking.takes(top.stove, new ItemStack(Items.EGG)), "opened by use with an egg, it stays in the hand");
-        top.stove.placeFood(top.cook, new ItemStack(Items.EGG), 600);
+        ((AbstractStoveBlockEntity) top.stove).placeFood(top.cook, new ItemStack(Items.EGG), 600);
         helper.assertTrue(top.on(0).is(Items.EGG) && !top.grill().byHand(0), "Farmer's Delight's right click is its own way");
         boolean eggRecipe = false;
         for (CampfireCookingRecipe recipe : helper.getLevel().getRecipeManager().getAllRecipesFor(RecipeType.CAMPFIRE_COOKING)) {

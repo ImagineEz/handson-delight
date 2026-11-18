@@ -6,6 +6,7 @@
 - [Youkai's Homecoming](https://modrinth.com/mod/youkaishomecoming)'s kettle, cuisine board, pots, steamer and fermentation tank are stations, as Youkai's Feasts' are.
 - [Hearth and Harvest](https://modrinth.com/mod/hearth-and-harvest)'s keg, big keg and cask are stations: drinks ferment under the lid and age sealed in the cask ([#28](https://github.com/Pocky-l/handson-delight/issues/28)).
 - [Twilight's Flavor & Delight](https://modrinth.com/mod/twilight-delight)'s maze stove is a station, and Twilight food still grills twice as fast on it.
+- [Nether's Delight](https://modrinth.com/mod/nethers-delight)'s blackstone stove and [Trail&Tales Delight](https://modrinth.com/mod/trailtales-delight)'s mud stove are stove stations.
 - The recipe book can be searched, shows only what you can make now on a switch, and keeps a tab of the dishes made lately.
 - A click on a thing that goes in opens its own recipe, when the book has one.
 
@@ -29,6 +30,7 @@
 - In a LAN game, a guest who turned the cutting board off can craft its dishes in the crafting grid again.
 - Switching quickly between neighbouring stations no longer breaks the recipe book.
 - Wheat dough taken from a crafting table that another mod changes no longer doubles the wheat or loses the water bucket.
+- With Trail&Tales Delight, stone lies down on the cutting board again to be broken with a pickaxe.
 
 ## [1.5.0+1.20.1] - 2026-11-15
 ### New

@@ -552,7 +552,7 @@ public final class BoardTests {
             setup.carry(food.copy());
             setup.place();
             helper.assertTrue(setup.layers() == 0 && ItemStack.isSameItemSameTags(setup.onBoard(), food),
-                    food.getItem() + " lies down to be cut");
+                    food.getItem() + " lies down to be cut (" + recipe.getId() + ")");
             setup.act(CuttingBoardStation.ACTION_TAKE, new CompoundTag());
             helper.assertTrue(setup.onBoard().isEmpty(), food.getItem() + " comes back");
         }

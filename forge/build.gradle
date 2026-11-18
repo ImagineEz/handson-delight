@@ -89,6 +89,8 @@ dependencies {
     modCompileOnly "maven.modrinth:gensokyo-delight-youkais-feasts:${youkais_feasts_version}"
     // Hearth and Harvest's keg is a station too: compiled against it only.
     modCompileOnly "maven.modrinth:hearth-and-harvest:${hearth_and_harvest_version}"
+    // Nether's Delight's blackstone stove is a stove station too, on a copy of Farmer's Delight's class: compiled against it only.
+    modCompileOnly "maven.modrinth:nethers-delight:${nethers_delight_version}"
     devMods "com.pockyl.diegesis:forge:${diegesis_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
@@ -112,7 +114,8 @@ if (providers.gradleProperty('addons').isPresent()) {
                 'runiclib:DyyjKTPx',              // RunicLib 4.3.11, needed by Dungeons Delight
                 "choppers-delight:${choppers_delight_version}", // Chopper's Delight 1.2.3: cutting boards of every wood
                 'delightful:HbEQIqIu',            // Delightful 3.8.1-1.20.1
-                'nethers-delight:MTDQhZd2',       // Nether's Delight 1.20.1-4.0
+                "nethers-delight:${nethers_delight_version}", // Nether's Delight 1.20.1-4.0: its blackstone stove
+                'trailtales-delight:iQKnMv4N',    // Trail&Tales Delight 2.4 for Farmer's Delight 1.3: its mud stove and pottery pot
                 "farmers-respite:${farmers_respite_version}", // Farmer's Respite 1.20.1-2.1: its kettle
                 'frights-delight:r31i2Fd1',       // Fright's Delight 1.4.8: a bone cut into the skewers its kebabs are served on
                 'cooking-for-blockheads:W87tG8sG', // Cooking for Blockheads 16.0.15: its oven

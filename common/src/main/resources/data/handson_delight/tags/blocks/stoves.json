@@ -20,6 +20,14 @@
     {
       "id": "twilightdelight:maze_stove",
       "required": false
+    },
+    {
+      "id": "nethersdelight:blackstone_stove",
+      "required": false
+    },
+    {
+      "id": "trailandtales_delight:mud_stove",
+      "required": false
     }
   ]
 }
