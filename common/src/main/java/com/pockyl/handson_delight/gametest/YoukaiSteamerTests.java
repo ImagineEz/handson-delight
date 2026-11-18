@@ -1,21 +1,19 @@
 package com.pockyl.handson_delight.gametest;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 
-import com.pockyl.handson_delight.platform.Platform;
 import com.pockyl.handson_delight.station.KitchenSteamer;
 import com.pockyl.handson_delight.station.SteamerLogic;
 import com.pockyl.handson_delight.station.SteamerStation;
 import com.pockyl.handson_delight.station.SteamerTower;
+import com.pockyl.handson_delight.station.Youkai;
 
 import java.util.List;
 
@@ -27,9 +25,8 @@ public final class YoukaiSteamerTests {
     private YoukaiSteamerTests() {
     }
 
-    @SuppressWarnings("removal")
     private static Item feasts(String path) {
-        return BuiltInRegistries.ITEM.get(new ResourceLocation(KitchenSteamer.MOD_ID, path));
+        return Youkai.item(path);
     }
 
     private record Setup(PotTests.TestStation station, SteamerLogic logic, BlockPos at, Player player) {
@@ -50,7 +47,7 @@ public final class YoukaiSteamerTests {
 
     /** An empty steamer pot over a lit campfire, a cook at it in survival; null without Youkai's Feasts. */
     private static Setup steamer(GameTestHelper helper) {
-        if (!Platform.INSTANCE.isLoaded(KitchenSteamer.MOD_ID)) {
+        if (!Youkai.isLoaded()) {
             helper.succeed();
             return null;
         }

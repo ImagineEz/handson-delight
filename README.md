@@ -101,6 +101,8 @@ Built on [Diegesis](https://www.curseforge.com/minecraft/mc-mods/diegesis).
 - **Fermentation tank** of [Gensokyo Delight: Youkai's Feasts](https://modrinth.com/mod/gensokyo-delight-youkais-feasts).
   Its lid comes off with a click, liquids are poured in and things dropped in, and it ferments under the lid with the
   badge counting down. The drink is dipped out with a bottle, and the book puts its recipes in from your inventory.
+- **The kitchen** of [Youkai's Homecoming](https://modrinth.com/mod/youkaishomecoming), which Youkai's Feasts is taken from:
+  its kettle, cuisine board, pots, steamer and fermentation tank are the same stations, with its own teas, rolls and sakes.
 - **Grill** of [Barbeque's Delight](https://modrinth.com/mod/barbeques-delight-forge). Two skewers lie over its fire.
   One smokes when its lower side is done: click it to turn it over, once. Click a skewer with a powder to shake it over
   or with a sauce to dab it on, and the seasoning stays on it. A skewer left on after it is done darkens, smokes and
@@ -158,7 +160,8 @@ the stoves of [End's Delight](https://www.curseforge.com/minecraft/mc-mods/ends-
 [Chopper's Delight](https://modrinth.com/mod/choppers-delight), the decorated one too, each in its own look.
 [Farmer's Respite](https://modrinth.com/mod/farmers-respite)'s kettle opens as a station too, its tray on a stove
 drawn with Farmer's Delight's own, and so does [Gensokyo Delight: Youkai's Feasts](https://modrinth.com/mod/gensokyo-delight-youkais-feasts)'s kettle,
-its cuisine board and its three pots.
+its cuisine board, its three pots, its steamer and its fermentation tank, and those of
+[Youkai's Homecoming](https://modrinth.com/mod/youkaishomecoming), which has the same kitchen.
 [Farmer's Spell 'n Spell Book](https://modrinth.com/mod/farmers-spell)'s alchemist pot opens as a pot station with
 its [Iron's Spells 'n Spellbooks](https://modrinth.com/mod/irons-spells-n-spellbooks) scroll.
 [Barbeque's Delight](https://modrinth.com/mod/barbeques-delight-forge)'s kebabs and bibimbap are put together on the

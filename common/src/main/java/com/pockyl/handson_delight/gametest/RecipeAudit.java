@@ -189,6 +189,7 @@ public final class RecipeAudit {
         ownCrafts.stream().sorted().forEach(report::add);
         section(report, "RECIPE TYPES OF OTHER MODS (stations of their own)", "type: recipes");
         others.forEach((type, count) -> report.add(type + ": " + count));
+        List<String> unread = YoukaiAudit.write(helper, report);
 
         try {
             Files.write(Path.of("recipe-audit.txt"), report, StandardCharsets.UTF_8);
@@ -198,6 +199,10 @@ public final class RecipeAudit {
         }
         if (!missed.isEmpty()) {
             helper.fail(missed.size() + " crafting dishes are not put together on the board, first " + missed.get(0));
+            return;
+        }
+        if (!unread.isEmpty()) {
+            helper.fail(unread.size() + " recipes of the Youkai kitchen are not read by their station, first " + unread.get(0));
             return;
         }
         helper.succeed();
@@ -282,7 +287,7 @@ public final class RecipeAudit {
         return BuiltInRegistries.ITEM.getKey(item.getItem()).getPath();
     }
 
-    private static String name(ItemStack item) {
+    static String name(ItemStack item) {
         if (item.isEmpty()) {
             return "-";
         }
@@ -290,7 +295,7 @@ public final class RecipeAudit {
         return item.getCount() > 1 ? item.getCount() + " " + id : id;
     }
 
-    private static String name(Ingredient ingredient) {
+    static String name(Ingredient ingredient) {
         ItemStack[] items = ingredient.getItems();
         if (items.length == 0) {
             return "<nothing>";

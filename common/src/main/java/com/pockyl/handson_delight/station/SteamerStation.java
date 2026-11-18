@@ -22,7 +22,6 @@ import com.pockyl.diegesis.api.state.StationSchema;
 import com.pockyl.diegesis.api.state.TankSpec;
 import com.pockyl.diegesis.api.station.StationType;
 import com.pockyl.handson_delight.HandsOnDelight;
-import com.pockyl.handson_delight.platform.Platform;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -129,7 +128,7 @@ public final class SteamerStation {
     }
 
     public static void register() {
-        if (Platform.INSTANCE.isLoaded(KitchenSteamer.MOD_ID)) {
+        if (Youkai.isLoaded()) {
             Diegesis.register(TYPE);
         }
     }
@@ -161,7 +160,7 @@ public final class SteamerStation {
     @SuppressWarnings({"unchecked", "rawtypes", "removal"})
     public static List<Steaming> recipes(Level level) {
         List<Steaming> found = new ArrayList<>();
-        Optional<RecipeType<?>> type = BuiltInRegistries.RECIPE_TYPE.getOptional(new ResourceLocation(KitchenSteamer.MOD_ID, "steaming"));
+        Optional<RecipeType<?>> type = BuiltInRegistries.RECIPE_TYPE.getOptional(Youkai.id("steaming"));
         if (type.isEmpty()) {
             return found;
         }

@@ -14,7 +14,6 @@ import com.pockyl.diegesis.api.state.SlotRules;
 import com.pockyl.diegesis.api.state.StationSchema;
 import com.pockyl.diegesis.api.station.StationType;
 import com.pockyl.handson_delight.HandsOnDelight;
-import com.pockyl.handson_delight.platform.Platform;
 
 import java.util.function.Supplier;
 
@@ -85,8 +84,7 @@ public final class CuisineBoardStation {
             .slots(HAND, 1, SlotRules.DEFAULT)
             .build();
 
-    public static final Supplier<Block> BOARD = () -> BuiltInRegistries.BLOCK.get(new ResourceLocation(KitchenCuisine.MOD_ID,
-            "cuisine_board"));
+    public static final Supplier<Block> BOARD = () -> Youkai.block("cuisine_board");
 
     /**
      * The board is the block itself, nothing on it opens: the scene draws what lies on it, also for passers-by. It turns to the side
@@ -104,7 +102,7 @@ public final class CuisineBoardStation {
     }
 
     public static void register() {
-        if (Platform.INSTANCE.isLoaded(KitchenCuisine.MOD_ID)) {
+        if (Youkai.isLoaded()) {
             Diegesis.register(TYPE);
         }
     }

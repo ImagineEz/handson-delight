@@ -2,7 +2,6 @@ package com.pockyl.handson_delight.station;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -58,9 +57,8 @@ public final class SteamerTower {
         return new SteamerTower(pot.immutable(), List.copyOf(blocks));
     }
 
-    @SuppressWarnings("removal")
     private static boolean is(BlockState state, String path) {
-        return BuiltInRegistries.BLOCK.getKey(state.getBlock()).equals(new ResourceLocation(KitchenSteamer.MOD_ID, path));
+        return BuiltInRegistries.BLOCK.getKey(state.getBlock()).equals(Youkai.id(path));
     }
 
     public static boolean isPot(BlockState state) {
@@ -75,9 +73,8 @@ public final class SteamerTower {
         return is(state, "steamer_lid");
     }
 
-    @SuppressWarnings("removal")
     public static Block block(String path) {
-        return BuiltInRegistries.BLOCK.get(new ResourceLocation(KitchenSteamer.MOD_ID, path));
+        return Youkai.block(path);
     }
 
     /**

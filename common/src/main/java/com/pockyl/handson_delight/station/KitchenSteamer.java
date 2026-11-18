@@ -12,7 +12,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
  * The tower as a whole: {@link SteamerTower}.
  */
 public interface KitchenSteamer {
-    String MOD_ID = KettleStation.YOUKAI_MOD_ID;
     /** The places of a rack. */
     int PLACES = 4;
 

@@ -16,7 +16,6 @@ import java.util.List;
  * rewards stays its own.
  */
 public interface KitchenCuisine {
-    String MOD_ID = KettleStation.YOUKAI_MOD_ID;
 
     /** The board of a block entity, or null for anything else. */
     static KitchenCuisine of(BlockEntity entity) {

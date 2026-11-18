@@ -4,7 +4,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -15,10 +14,10 @@ import net.minecraft.world.level.material.Fluids;
 
 import com.pockyl.diegesis.api.state.SlotRef;
 import com.pockyl.handson_delight.FarmersDelightContent;
-import com.pockyl.handson_delight.platform.Platform;
 import com.pockyl.handson_delight.station.KegLogic;
 import com.pockyl.handson_delight.station.KegStation;
 import com.pockyl.handson_delight.station.KitchenKeg;
+import com.pockyl.handson_delight.station.Youkai;
 
 import java.util.List;
 
@@ -29,14 +28,13 @@ import java.util.List;
  * not there.
  */
 public final class YoukaiTankTests {
-    private static final String MIO = "youkaisfeasts:mio";
+    private static final String MIO = Youkai.id("mio").toString();
 
     private YoukaiTankTests() {
     }
 
-    @SuppressWarnings("removal")
     private static Item feasts(String path) {
-        return BuiltInRegistries.ITEM.get(new ResourceLocation(KegStation.TANK_MOD_ID, path));
+        return Youkai.item(path);
     }
 
     private static Item rice() {
@@ -48,7 +46,7 @@ public final class YoukaiTankTests {
 
     /** A tank on stone, with the logic the station would make for it; null without Youkai's Feasts. */
     private static Setup tank(GameTestHelper helper) {
-        if (!Platform.INSTANCE.isLoaded(KegStation.TANK_MOD_ID)) {
+        if (!Youkai.isLoaded()) {
             helper.succeed();
             return null;
         }
@@ -94,12 +92,12 @@ public final class YoukaiTankTests {
                 "it makes the sake mio");
         helper.assertTrue(setup.tank.handson$makes(mio, List.of(new ItemStack(rice()), new ItemStack(rice()), new ItemStack(rice()),
                 new ItemStack(rice()))) && !setup.tank.handson$makes(mio, List.of(new ItemStack(rice()))), "four rice make it, one does not");
-        KitchenKeg.Fermenting leaves = find(recipes, "youkaisfeasts:black_tea_leaves");
+        KitchenKeg.Fermenting leaves = find(recipes, Youkai.id("black_tea_leaves").toString());
         helper.assertTrue(leaves != null && leaves.base() == Fluids.EMPTY && leaves.resultItem().is(feasts("black_tea_leaves")),
                 "white tea leaves turn black without liquid");
         helper.assertTrue(setup.tank.handson$makes(leaves, List.of(new ItemStack(feasts("white_tea_leaves")),
                 new ItemStack(feasts("white_tea_leaves")), new ItemStack(feasts("white_tea_leaves")))), "however many lie there");
-        KitchenKeg.Fermenting natto = find(recipes, "youkaisfeasts:nattou");
+        KitchenKeg.Fermenting natto = find(recipes, Youkai.id("nattou").toString());
         helper.assertTrue(natto != null && natto.resultItem().getCount() == 6 && natto.ingredients().size() == 7,
                 "six soybeans and straw make six natto");
         helper.assertTrue(!setup.tank.handson$feelsWarmth() && !setup.tank.handson$hasOutput() && setup.tank.handson$perSlot() == 1,
@@ -211,7 +209,7 @@ public final class YoukaiTankTests {
         lid(setup, player, true);
         player.inventoryMenu.setCarried(new ItemStack(feasts("soy_sauce_flask")));
         use(setup, player, KegStation.MOUTH, false);
-        helper.assertTrue(BuiltInRegistries.FLUID.getKey(setup.tank.handson$fluid()).toString().equals("youkaisfeasts:soy_sauce")
+        helper.assertTrue(BuiltInRegistries.FLUID.getKey(setup.tank.handson$fluid()).equals(Youkai.id("soy_sauce"))
                 && setup.tank.handson$amount() == 1000, "a flask of soy sauce pours in, got " + setup.tank.handson$amount() + " of "
                 + BuiltInRegistries.FLUID.getKey(setup.tank.handson$fluid()));
         player.inventoryMenu.setCarried(ItemStack.EMPTY);

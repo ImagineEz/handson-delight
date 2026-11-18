@@ -34,7 +34,6 @@ public final class KegStation {
     public static final ResourceLocation ID = HandsOnDelight.id("keg");
     /** The keg stood on its end: the same station, its own scene. */
     public static final ResourceLocation STANDING_ID = HandsOnDelight.id("standing_keg");
-    public static final String TANK_MOD_ID = "youkaisfeasts";
     public static final ResourceLocation TANK_ID = HandsOnDelight.id("youkai_tank");
     /** The tank holds eight things, one in each slot, as its own container does. */
     public static final int TANK_INGREDIENTS = 8;
@@ -87,8 +86,7 @@ public final class KegStation {
 
     @SuppressWarnings("removal")
     public static final Supplier<Block> KEG = () -> BuiltInRegistries.BLOCK.get(new ResourceLocation(MOD_ID, "keg"));
-    @SuppressWarnings("removal")
-    public static final Supplier<Block> TANK = () -> BuiltInRegistries.BLOCK.get(new ResourceLocation(TANK_MOD_ID, "fermentation_tank"));
+    public static final Supplier<Block> TANK = () -> Youkai.block("fermentation_tank");
 
     public static final StationSchema SCHEMA = schema(KitchenKeg.INGREDIENTS, SlotRules.DEFAULT.kept());
     public static final StationSchema TANK_SCHEMA = schema(TANK_INGREDIENTS, SlotRules.DEFAULT.kept().maxStack(1));
@@ -134,7 +132,7 @@ public final class KegStation {
     }
 
     public static void registerTank() {
-        if (Platform.INSTANCE.isLoaded(TANK_MOD_ID)) {
+        if (Youkai.isLoaded()) {
             Diegesis.register(TANK_TYPE);
         }
     }

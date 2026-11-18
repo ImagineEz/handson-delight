@@ -18,7 +18,6 @@ import java.util.List;
  * stays its own.
  */
 public interface KitchenYoukaiPot {
-    String MOD_ID = KettleStation.YOUKAI_MOD_ID;
 
     /** The pot of a block entity, or null for anything else. */
     static KitchenYoukaiPot of(BlockEntity entity) {
@@ -30,7 +29,7 @@ public interface KitchenYoukaiPot {
     }
 
     /**
-     * The soup in the pot, client side: what it is now ({@code youkaisfeasts:water}, {@code soy_sauce}, {@code miso}, {@code cream},
+     * The soup in the pot, client side: what it is now ({@code water}, {@code soy_sauce}, {@code miso}, {@code cream},
      * {@code soul}: its soup bases), what it becomes as it cooks, and how far it has become that, 0 to 1.
      */
     record Soup(ResourceLocation now, ResourceLocation next, float toNext) {

@@ -30,7 +30,6 @@ import java.util.function.Supplier;
 public final class KettleStation {
     public static final String MOD_ID = "farmersrespite";
     public static final ResourceLocation ID = HandsOnDelight.id("kettle");
-    public static final String YOUKAI_MOD_ID = "youkaisfeasts";
     public static final ResourceLocation YOUKAI_ID = HandsOnDelight.id("youkai_kettle");
 
     public static final String INGREDIENTS = "ingredients";
@@ -80,8 +79,7 @@ public final class KettleStation {
 
     @SuppressWarnings("removal")
     public static final Supplier<Block> KETTLE = () -> BuiltInRegistries.BLOCK.get(new ResourceLocation(MOD_ID, "kettle"));
-    @SuppressWarnings("removal")
-    public static final Supplier<Block> YOUKAI_KETTLE = () -> BuiltInRegistries.BLOCK.get(new ResourceLocation(YOUKAI_MOD_ID, "kettle"));
+    public static final Supplier<Block> YOUKAI_KETTLE = () -> Youkai.block("kettle");
 
     public static final StationSchema SCHEMA = schema(KitchenKettle.INGREDIENTS, SlotRules.DEFAULT.kept());
     /** Youkai's Feasts' kettle steeps four things, one in each of its slots. */
@@ -121,7 +119,7 @@ public final class KettleStation {
         if (Platform.INSTANCE.isLoaded(MOD_ID)) {
             Diegesis.register(TYPE);
         }
-        if (Platform.INSTANCE.isLoaded(YOUKAI_MOD_ID)) {
+        if (Youkai.isLoaded()) {
             Diegesis.register(YOUKAI_TYPE);
         }
     }

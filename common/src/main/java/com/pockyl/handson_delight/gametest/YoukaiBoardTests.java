@@ -14,10 +14,10 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 
 import com.pockyl.handson_delight.FarmersDelightContent;
-import com.pockyl.handson_delight.platform.Platform;
 import com.pockyl.handson_delight.station.CuisineBoardStation;
 import com.pockyl.handson_delight.station.CuisineLogic;
 import com.pockyl.handson_delight.station.KitchenCuisine;
+import com.pockyl.handson_delight.station.Youkai;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +31,8 @@ public final class YoukaiBoardTests {
     private YoukaiBoardTests() {
     }
 
-    @SuppressWarnings("removal")
     private static Item feasts(String path) {
-        return BuiltInRegistries.ITEM.get(new ResourceLocation(KitchenCuisine.MOD_ID, path));
+        return Youkai.item(path);
     }
 
     @SuppressWarnings("removal")
@@ -46,7 +45,7 @@ public final class YoukaiBoardTests {
 
     /** A board with the logic the station would make for it; null without Youkai's Feasts. */
     private static Setup board(GameTestHelper helper) {
-        if (!Platform.INSTANCE.isLoaded(KitchenCuisine.MOD_ID)) {
+        if (!Youkai.isLoaded()) {
             helper.succeed();
             return null;
         }
@@ -93,13 +92,13 @@ public final class YoukaiBoardTests {
             return;
         }
         KitchenCuisine.Dish salmon = setup.board.handson$dishes().stream()
-                .filter(dish -> dish.id().toString().equals("youkaisfeasts:salmon_roll")).findFirst().orElse(null);
+                .filter(dish -> dish.id().equals(Youkai.id("salmon_roll"))).findFirst().orElse(null);
         helper.assertTrue(salmon != null, "the salmon nigiri is among " + setup.board.handson$dishes().size() + " recipes");
         helper.assertTrue(salmon.steps().size() == 3 && salmon.steps().get(0).test(new ItemStack(farmers("cooked_rice")))
                 && salmon.steps().get(1).isEmpty() && salmon.steps().get(2).test(new ItemStack(Items.SALMON)),
                 "rice, shaped by hand, then salmon; got " + salmon.steps().size() + " steps");
         KitchenCuisine.Dish kappa = setup.board.handson$dishes().stream()
-                .filter(dish -> dish.id().toString().equals("youkaisfeasts:kappa_maki")).findFirst().orElse(null);
+                .filter(dish -> dish.id().equals(Youkai.id("kappa_maki"))).findFirst().orElse(null);
         helper.assertTrue(kappa != null && kappa.steps().get(0).test(new ItemStack(Items.DRIED_KELP)) && kappa.handSteps() == 1
                 && kappa.steps().get(kappa.steps().size() - 1).isEmpty(), "a maki starts from kelp and is rolled up last");
         // 14 ordered, 7 mixed, 3 bamboo tubes in its 0.5.2.
@@ -160,7 +159,7 @@ public final class YoukaiBoardTests {
         player.getInventory().setItem(2, new ItemStack(feasts("soy_sauce_bottle"), 3));
         player.getInventory().setItem(3, new ItemStack(feasts("cucumber_slice"), 3));
         player.getInventory().setItem(4, new ItemStack(farmers("iron_knife")));
-        fill(setup, player, "youkaisfeasts:kappa_maki", false);
+        fill(setup, player, Youkai.id("kappa_maki").toString(), false);
         ItemStack finished = setup.board.handson$finished();
         helper.assertTrue(finished.is(feasts("kappa_maki")), "the book laid up and rolled a kappa maki, got " + finished
                 + " on " + setup.board.handson$contents());
@@ -198,7 +197,7 @@ public final class YoukaiBoardTests {
         player.getInventory().setItem(3, new ItemStack(feasts("cucumber_slice"), 3));
         helper.assertTrue(setup.board.handson$asStep(new ItemStack(feasts("soy_sauce_flask"))).is(feasts("soy_sauce_bottle")),
                 "a flask of soy sauce counts as its bottles");
-        fill(setup, player, "youkaisfeasts:kappa_maki", false);
+        fill(setup, player, Youkai.id("kappa_maki").toString(), false);
         ItemStack finished = setup.board.handson$finished();
         helper.assertTrue(finished.is(feasts("kappa_maki")), "the book made a kappa maki with the flask, got " + finished
                 + " on " + setup.board.handson$contents());
@@ -307,14 +306,14 @@ public final class YoukaiBoardTests {
         Player player = cook(helper);
         player.getInventory().setItem(0, new ItemStack(farmers("cooked_rice"), 3));
         player.getInventory().setItem(1, new ItemStack(Items.SALMON, 3));
-        fill(setup, player, "youkaisfeasts:salmon_roll", true);
+        fill(setup, player, Youkai.id("salmon_roll").toString(), true);
         helper.assertTrue(player.getInventory().countItem(farmers("salmon_roll")) == 4, "two dishes of two went to the cook, got "
                 + player.getInventory().countItem(farmers("salmon_roll")));
         helper.assertTrue(setup.board.handson$finished().is(farmers("salmon_roll")), "the third lies on the board");
         helper.assertTrue(player.getInventory().countItem(Items.SALMON) == 0, "all three salmon used");
         player.getInventory().setItem(0, new ItemStack(farmers("cooked_rice")));
         player.getInventory().setItem(1, new ItemStack(Items.SALMON));
-        fill(setup, player, "youkaisfeasts:salmon_roll", false);
+        fill(setup, player, Youkai.id("salmon_roll").toString(), false);
         helper.assertTrue(player.getInventory().countItem(farmers("salmon_roll")) == 6, "the dish lying there went to the cook first");
         helper.assertTrue(setup.board.handson$finished().is(farmers("salmon_roll")), "and the next was made");
         helper.succeed();

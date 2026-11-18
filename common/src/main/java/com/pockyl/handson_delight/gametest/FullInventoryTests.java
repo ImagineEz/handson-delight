@@ -5,7 +5,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -14,13 +13,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
 import com.pockyl.handson_delight.FarmersDelightContent;
-import com.pockyl.handson_delight.platform.Platform;
 import com.pockyl.handson_delight.station.BoardLogic;
 import com.pockyl.handson_delight.station.CuisineBoardStation;
 import com.pockyl.handson_delight.station.CuisineLogic;
 import com.pockyl.handson_delight.station.CuttingBoardStation;
 import com.pockyl.handson_delight.station.KitchenCuisine;
 import com.pockyl.handson_delight.station.KitchenYoukaiPot;
+import com.pockyl.handson_delight.station.Youkai;
 import com.pockyl.handson_delight.station.YoukaiPotLogic;
 import com.pockyl.handson_delight.station.YoukaiPotStation;
 
@@ -65,9 +64,8 @@ public final class FullInventoryTests {
         }
     }
 
-    @SuppressWarnings("removal")
     private static Item feasts(String path) {
-        return BuiltInRegistries.ITEM.get(new ResourceLocation(KitchenCuisine.MOD_ID, path));
+        return Youkai.item(path);
     }
 
     @SuppressWarnings("removal")
@@ -80,7 +78,7 @@ public final class FullInventoryTests {
      * pieces: two go in, one drops. Passes at once where Youkai's Feasts is not there.
      */
     public static void cutPiecesThatDoNotFitDropOnce(GameTestHelper helper) {
-        if (!Platform.INSTANCE.isLoaded(KitchenCuisine.MOD_ID)) {
+        if (!Youkai.isLoaded()) {
             helper.succeed();
             return;
         }
@@ -98,7 +96,7 @@ public final class FullInventoryTests {
         inventory.setItem(2, new ItemStack(feasts("soy_sauce_bottle")));
         inventory.setItem(3, new ItemStack(feasts("cucumber_slice")));
         CompoundTag fill = new CompoundTag();
-        fill.putString(CuisineBoardStation.DISH, "youkaisfeasts:kappa_maki");
+        fill.putString(CuisineBoardStation.DISH, Youkai.id("kappa_maki").toString());
         logic.onCustomAction(station, cook, CuisineBoardStation.ACTION_FILL, fill);
         helper.assertTrue(board.handson$finished().is(feasts("kappa_maki")), "a kappa maki lies rolled, got " + board.handson$finished());
 
@@ -167,7 +165,7 @@ public final class FullInventoryTests {
      * into that slot. Passes at once where Youkai's Feasts is not there.
      */
     public static void aYoukaiPotGivesTheContainerBackIntoTheEmptiedSlot(GameTestHelper helper) {
-        if (!Platform.INSTANCE.isLoaded(KitchenYoukaiPot.MOD_ID)) {
+        if (!Youkai.isLoaded()) {
             helper.succeed();
             return;
         }
@@ -197,7 +195,7 @@ public final class FullInventoryTests {
      * back into that slot. Passes at once where Youkai's Feasts is not there.
      */
     public static void theCuisineBoardGivesTheContainerBackIntoTheEmptiedSlot(GameTestHelper helper) {
-        if (!Platform.INSTANCE.isLoaded(KitchenCuisine.MOD_ID)) {
+        if (!Youkai.isLoaded()) {
             helper.succeed();
             return;
         }

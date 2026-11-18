@@ -31,6 +31,7 @@ import com.pockyl.handson_delight.forge.YoukaiFluids;
 import com.pockyl.handson_delight.station.KegStation;
 import com.pockyl.handson_delight.station.KitchenKeg;
 import com.pockyl.handson_delight.station.StationRecipes;
+import com.pockyl.handson_delight.station.Youkai;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +47,7 @@ import java.util.List;
 @Mixin(targets = "dev.xkmc.youkaishomecoming.content.pot.ferment.FermentationTankBlockEntity", remap = false)
 abstract class YoukaiTankMixin implements KitchenKeg {
     @Unique
-    private static final ResourceLocation HANDSON$FERMENTING = ResourceLocation.tryBuild("youkaisfeasts", "fermentation");
+    private static final ResourceLocation HANDSON$FERMENTING = Youkai.id("fermentation");
 
     @Unique
     private RecipeManager handson$readFrom;

@@ -27,7 +27,7 @@ import java.util.WeakHashMap;
  * libraries nested in its jar, so they are read by name.
  */
 public final class YoukaiPotDishes {
-    private static final ResourceLocation COOKING = ResourceLocation.tryBuild(KitchenYoukaiPot.MOD_ID, "pot_cooking");
+    private static final ResourceLocation COOKING = Youkai.id("pot_cooking");
     /**
      * Per recipe manager: the client's and the server's of a single-player game are two. Read again when the manager's map of recipes
      * is a new one (a reload, the server's recipes reaching a client).

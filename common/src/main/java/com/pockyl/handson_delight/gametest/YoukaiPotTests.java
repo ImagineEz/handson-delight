@@ -13,8 +13,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
 import com.pockyl.diegesis.api.station.StationType;
-import com.pockyl.handson_delight.platform.Platform;
 import com.pockyl.handson_delight.station.KitchenYoukaiPot;
+import com.pockyl.handson_delight.station.Youkai;
 import com.pockyl.handson_delight.station.YoukaiPotLogic;
 import com.pockyl.handson_delight.station.YoukaiPotStation;
 
@@ -32,9 +32,8 @@ public final class YoukaiPotTests {
     private YoukaiPotTests() {
     }
 
-    @SuppressWarnings("removal")
     private static Item feasts(String path) {
-        return BuiltInRegistries.ITEM.get(new ResourceLocation(KitchenYoukaiPot.MOD_ID, path));
+        return Youkai.item(path);
     }
 
     private record Setup(PotTests.TestStation station, YoukaiPotLogic logic, KitchenYoukaiPot pot, BlockPos at) {
@@ -42,7 +41,7 @@ public final class YoukaiPotTests {
 
     /** A pot over a lit campfire, with the logic the station would make for it; null without Youkai's Feasts. */
     private static Setup pot(GameTestHelper helper, Supplier<Block> block, StationType type) {
-        if (!Platform.INSTANCE.isLoaded(KitchenYoukaiPot.MOD_ID)) {
+        if (!Youkai.isLoaded()) {
             helper.succeed();
             return null;
         }
@@ -82,7 +81,7 @@ public final class YoukaiPotTests {
      * there, the station stays on it and takes food.
      */
     public static void anEmptyYoukaiPotTakesItsWaterAtTheStation(GameTestHelper helper) {
-        if (!Platform.INSTANCE.isLoaded(KitchenYoukaiPot.MOD_ID)) {
+        if (!Youkai.isLoaded()) {
             helper.succeed();
             return;
         }
@@ -119,11 +118,11 @@ public final class YoukaiPotTests {
             return;
         }
         KitchenYoukaiPot.Dish crab = setup.pot.handson$dishes().stream()
-                .filter(dish -> dish.id().toString().equals("youkaisfeasts:pot_of_tofu_crab_stew")).findFirst().orElse(null);
+                .filter(dish -> dish.id().equals(Youkai.id("pot_of_tofu_crab_stew"))).findFirst().orElse(null);
         helper.assertTrue(crab != null && crab.ingredients().size() == 3 && crab.ticks() > 0, "the tofu crab stew and its three");
         helper.assertTrue(crab.pot() == setup.pot.handson$pot(), "it cooks in the short iron pot");
         helper.assertTrue(YoukaiPotStation.dishes(setup.pot).stream().noneMatch(dish -> dish.id().toString()
-                .equals("youkaisfeasts:pot_of_mushroom_soup")), "the mushroom soup is the stockpot's, not this pot's");
+                .equals(Youkai.id("pot_of_mushroom_soup").toString())), "the mushroom soup is the stockpot's, not this pot's");
         // 13 pot recipes in its 0.5.2.
         helper.assertTrue(setup.pot.handson$dishes().size() >= 13, "every pot recipe, got " + setup.pot.handson$dishes().size());
         helper.succeed();
@@ -186,7 +185,7 @@ public final class YoukaiPotTests {
         player.getInventory().setItem(1, new ItemStack(Items.WHEAT, 2));
         helper.assertTrue(setup.pot.handson$put(player, player.getInventory().getItem(0)), "soul sand goes in by hand");
         CompoundTag fill = new CompoundTag();
-        fill.putString(YoukaiPotStation.DISH, "youkaisfeasts:higan_soup");
+        fill.putString(YoukaiPotStation.DISH, Youkai.id("higan_soup").toString());
         setup.logic.onCustomAction(setup.station, player, YoukaiPotStation.ACTION_FILL, fill);
         helper.assertTrue(setup.pot.handson$contents().size() == 2 && player.getInventory().countItem(Items.SOUL_SAND) == 1
                 && player.getInventory().countItem(Items.WHEAT) == 1, "the soul sand in it counted, the wheat came from the "
@@ -199,8 +198,7 @@ public final class YoukaiPotTests {
         });
     }
 
-    @SuppressWarnings("removal")
     private static ResourceLocation feastsId(String path) {
-        return new ResourceLocation(KitchenYoukaiPot.MOD_ID, path);
+        return Youkai.id(path);
     }
 }

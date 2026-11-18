@@ -34,6 +34,7 @@ import vectorwing.farmersdelight.common.block.entity.HeatableBlockEntity;
 import com.pockyl.handson_delight.forge.YoukaiSteamers;
 import com.pockyl.handson_delight.station.KitchenSteamer;
 import com.pockyl.handson_delight.station.SteamerTower;
+import com.pockyl.handson_delight.station.Youkai;
 
 import java.util.List;
 import java.util.Optional;
@@ -49,7 +50,7 @@ import java.util.Optional;
 @Mixin(targets = "dev.xkmc.youkaishomecoming.content.pot.steamer.SteamerBlockEntity", remap = false)
 abstract class YoukaiSteamerMixin implements KitchenSteamer {
     @Unique
-    private static final ResourceLocation HANDSON$STEAMING = ResourceLocation.tryBuild(MOD_ID, "steaming");
+    private static final ResourceLocation HANDSON$STEAMING = Youkai.id("steaming");
     /** Heat a thing takes of the steam going up past it and of the steam coming back down off a lid, as its racks count it. */
     @Unique
     private static final float HANDSON$UP = 0.01F;

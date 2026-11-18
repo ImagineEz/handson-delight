@@ -28,6 +28,7 @@ import vectorwing.farmersdelight.common.block.entity.HeatableBlockEntity;
 
 import com.pockyl.handson_delight.forge.YoukaiFluids;
 import com.pockyl.handson_delight.station.KitchenKettle;
+import com.pockyl.handson_delight.station.Youkai;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,7 @@ import java.util.List;
 @Mixin(targets = "dev.xkmc.youkaishomecoming.content.pot.kettle.KettleBlockEntity", remap = false)
 abstract class YoukaiKettleMixin implements KitchenKettle {
     @Unique
-    private static final ResourceLocation HANDSON$BREWING = ResourceLocation.tryBuild("youkaisfeasts", "kettle");
+    private static final ResourceLocation HANDSON$BREWING = Youkai.id("kettle");
 
     @Shadow
     private int heat;

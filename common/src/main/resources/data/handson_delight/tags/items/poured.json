@@ -65,6 +65,18 @@
     {
       "id": "youkaisfeasts:bowl_of_cream",
       "required": false
+    },
+    {
+      "id": "youkaishomecoming:soy_sauce_bottle",
+      "required": false
+    },
+    {
+      "id": "youkaishomecoming:mayonnaise_bottle",
+      "required": false
+    },
+    {
+      "id": "youkaishomecoming:bowl_of_cream",
+      "required": false
     }
   ]
 }

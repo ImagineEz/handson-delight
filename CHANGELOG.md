@@ -11,6 +11,9 @@
   piece browns as it bakes, and what is done waits on the open door. A skillet or a pot clicked on its top stands upright on
   a burner, other tools lie flat there. Sneak for its own menu; hoppers work as before.
   `oven` in the config turns it off.
+- [Youkai's Homecoming](https://modrinth.com/mod/youkaishomecoming)'s kettle, cuisine board, small iron pot, short iron
+  pot, stockpot, steamer and fermentation tank are stations, the same as those of Youkai's Feasts, with its own recipes in
+  their books: scarlet tea, the flesh roll, sparrow sake and the other sakes it adds.
 
 ### Changed
 - The book's pages turn with Page Up and Page Down, Home and End, or a click on either half of the page's foot, which goes

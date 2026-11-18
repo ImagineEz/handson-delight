@@ -31,6 +31,7 @@ import org.spongepowered.asm.mixin.Unique;
 
 import com.pockyl.handson_delight.HandsOnDelight;
 import com.pockyl.handson_delight.station.KitchenCuisine;
+import com.pockyl.handson_delight.station.Youkai;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -48,9 +49,9 @@ import java.util.Optional;
 abstract class YoukaiCuisineBoardMixin implements KitchenCuisine {
     @Unique
     private static final TagKey<Item> HANDSON$WITH_CONTAINER = TagKey.create(Registries.ITEM,
-            ResourceLocation.tryBuild(MOD_ID, "place_with_container"));
+            Youkai.id("place_with_container"));
     @Unique
-    private static final ResourceLocation HANDSON$CUISINE = ResourceLocation.tryBuild(MOD_ID, "cuisine");
+    private static final ResourceLocation HANDSON$CUISINE = Youkai.id("cuisine");
     @Unique
     private static boolean handson$warned;
 

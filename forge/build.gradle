@@ -132,9 +132,22 @@ if (providers.gradleProperty('addons').isPresent()) {
                     'geckolib:aC5KMoNg',              // GeckoLib 4.8.4, needed by Iron's Spells
                     'curios:IPQlZkz1',                // Curios API 5.14.1+1.20.1, needed by Iron's Spells
                     'playeranimator:xe2EVE6q',        // playerAnimator 1.0.2-rc1+1.20, needed by Iron's Spells
-                    "gensokyo-delight-youkais-feasts:${youkais_feasts_version}", // Youkai's Feasts 0.5.2: its kettle (L2 libraries inside)
             ].each { modRuntimeOnly "maven.modrinth:${it}" }
+            // Youkai's Feasts 0.5.2: its kitchen (L2 libraries inside). Youkai's Homecoming has the same classes, so never both.
+            if (!providers.gradleProperty('homecoming').isPresent()) {
+                modRuntimeOnly "maven.modrinth:gensokyo-delight-youkais-feasts:${youkais_feasts_version}"
+            }
         }
+    }
+}
+
+// -Phomecoming runs the game tests with Youkai's Homecoming, the same kitchen as Youkai's Feasts under its own mod id (with
+// -Paddons=wide in place of Youkai's Feasts). -Phomecoming=<Modrinth version id> plays an older build, whose stations are left out
+// where it lacks what they use.
+if (providers.gradleProperty('homecoming').isPresent()) {
+    var homecoming = providers.gradleProperty('homecoming').get()
+    dependencies {
+        modRuntimeOnly "maven.modrinth:youkaishomecoming:${homecoming && homecoming != 'true' ? homecoming : youkais_homecoming_version}"
     }
 }
 

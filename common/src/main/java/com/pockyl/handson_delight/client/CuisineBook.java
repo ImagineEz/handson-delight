@@ -4,7 +4,6 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
@@ -14,6 +13,7 @@ import com.pockyl.handson_delight.station.Cutting;
 import com.pockyl.handson_delight.station.KitchenCuisine;
 
 import com.pockyl.diegesis.api.client.StationView;
+import com.pockyl.handson_delight.station.Youkai;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -73,9 +73,8 @@ final class CuisineBook implements RecipeBook.Source {
         return Component.translatable("handson_delight.book.tab." + tab);
     }
 
-    @SuppressWarnings("removal")
     private static ItemStack icon(String path) {
-        return new ItemStack(BuiltInRegistries.ITEM.get(new ResourceLocation(KitchenCuisine.MOD_ID, path)));
+        return new ItemStack(Youkai.item(path));
     }
 
     @Override

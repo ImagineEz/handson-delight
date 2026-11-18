@@ -4,7 +4,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -13,10 +12,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
 
 import com.pockyl.diegesis.api.state.SlotRef;
-import com.pockyl.handson_delight.platform.Platform;
 import com.pockyl.handson_delight.station.KettleLogic;
 import com.pockyl.handson_delight.station.KettleStation;
 import com.pockyl.handson_delight.station.KitchenKettle;
+import com.pockyl.handson_delight.station.Youkai;
 
 /**
  * Youkai's Feasts' kettle at the station: its lid is the station's, off only while somebody works at it; four leaves go in one a
@@ -24,14 +23,13 @@ import com.pockyl.handson_delight.station.KitchenKettle;
  * a time. Each test passes at once where Youkai's Feasts is not there.
  */
 public final class YoukaiKettleTests {
-    private static final String BLACK_TEA = "youkaisfeasts:black_tea";
+    private static final String BLACK_TEA = Youkai.id("black_tea").toString();
 
     private YoukaiKettleTests() {
     }
 
-    @SuppressWarnings("removal")
     private static Item feasts(String path) {
-        return BuiltInRegistries.ITEM.get(new ResourceLocation(KettleStation.YOUKAI_MOD_ID, path));
+        return Youkai.item(path);
     }
 
     private record Setup(PotTests.TestStation station, KettleLogic logic, KitchenKettle kettle) {
@@ -39,7 +37,7 @@ public final class YoukaiKettleTests {
 
     /** A kettle over a lit campfire or on stone, with the logic the station would make for it; null without Youkai's Feasts. */
     private static Setup kettle(GameTestHelper helper, boolean heated) {
-        if (!Platform.INSTANCE.isLoaded(KettleStation.YOUKAI_MOD_ID)) {
+        if (!Youkai.isLoaded()) {
             helper.succeed();
             return null;
         }

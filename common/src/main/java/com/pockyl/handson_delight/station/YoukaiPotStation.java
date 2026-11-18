@@ -1,7 +1,6 @@
 package com.pockyl.handson_delight.station;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -20,7 +19,6 @@ import com.pockyl.diegesis.api.state.StationSchema;
 import com.pockyl.diegesis.api.state.TankSpec;
 import com.pockyl.diegesis.api.station.StationType;
 import com.pockyl.handson_delight.HandsOnDelight;
-import com.pockyl.handson_delight.platform.Platform;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -115,9 +113,8 @@ public final class YoukaiPotStation {
     private YoukaiPotStation() {
     }
 
-    @SuppressWarnings("removal")
     private static Supplier<Block> block(String path) {
-        return () -> BuiltInRegistries.BLOCK.get(new ResourceLocation(KitchenYoukaiPot.MOD_ID, path));
+        return () -> Youkai.block(path);
     }
 
     private static StationType.Builder type(ResourceLocation id, Supplier<Block> block, Supplier<Block> empty) {
@@ -131,7 +128,7 @@ public final class YoukaiPotStation {
     }
 
     public static void register() {
-        if (Platform.INSTANCE.isLoaded(KitchenYoukaiPot.MOD_ID)) {
+        if (Youkai.isLoaded()) {
             TYPES.forEach(Diegesis::register);
         }
     }
