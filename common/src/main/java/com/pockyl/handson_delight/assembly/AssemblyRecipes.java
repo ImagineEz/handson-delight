@@ -56,6 +56,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 /**
@@ -94,6 +95,8 @@ public final class AssemblyRecipes {
      */
     private static final String CONDITIONAL = "forge:conditional";
     private static final int GRID = 3;
+    /** Whether this thread looks for the recipe whose remainders are left in a grid: nothing is hidden from that lookup. */
+    private static final ThreadLocal<Boolean> SEEING_EVERY_RECIPE = ThreadLocal.withInitial(() -> false);
     /**
      * Culinary Compat's cuts of several things at once: Pam's HarvestCraft crafts that need its cutting board, made on Farmer's
      * Delight's board with a knife instead. They come into the server's recipe manager after it loaded, when the server starts.
@@ -290,13 +293,28 @@ public final class AssemblyRecipes {
      */
     public static boolean notInThisGrid(Recipe<?> recipe, Container grid) {
         if (!(grid instanceof TransientCraftingContainer table) || !HandsOnConfig.removeCraftingRecipes()
-                || !isMadeOnTheBoard(recipe.getId())) {
+                || !isMadeOnTheBoard(recipe.getId()) || SEEING_EVERY_RECIPE.get()) {
             return false;
         }
         AbstractContainerMenu menu = ((TransientCraftingContainerAccessor) table).handson$menu();
         Player player = menu instanceof CraftingMenu crafting ? ((CraftingMenuAccessor) crafting).handson$player()
                 : menu instanceof InventoryMenu inventory ? ((InventoryMenuAccessor) inventory).handson$owner() : null;
         return player != null && !(player instanceof ServerPlayer server && !Platform.INSTANCE.hasBoard(server));
+    }
+
+    /**
+     * {@code lookup} run with nothing hidden from a player's grid. What a grid leaves behind is found this way: when another mod's
+     * crafting table made a dish by a lookup of its own, the recipe's remainders must come back, never the grid's stacks themselves,
+     * which vanilla returns when it finds no recipe and then adds to themselves (the wheat doubled, the water bucket lost).
+     */
+    public static <T> T seeingEveryRecipe(Supplier<T> lookup) {
+        boolean before = SEEING_EVERY_RECIPE.get();
+        SEEING_EVERY_RECIPE.set(true);
+        try {
+            return lookup.get();
+        } finally {
+            SEEING_EVERY_RECIPE.set(before);
+        }
     }
 
     /**

@@ -294,6 +294,29 @@ public final class BoardTests {
         helper.succeed();
     }
 
+    /**
+     * Another mod's crafting table finds the dough from water by itself (CF report: the wheat doubled and the bucket was lost): taking
+     * it uses one wheat and leaves the water, as Farmer's Delight's recipe says, and a lookup of every match finds no dough either.
+     */
+    public static void doughTakenFromAnotherModsGridKeepsItsWater(GameTestHelper helper) {
+        Level level = helper.getLevel();
+        Player player = helper.makeMockPlayer();
+        CraftingMenu menu = new CraftingMenu(0, player.getInventory());
+        menu.getSlot(1).set(new ItemStack(Items.WHEAT, 3));
+        menu.getSlot(2).set(new ItemStack(Items.WATER_BUCKET));
+        CraftingContainer grid = new TransientCraftingContainer(menu, 3, 3);
+        grid.setItem(0, new ItemStack(Items.WHEAT, 3));
+        grid.setItem(1, new ItemStack(Items.WATER_BUCKET));
+        helper.assertTrue(level.getRecipeManager().getRecipesFor(RecipeType.CRAFTING, grid, level).stream()
+                .noneMatch(recipe -> recipe.getResultItem(level.registryAccess()).is(fd("wheat_dough"))), "no lookup finds the dough");
+        menu.getSlot(0).onTake(player, new ItemStack(fd("wheat_dough")));
+        ItemStack wheat = menu.getSlot(1).getItem();
+        ItemStack water = menu.getSlot(2).getItem();
+        helper.assertTrue(wheat.is(Items.WHEAT) && wheat.getCount() == 2, "one wheat is used, not doubled: " + wheat);
+        helper.assertTrue(water.is(Items.WATER_BUCKET) && water.getCount() == 1, "the water stays: " + water);
+        helper.succeed();
+    }
+
     /** A shaped recipe: the crust first, then all the rest in any order; the pie is a block and lies on the board. */
     public static void aPieGoesIntoItsCrust(GameTestHelper helper) {
         Board setup = board(helper);

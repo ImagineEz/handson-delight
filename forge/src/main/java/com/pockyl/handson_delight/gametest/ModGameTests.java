@@ -305,6 +305,11 @@ public final class ModGameTests {
     }
 
     @GameTest(template = "empty")
+    public static void doughTakenFromAnotherModsGridKeepsItsWater(GameTestHelper helper) {
+        BoardTests.doughTakenFromAnotherModsGridKeepsItsWater(helper);
+    }
+
+    @GameTest(template = "empty")
     public static void aPieGoesIntoItsCrust(GameTestHelper helper) {
         BoardTests.aPieGoesIntoItsCrust(helper);
     }

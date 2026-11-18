@@ -28,6 +28,7 @@
 - After `/reload`, JEI and EMI show Culinary Compat's dishes on the cutting board without rejoining.
 - In a LAN game, a guest who turned the cutting board off can craft its dishes in the crafting grid again.
 - Switching quickly between neighbouring stations no longer breaks the recipe book.
+- Wheat dough taken from a crafting table that another mod changes no longer doubles the wheat or loses the water bucket.
 
 ## [1.5.0+1.20.1] - 2026-11-15
 ### New
