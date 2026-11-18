@@ -27,6 +27,7 @@ public final class AddonMixins implements IMixinConfigPlugin {
     private static final String PACKAGE = "com.pockyl.handson_delight.forge.mixin.";
     private static final List<String> YOUKAI = List.of("youkaisfeasts", "youkaishomecoming");
     private static final List<String> CHOPPERS = List.of("choppersdelight");
+    private static final List<String> HEARTH = List.of("hearthandharvest");
     /** The Youkai mods' drinks as fluids, which their kettle and tank stations pour and tap: Feasts 0.4.5, Homecoming 2.6.6. */
     private static final String YOUKAI_DRINKS = "dev.xkmc.youkaishomecoming.content.item.fluid.IYHFluidItem";
     /** The Youkai mods' slip bottle as a container of a thing, which their pots and cuisine board give back: Homecoming 2.5.4 on. */
@@ -68,7 +69,13 @@ public final class AddonMixins implements IMixinConfigPlugin {
             Map.entry("ChoppersBoardMixin", Needs.member(CHOPPERS, "getMaxStackSize")),
             Map.entry("ChoppersBoardBlockMixin", Needs.mod(CHOPPERS)),
             Map.entry("DecoratedBoardContentMixin", Needs.mod(CHOPPERS)),
-            Map.entry("CulinaryBridgesSyncMixin", Needs.mod(List.of("culinarycompat"))));
+            Map.entry("CulinaryBridgesSyncMixin", Needs.mod(List.of("culinarycompat"))),
+            // Hearth and Harvest has had its keg, with its two tanks, since 1.4.0.
+            Map.entry("HearthKegMixin", Needs.member(HEARTH, "getInputTank")),
+            Map.entry("HearthKegAccess", Needs.member(HEARTH, "getInputTank")),
+            // Its cask was sealed by hand, and aged only so, since 1.4.0.
+            Map.entry("HearthCaskMixin", Needs.member(HEARTH, "isSealed")),
+            Map.entry("HearthCaskAccess", Needs.member(HEARTH, "isSealed")));
 
     @Override
     public void onLoad(String mixinPackage) {

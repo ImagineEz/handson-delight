@@ -87,6 +87,8 @@ dependencies {
     // Youkai's Feasts' kettle is a station too: compiled against it only (its drinks; the kettle itself is reached by name, as its
     // classes build on the L2 libraries nested in its jar).
     modCompileOnly "maven.modrinth:gensokyo-delight-youkais-feasts:${youkais_feasts_version}"
+    // Hearth and Harvest's keg is a station too: compiled against it only.
+    modCompileOnly "maven.modrinth:hearth-and-harvest:${hearth_and_harvest_version}"
     devMods "com.pockyl.diegesis:forge:${diegesis_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
@@ -115,6 +117,7 @@ if (providers.gradleProperty('addons').isPresent()) {
                 'frights-delight:r31i2Fd1',       // Fright's Delight 1.4.8: a bone cut into the skewers its kebabs are served on
                 'cooking-for-blockheads:W87tG8sG', // Cooking for Blockheads 16.0.15: its oven
                 'balm:dDN38ae7',                  // Balm 7.3.44, needed by Cooking for Blockheads
+                "hearth-and-harvest:${hearth_and_harvest_version}", // Hearth and Harvest 1.4.3: its keg
         ].each { modRuntimeOnly "maven.modrinth:${it}" }
         // -Paddons=wide adds the next most downloaded addons that need no other mods: more food, own crafts and tags.
         if (providers.gradleProperty('addons').get() == 'wide') {

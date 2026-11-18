@@ -711,10 +711,16 @@ public final class AssemblyRecipes {
             return Optional.empty();
         }
         JsonElement result = recipe.get("result");
-        String name = result == null ? null : result.isJsonObject() ? string(result.getAsJsonObject(), "item")
+        // Its result names the item as "item", or as "id" where an addon writes it the way later versions do (Hearth and Harvest).
+        String name = result == null ? null : result.isJsonObject() ? resultName(result.getAsJsonObject())
                 : result.isJsonPrimitive() ? result.getAsString() : null;
         ResourceLocation item = name == null ? null : ResourceLocation.tryParse(name);
         return item != null && BuiltInRegistries.ITEM.containsKey(item) ? Optional.of(recipe) : Optional.empty();
+    }
+
+    private static String resultName(JsonObject result) {
+        String item = string(result, "item");
+        return item != null ? item : string(result, "id");
     }
 
     private static Optional<Assembly> parse(ResourceLocation id, JsonObject json) {

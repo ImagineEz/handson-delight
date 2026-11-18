@@ -25,7 +25,11 @@
     "YoukaiFermentRecipeAccess",
     "ChoppersBoardMixin",
     "ChoppersBoardBlockMixin",
-    "CulinaryBridgesSyncMixin"
+    "CulinaryBridgesSyncMixin",
+    "HearthKegMixin",
+    "HearthKegAccess",
+    "HearthCaskMixin",
+    "HearthCaskAccess"
   ],
   "client": [
     "CopperPotQuietMixin",

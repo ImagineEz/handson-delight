@@ -103,6 +103,15 @@ Built on [Diegesis](https://www.curseforge.com/minecraft/mc-mods/diegesis).
   badge counting down. The drink is dipped out with a bottle, and the book puts its recipes in from your inventory.
 - **The kitchen** of [Youkai's Homecoming](https://modrinth.com/mod/youkaishomecoming), which Youkai's Feasts is taken from:
   its kettle, cuisine board, pots, steamer and fermentation tank are the same stations, with its own teas, rolls and sakes.
+- **Keg** of [Hearth and Harvest](https://modrinth.com/mod/hearth-and-harvest). Its lid comes off with a click: pour in a
+  juice, water, milk or brine and drop in what ferments. Under the lid it ferments a portion at a time, the liquid turning
+  to the drink's colour, and the wine is drawn into a bottle at its tap. An empty bucket or bottle at the opening takes back
+  what has not fermented, a jar of pickles or a cheese wheel waits to be taken, and the book puts in as many of each as a
+  recipe takes. Eight kegs built into a big keg open as one, from any of its blocks, with a lid in the middle of its top.
+- **Cask** of [Hearth and Harvest](https://modrinth.com/mod/hearth-and-harvest). Lift its lid by the handle, lay in the
+  bottles to age, salt and meat for jerky or a cheese, and put the lid back on to seal it. Sealed, a wine ages a bottle at
+  a time into its next vintage, faster in a dark cellar; what is done waits before the cask and is taken without breaking
+  the seal. The book shows each recipe's time where the cask stands.
 - **Grill** of [Barbeque's Delight](https://modrinth.com/mod/barbeques-delight-forge). Two skewers lie over its fire.
   One smokes when its lower side is done: click it to turn it over, once. Click a skewer with a powder to shake it over
   or with a sauce to dab it on, and the seasoning stays on it. A skewer left on after it is done darkens, smokes and
@@ -167,7 +176,7 @@ its [Iron's Spells 'n Spellbooks](https://modrinth.com/mod/irons-spells-n-spellb
 [Barbeque's Delight](https://modrinth.com/mod/barbeques-delight-forge)'s kebabs and bibimbap are put together on the
 board and keep the seasoning of their skewers.
 [Cooking for Blockheads](https://modrinth.com/mod/cooking-for-blockheads)'s oven opens as a station in each of its
-colours, its tools still standing on top.
+colours, its tools still standing on top, and so do [Hearth and Harvest](https://modrinth.com/mod/hearth-and-harvest)'s keg and cask.
 
 Hoppers, pipes and drops use the blocks' own inventories. A pot fed by automation cooks by itself, as in Farmer's Delight.
 
@@ -179,13 +188,14 @@ which each player sets in their own file.
 | Key | Default | What it does |
 |---|---|---|
 | `cooking_pot`, `cutting_board`, `skillet`, `stove` | `true` | The station of that block. Off, the block works as in Farmer's Delight. `cooking_pot` covers the addons' pots too (copper, monster, alchemist) |
-| `keg` | `true` | Brewin' and Chewin's keg as a station. Off, the keg keeps its own menu |
+| `keg` | `true` | The kegs of Brewin' and Chewin' and Hearth and Harvest as stations. Off, each keg keeps its own menu. Hearth and Harvest's keeps its own fermenting times |
 | `kettle` | `true` | The kettles of Farmer's Respite and Youkai's Feasts as stations. Off, each is used as before |
 | `grill`, `basin` | `true` | Barbeque's Delight's grill and ingredients basin as stations. Off, they are used as before |
 | `cuisine_board` | `true` | Youkai's Feasts' cuisine board as a station. Off, it is used as before |
 | `youkai_pots` | `true` | Youkai's Feasts' small iron pot, short iron pot and stockpot as stations. Off, they are used as before. They keep their own cooking times |
 | `youkai_steamer` | `true` | Youkai's Feasts' steamer as a station. Off, it is used as before. It keeps its own steaming times |
 | `youkai_tank` | `true` | Youkai's Feasts' fermentation tank as a station. Off, it is used as before. It keeps its own fermenting times |
+| `cask` | `true` | Hearth and Harvest's cask as a station. Off, it keeps its own menu. It keeps its own aging times, faster in the dark |
 | `oven` | `true` | Cooking for Blockheads' oven as a station. Off, it keeps its own menu. It keeps its own baking time |
 | `youkai_hints` | `false` | Youkai's Feasts' squares on the right of the screen while one of its blocks is looked at (what it takes next, what lies in it). Hidden unless on |
 | `remove_crafting_recipes` | `true` | Farmer's Delight's food crafts are made on the board only |

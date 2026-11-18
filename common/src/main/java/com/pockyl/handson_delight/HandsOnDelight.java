@@ -46,6 +46,9 @@ public final class HandsOnDelight {
         if (HandsOnConfig.youkaiTank()) {
             KegStation.registerTank();
         }
+        if (HandsOnConfig.cask()) {
+            KegStation.registerCask();
+        }
         if (HandsOnConfig.kettle()) {
             KettleStation.register();
         }
