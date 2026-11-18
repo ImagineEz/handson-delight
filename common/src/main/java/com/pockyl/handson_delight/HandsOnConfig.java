@@ -37,6 +37,8 @@ public final class HandsOnConfig {
             "  used as before. It keeps its own steaming times.",
             "youkai_tank: Youkai's Feasts' fermentation tank as a station, when that mod is there. Off, it is used as before.",
             "  It keeps its own fermenting times.",
+            "oven: Cooking for Blockheads' oven as a station, when that mod is there. Off, it keeps its own menu. It keeps its",
+            "  own baking time (its config's ovenCookTimeMultiplier).",
             "youkai_hints: Youkai's Feasts' squares on the right of the screen while one of its blocks is looked at (what it",
             "  takes next, what lies in it and its progress). Off by default.",
             "remove_crafting_recipes: Farmer's Delight's food crafts (sandwiches, salads, rolls, pies, feasts) are made on the",
@@ -68,6 +70,7 @@ public final class HandsOnConfig {
     private static boolean youkaiSteamer = true;
     private static boolean youkaiTank = true;
     private static boolean youkaiHints = false;
+    private static boolean oven = true;
     private static boolean removeCraftingRecipes = true;
     private static boolean stirringRequired = true;
     private static boolean recipeBook = true;
@@ -105,6 +108,7 @@ public final class HandsOnConfig {
         youkaiSteamer = read(values, "youkai_steamer", youkaiSteamer);
         youkaiTank = read(values, "youkai_tank", youkaiTank);
         youkaiHints = read(values, "youkai_hints", youkaiHints);
+        oven = read(values, "oven", oven);
         removeCraftingRecipes = read(values, "remove_crafting_recipes", removeCraftingRecipes);
         stirringRequired = read(values, "stirring_required", stirringRequired);
         recipeBook = read(values, "recipe_book", recipeBook);
@@ -172,6 +176,10 @@ public final class HandsOnConfig {
 
     public static boolean stove() {
         return stove;
+    }
+
+    public static boolean oven() {
+        return oven;
     }
 
     public static boolean keg() {

@@ -113,6 +113,8 @@ if (providers.gradleProperty('addons').isPresent()) {
                 'nethers-delight:MTDQhZd2',       // Nether's Delight 1.20.1-4.0
                 "farmers-respite:${farmers_respite_version}", // Farmer's Respite 1.20.1-2.1: its kettle
                 'frights-delight:r31i2Fd1',       // Fright's Delight 1.4.8: a bone cut into the skewers its kebabs are served on
+                'cooking-for-blockheads:W87tG8sG', // Cooking for Blockheads 16.0.15: its oven
+                'balm:dDN38ae7',                  // Balm 7.3.44, needed by Cooking for Blockheads
         ].each { modRuntimeOnly "maven.modrinth:${it}" }
         // -Paddons=wide adds the next most downloaded addons that need no other mods: more food, own crafts and tags.
         if (providers.gradleProperty('addons').get() == 'wide') {

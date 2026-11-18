@@ -1,0 +1,6 @@
+{
+  "parent": "handson_delight:diegesis/cfb_oven/body/base",
+  "textures": {
+    "ovenfront": "cookingforblockheads:block/oven_front_powered_active"
+  }
+}

@@ -24,7 +24,8 @@
     "SkilletBlockEntityMixin",
     "StoveBlockEntityMixin",
     "StoveBlockMixin",
-    "PlayerListMixin"
+    "PlayerListMixin",
+    "CfbOvenTopMixin"
   ],
   "client": [
     "CookingPotBlockEntityMixin",
@@ -36,7 +37,8 @@
     "AddonStoveSmokeMixin",
     "CampfireSmokeMixin",
     "GrillSmokeMixin",
-    "GrillSizzleMixin"
+    "GrillSizzleMixin",
+    "CfbOvenToolsMixin"
   ],
   "injectors": {
     "defaultRequire": 1

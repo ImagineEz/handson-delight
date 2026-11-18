@@ -7,7 +7,7 @@ import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
 import com.pockyl.handson_delight.HandsOnDelight;
 
-/** {@link PotTests}, {@link CopperPotTests}, {@link MonsterPotTests}, {@link AlchemistPotTests}, {@link KegTests}, {@link KettleTests}, {@link YoukaiKettleTests}, {@link YoukaiBoardTests}, {@link YoukaiPotTests}, {@link YoukaiSteamerTests}, {@link YoukaiTankTests}, {@link BoardTests}, {@link SkilletTests}, {@link StoveTests} and {@link RecipeAudit} on Forge. */
+/** {@link PotTests}, {@link CopperPotTests}, {@link MonsterPotTests}, {@link AlchemistPotTests}, {@link KegTests}, {@link KettleTests}, {@link OvenTests}, {@link YoukaiKettleTests}, {@link YoukaiBoardTests}, {@link YoukaiPotTests}, {@link YoukaiSteamerTests}, {@link YoukaiTankTests}, {@link BoardTests}, {@link SkilletTests}, {@link StoveTests} and {@link RecipeAudit} on Forge. */
 @GameTestHolder(HandsOnDelight.MOD_ID)
 @PrefixGameTestTemplate(false)
 public final class ModGameTests {
@@ -697,6 +697,46 @@ public final class ModGameTests {
     @GameTest(template = "empty", timeoutTicks = 120)
     public static void theLidKeepsThingsOutAndTheBrewWaitsUnderIt(GameTestHelper helper) {
         KegTests.theLidKeepsThingsOutAndTheBrewWaitsUnderIt(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void theCfbOvenReadsItsRecipes(GameTestHelper helper) {
+        OvenTests.theOvenReadsItsRecipes(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void theCfbOvenDoorKeepsTheRackShut(GameTestHelper helper) {
+        OvenTests.theDoorKeepsTheRackShut(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 400)
+    public static void foodBakesOnTheCfbOvenRack(GameTestHelper helper) {
+        OvenTests.foodBakesOnTheRack(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void cfbOvenFuelComesFromTheInventory(GameTestHelper helper) {
+        OvenTests.fuelComesFromTheInventory(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void aPickInTheBookFillsTheCfbOvenRack(GameTestHelper helper) {
+        OvenTests.aPickInTheBookFillsTheRack(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void theCfbOvenDoorShutsBehindTheLastCook(GameTestHelper helper) {
+        OvenTests.theDoorShutsBehindTheLastCook(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void aSkilletStandsOnACfbOvenBurner(GameTestHelper helper) {
+        OvenTests.aSkilletStandsOnABurner(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 700)
+    public static void hoppersFeedAndEmptyTheCfbOven(GameTestHelper helper) {
+        OvenTests.hoppersFeedAndEmptyTheOven(helper);
     }
 
     @GameTest(template = "empty")

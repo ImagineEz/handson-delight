@@ -11,6 +11,7 @@ import com.pockyl.handson_delight.station.BasinStation;
 import com.pockyl.handson_delight.station.CuisineBoardStation;
 import com.pockyl.handson_delight.station.GrillStation;
 import com.pockyl.handson_delight.station.KettleStation;
+import com.pockyl.handson_delight.station.OvenStation;
 import com.pockyl.handson_delight.station.SkilletStation;
 import com.pockyl.handson_delight.station.StoveStation;
 import com.pockyl.handson_delight.station.SteamerStation;
@@ -62,6 +63,9 @@ public final class HandsOnDelight {
         }
         if (HandsOnConfig.youkaiSteamer()) {
             SteamerStation.register();
+        }
+        if (HandsOnConfig.oven()) {
+            OvenStation.register();
         }
     }
 

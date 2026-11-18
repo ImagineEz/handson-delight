@@ -18,7 +18,8 @@ import java.util.Set;
 public final class OptionalMixins implements IMixinConfigPlugin {
     private static final String PACKAGE = "com.pockyl.handson_delight.mixin.";
     private static final Set<String> OPTIONAL = Set.of(PACKAGE + "KubeJsRecipesMixin", PACKAGE + "AddonStoveSmokeMixin",
-            PACKAGE + "GrillSmokeMixin", PACKAGE + "GrillSizzleMixin");
+            PACKAGE + "GrillSmokeMixin", PACKAGE + "GrillSizzleMixin", PACKAGE + "CfbOvenToolsMixin",
+            PACKAGE + "CfbOvenTopMixin");
 
     @Override
     public void onLoad(String mixinPackage) {

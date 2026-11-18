@@ -113,6 +113,13 @@ Built on [Diegesis](https://www.curseforge.com/minecraft/mc-mods/diegesis).
   like the cooking pot. An [Iron's Spells 'n Spellbooks](https://modrinth.com/mod/irons-spells-n-spellbooks) scroll
   clicked on it hangs over its rim and its school shows on the pot: a fire scroll burns under it and heats it. Dishes
   that need a school wait for their scroll, which blinks on the badge and stands with them in the book.
+- **Oven** of [Cooking for Blockheads](https://modrinth.com/mod/cooking-for-blockheads), in every colour. Its door
+  drops open and the rack slides out over it: let raw food go over the rack and it fills the free places, or click one
+  place with the right button. Coal or wood let go over the rack goes onto the fire, and an empty hand at its controls is
+  offered fuel from your inventory. Each piece browns
+  and rises as it bakes, and what is done waits on the open door with a puff of steam. The book lays its furnace food
+  from your inventory. A skillet or a pot clicked on its top stands upright on the burner, and an empty hand takes it back.
+  Sneak to open its own menu; hoppers and its heating unit work as before.
 - **A kitchen.** Rest the cursor at the edge of the screen beside another station and the camera moves over to it. A, D
   and the arrow keys do the same.
 - **For everyone.** Players nearby see the soup simmer, the spoon go round and the food land on the board.
@@ -156,6 +163,8 @@ its cuisine board and its three pots.
 its [Iron's Spells 'n Spellbooks](https://modrinth.com/mod/irons-spells-n-spellbooks) scroll.
 [Barbeque's Delight](https://modrinth.com/mod/barbeques-delight-forge)'s kebabs and bibimbap are put together on the
 board and keep the seasoning of their skewers.
+[Cooking for Blockheads](https://modrinth.com/mod/cooking-for-blockheads)'s oven opens as a station in each of its
+colours, its tools still standing on top.
 
 Hoppers, pipes and drops use the blocks' own inventories. A pot fed by automation cooks by itself, as in Farmer's Delight.
 
@@ -174,6 +183,7 @@ which each player sets in their own file.
 | `youkai_pots` | `true` | Youkai's Feasts' small iron pot, short iron pot and stockpot as stations. Off, they are used as before. They keep their own cooking times |
 | `youkai_steamer` | `true` | Youkai's Feasts' steamer as a station. Off, it is used as before. It keeps its own steaming times |
 | `youkai_tank` | `true` | Youkai's Feasts' fermentation tank as a station. Off, it is used as before. It keeps its own fermenting times |
+| `oven` | `true` | Cooking for Blockheads' oven as a station. Off, it keeps its own menu. It keeps its own baking time |
 | `youkai_hints` | `false` | Youkai's Feasts' squares on the right of the screen while one of its blocks is looked at (what it takes next, what lies in it). Hidden unless on |
 | `remove_crafting_recipes` | `true` | Farmer's Delight's food crafts are made on the board only |
 | `stirring_required` | `true` | Food you put into the pot waits for the spoon while you are at it |
