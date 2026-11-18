@@ -24,7 +24,8 @@
     "YoukaiTankMixin",
     "YoukaiFermentRecipeAccess",
     "ChoppersBoardMixin",
-    "ChoppersBoardBlockMixin"
+    "ChoppersBoardBlockMixin",
+    "CulinaryBridgesSyncMixin"
   ],
   "client": [
     "CopperPotQuietMixin",

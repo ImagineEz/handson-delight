@@ -46,7 +46,8 @@ public final class AddonMixins implements IMixinConfigPlugin {
             Map.entry("YoukaiHintsMixin", Needs.mod(YOUKAI)),
             Map.entry("ChoppersBoardMixin", new Needs(CHOPPERS, "getMaxStackSize", null)),
             Map.entry("ChoppersBoardBlockMixin", Needs.mod(CHOPPERS)),
-            Map.entry("DecoratedBoardContentMixin", Needs.mod(CHOPPERS)));
+            Map.entry("DecoratedBoardContentMixin", Needs.mod(CHOPPERS)),
+            Map.entry("CulinaryBridgesSyncMixin", Needs.mod("culinarycompat")));
 
     @Override
     public void onLoad(String mixinPackage) {
