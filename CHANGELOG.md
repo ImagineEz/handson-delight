@@ -13,7 +13,7 @@
 ### Changed
 - The book's pages turn with Page Up and Page Down, Home and End, or a held click on either half of the page's foot.
 - The book's foot shows the page out of how many, each tab opens where you left it, and dishes you can make come first.
-- Tabs are named under the cursor, and an empty tab is hidden.
+- Tabs are named under the cursor, an empty tab is hidden, and a long row of tabs scrolls with the mouse wheel or the arrows at its ends.
 
 ### Fixed
 - Joining a world crashed on Fabric.
