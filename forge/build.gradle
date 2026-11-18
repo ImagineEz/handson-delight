@@ -154,6 +154,33 @@ if (providers.gradleProperty('homecoming').isPresent()) {
     }
 }
 
+// -Ptwilight runs the game tests with Twilight's Flavor & Delight and the Twilight Forest it needs: its maze stove is a stove station that
+// grills the Twilight Forest's food twice as fast. Its own flag, as the Twilight Forest is a whole dimension, not a kitchen addon.
+// The Twilight Forest is only on CurseForge, and CurseMaven's POM of this file does not parse in Gradle: its jar comes from
+// CurseForge's CDN once, into a Maven layout in the build folder (a flat directory is not remapped).
+if (providers.gradleProperty('twilight').isPresent()) {
+    var addonRepo = layout.buildDirectory.dir('addon-jars').get().asFile
+    var forest = new File(addonRepo, 'local/twilightforest/4.3.2508/twilightforest-4.3.2508.jar')
+    if (!forest.exists()) {
+        forest.parentFile.mkdirs()
+        new URL('https://edge.forgecdn.net/files/5468/648/twilightforest-1.20.1-4.3.2508-universal.jar').withInputStream { input ->
+            forest.withOutputStream { it << input }
+        }
+    }
+    repositories {
+        maven {
+            name = 'AddonJars'
+            url = addonRepo
+            metadataSources { artifact() }
+            content { includeGroup('local') }
+        }
+    }
+    dependencies {
+        modRuntimeOnly 'maven.modrinth:twilight-delight:YqN4ZHXo'          // Twilight's Flavor & Delight 2.2.8
+        modRuntimeOnly 'local:twilightforest:4.3.2508'                      // The Twilight Forest 4.3.2508 (CurseForge 5468648)
+    }
+}
+
 // -Pculinary runs the game tests with Culinary Compat, which turns Pam's HarvestCraft crafts that need its cutting board into cuts of
 // several things at once on Farmer's Delight's board, made at the board's station too. It does so only with Cooking for Blockheads.
 // The rest is the pack of the player who reported it (Discord, 2026-11-16).
