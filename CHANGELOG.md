@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.6.0+1.20.1] - Unreleased
+## [1.6.0+1.20.1] - 2026-11-19
 ### New
 - [Cooking for Blockheads](https://modrinth.com/mod/cooking-for-blockheads)'s oven is a station: food bakes on its rack, fuel goes in at the fire and a skillet or pot stands on its burners.
 - [Youkai's Homecoming](https://modrinth.com/mod/youkaishomecoming)'s kettle, cuisine board, pots, steamer and fermentation tank are stations, as Youkai's Feasts' are.
