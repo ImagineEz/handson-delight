@@ -87,6 +87,7 @@
 </table>
 </div>
 <!-- stations:end -->
+<p style="text-align:center"><img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/culinary-compat.png" width="20"> ✅ <a href="https://modrinth.com/mod/culinary-compat">Culinary Compat</a> (Forge 1.20.1): its board dishes of several things are cut together at the station.</p>
 
 <hr>
 

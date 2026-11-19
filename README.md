@@ -159,6 +159,8 @@ Built on [Diegesis](https://www.curseforge.com/minecraft/mc-mods/diegesis).
 
 [![REI](https://raw.githubusercontent.com/Pocky-l/handson-delight/main/docs/compat/rei.png)](https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items) ✅ **[REI](https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items)** (optional) - the same
 
+[![Culinary Compat](https://raw.githubusercontent.com/Pocky-l/handson-delight/main/docs/compat/culinary-compat.png)](https://modrinth.com/mod/culinary-compat) ✅ **[Culinary Compat](https://modrinth.com/mod/culinary-compat)** (optional, Forge 1.20.1) - its board dishes of several things are cut together at the station
+
 [![Embeddium](https://raw.githubusercontent.com/Pocky-l/handson-delight/main/docs/compat/embeddium.png)](https://www.curseforge.com/minecraft/mc-mods/embeddium) ✅ **[Embeddium](https://www.curseforge.com/minecraft/mc-mods/embeddium)** and [![Oculus](https://raw.githubusercontent.com/Pocky-l/handson-delight/main/docs/compat/oculus.png)](https://www.curseforge.com/minecraft/mc-mods/oculus) **[Oculus](https://www.curseforge.com/minecraft/mc-mods/oculus)** (optional) - the stations draw as usual
 
 <!-- stations:start -->
