@@ -48,7 +48,7 @@
 <!-- stations:start -->
 <h2 style="text-align:center"><span style="color:#e0884a">Station compatibility</span></h2>
 <p style="text-align:center"><em>How much of each mod's kitchen opens as stations right in the world. A dash means the mod has no build for that version.</em></p>
-<div class="spoiler">
+<div class="spoiler"><p><strong>Every mod with stations and the planned ones</strong></p>
 <table style="margin-left:auto;margin-right:auto" cellpadding="4">
 <tbody>
 <tr><th>Mod</th><th>Stations</th><th>1.20.1</th><th>1.21.1</th></tr>
