@@ -336,6 +336,7 @@ The jars are written to `forge/build/libs/` and `fabric/build/libs/`.
 ## Credits
 
 - Author: **Pocky**.
+- The recipe book's textures are by Catalyst.
 - The broth sound is a recording by Joseph Sardin, released as CC0 on [BigSoundBank](https://bigsoundbank.com).
   Farmer's Delight's own sounds and models are used from the installed mod, never copied.
 
