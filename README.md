@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://www.curseforge.com/minecraft/mc-mods/hands-on-delight"><img alt="CurseForge" src="https://img.shields.io/badge/CurseForge-Hands--On%20Delight-F16436"></a>
-  <a href="https://www.curseforge.com/minecraft/mc-mods/hands-on-delight/files"><img alt="Minecraft 1.20.1 and 1.21.1" src="https://img.shields.io/badge/Minecraft-1.20.1%20%7C%201.21.1-62B47A"></a>
+  <a href="https://www.curseforge.com/minecraft/mc-mods/hands-on-delight/files"><img alt="Minecraft 1.20.1, 1.21.1 and 26.3" src="https://img.shields.io/badge/Minecraft-1.20.1%20%7C%201.21.1%20%7C%2026.3-62B47A"></a>
   <a href="https://files.minecraftforge.net"><img alt="Forge, NeoForge or Fabric" src="https://img.shields.io/badge/Loader-Forge%20%7C%20NeoForge%20%7C%20Fabric-DFA86A"></a>
   <a href="https://www.curseforge.com/minecraft/mc-mods/farmers-delight"><img alt="An addon for Farmer's Delight" src="https://img.shields.io/badge/Farmer's%20Delight-addon-d98a3a"></a>
   <a href="https://discord.gg/mGkPKccJEf"><img alt="Discord: Pocky's Kitchen" src="https://img.shields.io/badge/Discord-Pocky's%20Kitchen-5865F2?logo=discord&logoColor=white"></a>
@@ -314,8 +314,8 @@ together. Autocrafters still make the board's dishes.
 
 ## Installation
 
-1. Minecraft 1.20.1 with [Forge](https://files.minecraftforge.net), 1.21.1 with [NeoForge](https://neoforged.net), or either with
-   [Fabric](https://fabricmc.net).
+1. Minecraft 1.20.1 with [Forge](https://files.minecraftforge.net), 1.21.1 with [NeoForge](https://neoforged.net), or 1.20.1,
+   1.21.1 or 26.3 with [Fabric](https://fabricmc.net). On 26.3 the addon stations and recipe viewers are not supported yet.
 2. [Farmer's Delight](https://www.curseforge.com/minecraft/mc-mods/farmers-delight), on Fabric
    [Farmer's Delight Refabricated](https://www.curseforge.com/minecraft/mc-mods/farmers-delight-refabricated) and
    [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api).
