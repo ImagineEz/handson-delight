@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.1+1.20.1] - Unreleased
+### Changed
+- The recipe book has a new cover and paper, drawn by Catalyst.
+- Needs [Diegesis](https://www.curseforge.com/minecraft/mc-mods/diegesis) 1.0.0-beta.14.
+
+### Fixed
+- [Brewin' and Chewin'](https://modrinth.com/mod/brewin-and-chewin)'s keg shows how warm it is at the station before anything is put in, and while what is in it makes nothing.
+
 ## [1.6.0+1.20.1] - 2026-11-19
 ### New
 - [Cooking for Blockheads](https://modrinth.com/mod/cooking-for-blockheads)'s oven is a station: food bakes on its rack, fuel goes in at the fire and a skillet or pot stands on its burners.
