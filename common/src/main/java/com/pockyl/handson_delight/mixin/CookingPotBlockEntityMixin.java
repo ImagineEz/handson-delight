@@ -11,8 +11,12 @@ import vectorwing.farmersdelight.common.block.entity.CookingPotBlockEntity;
 
 import com.pockyl.handson_delight.client.HandsOnDelightClient;
 
-/** Its own steam and bubbles rise over the whole pot and would fill the camera: the scene has its own, in the soup. */
-@Mixin(value = CookingPotBlockEntity.class, remap = false)
+/**
+ * Its own steam and bubbles rise over the whole pot and would fill the camera: the scene has its own, in the soup. Applied before the
+ * mixins of the usual priority, so that this head callback comes first: Twilight's Flavor & Delight ends the fiery pot's
+ * {@code animationTick} at its head with its own bubbles and steam.
+ */
+@Mixin(value = CookingPotBlockEntity.class, remap = false, priority = 900)
 abstract class CookingPotBlockEntityMixin {
     @Inject(method = "animationTick", at = @At("HEAD"), cancellable = true)
     private static void handson$quietWhileShown(Level level, BlockPos pos, BlockState state, CookingPotBlockEntity pot, CallbackInfo callback) {

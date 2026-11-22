@@ -190,7 +190,7 @@ How much of each mod's kitchen opens as stations right in the world. A dash mean
 | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/nethers-delight.png" width="20" height="20" align="top"> [Nether's Delight](https://modrinth.com/mod/nethers-delight) | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/bar-100.png" width="64" height="8"> 100% | ✅ | - |
 | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/sable-trees.png" width="20" height="20" align="top"> [Sable Trees](https://www.curseforge.com/minecraft/mc-mods/sable-trees) | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/bar-100.png" width="64" height="8"> 100% | - | ✅ |
 | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/trailtales-delight.png" width="20" height="20" align="top"> [Trail&Tales Delight](https://modrinth.com/mod/trailtales-delight) | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/bar-50.png" width="64" height="8"> 50% | ✅ | ✅ |
-| <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/twilight-delight.png" width="20" height="20" align="top"> [Twilight's Flavor & Delight](https://modrinth.com/mod/twilight-delight) | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/bar-50.png" width="64" height="8"> 50% | ✅ | ✅ |
+| <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/twilight-delight.png" width="20" height="20" align="top"> [Twilight's Flavor & Delight](https://modrinth.com/mod/twilight-delight) | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/bar-100.png" width="64" height="8"> 100% | ✅ | ✅ |
 | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/youkaishomecoming.png" width="20" height="20" align="top"> [Youkai's Homecoming](https://modrinth.com/mod/youkaishomecoming) | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/bar-83.png" width="64" height="8"> 83% | ✅ | - |
 | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/berries-and-cherries.png" width="20" height="20" align="top"> [Berries and Cherries Delight](https://modrinth.com/mod/berries-and-cherries) | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/bar-0.png" width="64" height="8"> *planned* | | |
 | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/cuisine-delight.png" width="20" height="20" align="top"> [Cuisine Delight](https://modrinth.com/mod/cuisine-delight) | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/bar-0.png" width="64" height="8"> *planned* | | |
@@ -212,7 +212,8 @@ the stoves of [End's Delight](https://www.curseforge.com/minecraft/mc-mods/ends-
 [Miner's Delight](https://modrinth.com/mod/miners-delight)'s copper pot,
 [Dungeons Delight](https://modrinth.com/mod/dungeons_delight)'s monster pot and dungeon stove,
 [Twilight's Flavor & Delight](https://modrinth.com/mod/twilight-delight)'s maze stove (Twilight food still grills twice
-as fast on it), [Nether's Delight](https://modrinth.com/mod/nethers-delight)'s blackstone stove,
+as fast on it) and fiery cooking pot (it still heats itself and hurries Twilight dishes),
+[Nether's Delight](https://modrinth.com/mod/nethers-delight)'s blackstone stove,
 [Trail&Tales Delight](https://modrinth.com/mod/trailtales-delight)'s mud stove (its pottery cooking pot keeps Farmer's
 Delight's menu), and every cutting board of
 [Chopper's Delight](https://modrinth.com/mod/choppers-delight), the decorated one too, each in its own look.
@@ -236,7 +237,7 @@ which each player sets in their own file.
 
 | Key | Default | What it does |
 |---|---|---|
-| `cooking_pot`, `cutting_board`, `skillet`, `stove` | `true` | The station of that block. Off, the block works as in Farmer's Delight. `cooking_pot` covers the addons' pots too (copper, monster, alchemist) |
+| `cooking_pot`, `cutting_board`, `skillet`, `stove` | `true` | The station of that block. Off, the block works as in Farmer's Delight. `cooking_pot` covers the addons' pots too (copper, monster, alchemist, fiery) |
 | `keg` | `true` | The kegs of Brewin' and Chewin' and Hearth and Harvest as stations. Off, each keg keeps its own menu. Hearth and Harvest's keeps its own fermenting times |
 | `kettle` | `true` | The kettles of Farmer's Respite and Youkai's Feasts as stations. Off, each is used as before |
 | `grill`, `basin` | `true` | Barbeque's Delight's grill and ingredients basin as stations. Off, they are used as before |

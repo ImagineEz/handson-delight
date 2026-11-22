@@ -29,9 +29,14 @@ import com.pockyl.handson_delight.station.PotCooking;
 
 /**
  * Farmer's Delight's pot as a {@link KitchenPot}: its cooking goes through {@link PotCooking}, which waits for the spoon and cooks
- * a stirred pot as one batch. Pots of other mods built on this class keep cooking as Farmer's Delight does.
+ * a stirred pot as one batch. Pots of other mods built on this class keep cooking as Farmer's Delight does, but Twilight's Flavor &
+ * Delight's fiery cooking pot, Farmer's Delight's pot block in another body, is a station too.
+ * <p>
+ * Applied before the mixins of the usual priority, so that its callbacks at the head of a method come first (head callbacks run in
+ * the order their mixins are applied): Twilight's Flavor & Delight ends the fiery pot's step at its head and runs its own copy, and
+ * adds to the time cooked at the head of the cooking step, which a pot waiting for the spoon must not get.
  */
-@Mixin(value = CookingPotBlockEntity.class, remap = false)
+@Mixin(value = CookingPotBlockEntity.class, remap = false, priority = 900)
 abstract class CookingPotStirringMixin implements KitchenPot {
     @Shadow
     private int cookTime;
@@ -126,7 +131,8 @@ abstract class CookingPotStirringMixin implements KitchenPot {
 
     @Override
     public boolean handson$isOurs() {
-        return handson$self().getBlockState().is(FarmersDelightContent.COOKING_POT.get());
+        BlockState state = handson$self().getBlockState();
+        return state.is(FarmersDelightContent.COOKING_POT.get()) || state.is(FarmersDelightContent.FIERY_POT.get());
     }
 
     @Override
@@ -203,6 +209,17 @@ abstract class CookingPotStirringMixin implements KitchenPot {
             target = "Lvectorwing/farmersdelight/common/block/entity/CookingPotBlockEntity;cookTimeTotal:I"))
     private void handson$timeAsConfigured(CookingPotRecipe recipe, CookingPotBlockEntity pot, CallbackInfoReturnable<Boolean> callback) {
         cookTimeTotal = handson$cooking.timeFor(cookTimeTotal);
+    }
+
+    /**
+     * Twilight's Flavor & Delight's own step of its fiery pot (in place of the pot's) calls the cooking step without the call
+     * {@link #handson$afterTheStep} follows: the rest of a stirred batch follows the step's return there.
+     */
+    @Inject(method = "processCooking", at = @At("RETURN"))
+    private void handson$afterTheFieryStep(CookingPotRecipe recipe, CookingPotBlockEntity pot, CallbackInfoReturnable<Boolean> callback) {
+        if (handson$self().getBlockState().is(FarmersDelightContent.FIERY_POT.get())) {
+            handson$cooking.afterCooking();
+        }
     }
 
     @Inject(method = "cookingTick", at = @At(value = "INVOKE", shift = At.Shift.AFTER, target = "Lvectorwing/farmersdelight/common/block/entity/"

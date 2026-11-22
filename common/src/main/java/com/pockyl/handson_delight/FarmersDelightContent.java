@@ -34,6 +34,13 @@ public final class FarmersDelightContent {
      */
     @SuppressWarnings("removal")
     public static final Supplier<Block> ALCHEMIST_POT = () -> BuiltInRegistries.BLOCK.get(new ResourceLocation(FARMERS_SPELL, "alchemist_pot"));
+    public static final String TWILIGHT_DELIGHT = "twilightdelight";
+    /**
+     * Twilight's Flavor & Delight's fiery cooking pot: Farmer's Delight's pot block and block entity in a body of its own, which heats
+     * itself and cooks the Twilight dishes that take longer in ten seconds (its own tick in place of the pot's).
+     */
+    @SuppressWarnings("removal")
+    public static final Supplier<Block> FIERY_POT = () -> BuiltInRegistries.BLOCK.get(new ResourceLocation(TWILIGHT_DELIGHT, "fiery_cooking_pot"));
     public static final Supplier<RecipeType<?>> CUTTING = () -> BuiltInRegistries.RECIPE_TYPE.get(id("cutting"));
 
     public static final SoundEvent BOIL_SOUP = sound("block.cooking_pot.boil_soup");

@@ -38,6 +38,7 @@ import java.util.stream.Stream;
  * Dungeons Delight's monster pot. Farmer's Respite's kettle comes
  * the same way: its opening under the lid is a real one, and its tray is Farmer's Delight's heating tray, where its own model names
  * tray textures Farmer's Delight no longer has. Farmer's Spell's alchemist pot comes the same way: its dark top is a real opening;
+ * so does Twilight's Flavor & Delight's fiery cooking pot: its painted mouth is a real one;
  * so does Youkai's Feasts' kettle: its painted hole is a real opening under its lid, which the station lifts. Hearth and Harvest's
  * cask stands shut in the world whether it is sealed or not, so that its block does not change under the cook: the station
  * shows it open while it is worked.
@@ -66,11 +67,12 @@ final class PotPack {
             new ResourceLocation("farmersrespite", "blockstates/kettle.json"), HandsOnConfig::kettle,
             new ResourceLocation("farmers_spell", "blockstates/alchemist_pot.json"), HandsOnConfig::cookingPot,
             new ResourceLocation(Youkai.FEASTS, "blockstates/kettle.json"), HandsOnConfig::kettle,
-            new ResourceLocation("hearthandharvest", "blockstates/cask.json"), HandsOnConfig::cask);
+            new ResourceLocation("hearthandharvest", "blockstates/cask.json"), HandsOnConfig::cask,
+            new ResourceLocation("twilightdelight", "blockstates/fiery_cooking_pot.json"), HandsOnConfig::cookingPot);
     private static final String DYED_NAMESPACE = "vanilladelight";
     private static final String DYED_MODELS = "models/block/cooking_pot_";
     private static final Set<String> NAMESPACES = Set.of("farmersdelight", "miners_delight", "dungeonsdelight", "farmersrespite",
-            "farmers_spell", Youkai.FEASTS, DYED_NAMESPACE, "hearthandharvest");
+            "farmers_spell", Youkai.FEASTS, DYED_NAMESPACE, "hearthandharvest", "twilightdelight");
     /** This mod's models that name Youkai's Feasts' textures and models. */
     private static final String YOUKAI_MODELS = "models/diegesis/youkai_";
 

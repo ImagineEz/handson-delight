@@ -7,7 +7,7 @@ import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
 import com.pockyl.handson_delight.HandsOnDelight;
 
-/** {@link PotTests}, {@link CopperPotTests}, {@link MonsterPotTests}, {@link AlchemistPotTests}, {@link KegTests}, {@link KettleTests}, {@link OvenTests}, {@link YoukaiKettleTests}, {@link YoukaiBoardTests}, {@link YoukaiPotTests}, {@link YoukaiSteamerTests}, {@link YoukaiTankTests}, {@link HearthKegTests}, {@link HearthCaskTests}, {@link BoardTests}, {@link SkilletTests}, {@link StoveTests} and {@link RecipeAudit} on Forge. */
+/** {@link PotTests}, {@link CopperPotTests}, {@link MonsterPotTests}, {@link FieryPotTests}, {@link AlchemistPotTests}, {@link KegTests}, {@link KettleTests}, {@link OvenTests}, {@link YoukaiKettleTests}, {@link YoukaiBoardTests}, {@link YoukaiPotTests}, {@link YoukaiSteamerTests}, {@link YoukaiTankTests}, {@link HearthKegTests}, {@link HearthCaskTests}, {@link BoardTests}, {@link SkilletTests}, {@link StoveTests} and {@link RecipeAudit} on Forge. */
 @GameTestHolder(HandsOnDelight.MOD_ID)
 @PrefixGameTestTemplate(false)
 public final class ModGameTests {
@@ -607,6 +607,21 @@ public final class ModGameTests {
     @GameTest(template = "empty", timeoutTicks = 400)
     public static void aHopperFedMonsterPotCooksByItself(GameTestHelper helper) {
         MonsterPotTests.aHopperFedMonsterPotCooksByItself(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void theFieryPotIsAPotStation(GameTestHelper helper) {
+        FieryPotTests.theFieryPotIsAPotStation(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 500)
+    public static void aStirredFieryPotWaitsAndCooksTheBatch(GameTestHelper helper) {
+        FieryPotTests.aStirredFieryPotWaitsAndCooksTheBatch(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 400)
+    public static void aLongTwilightDishCooksInTenSeconds(GameTestHelper helper) {
+        FieryPotTests.aLongTwilightDishCooksInTenSeconds(helper);
     }
 
     private static boolean spellSchools;
