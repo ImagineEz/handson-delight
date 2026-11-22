@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0+1.20.1] - Unreleased
+### New
+- [Twilight's Flavor & Delight](https://modrinth.com/mod/twilight-delight)'s fiery cooking pot is a pot station with a molten broth that glows like lava.
+
+### Fixed
+- The cooking pot's timer and book count the time Twilight's Flavor & Delight's maze stove saves on Twilight dishes.
+
 ## [1.6.2+1.20.1] - 2026-11-22
 ### Changed
 - Needs [Diegesis](https://www.curseforge.com/minecraft/mc-mods/diegesis) 1.0.0-beta.16: stations out of view cost far less, and closing another mod's screen opened over a station, such as a [QuestLog](https://modrinth.com/mod/questlog) quest popup, no longer locks the player ([#51](https://github.com/Pocky-l/handson-delight/issues/51)).
