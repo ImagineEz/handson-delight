@@ -40,6 +40,8 @@ public final class HandsOnConfig {
             "  It keeps its own fermenting times.",
             "cask: Hearth and Harvest's cask as a station, when that mod is there. Off, it keeps its own menu. It keeps its own",
             "  aging times (faster in the dark).",
+            "fermenting_jar: Vintage Delight's fermenting jar as a station, when that mod is there. Off, it keeps its own menu.",
+            "  It keeps its own fermenting times.",
             "oven: Cooking for Blockheads' oven as a station, when that mod is there. Off, it keeps its own menu. It keeps its",
             "  own baking time (its config's ovenCookTimeMultiplier).",
             "youkai_hints: Youkai's Feasts' squares on the right of the screen while one of its blocks is looked at (what it",
@@ -75,6 +77,7 @@ public final class HandsOnConfig {
     private static boolean youkaiHints = false;
     private static boolean oven = true;
     private static boolean cask = true;
+    private static boolean fermentingJar = true;
     private static boolean removeCraftingRecipes = true;
     private static boolean stirringRequired = true;
     private static boolean recipeBook = true;
@@ -114,6 +117,7 @@ public final class HandsOnConfig {
         youkaiHints = read(values, "youkai_hints", youkaiHints);
         oven = read(values, "oven", oven);
         cask = read(values, "cask", cask);
+        fermentingJar = read(values, "fermenting_jar", fermentingJar);
         removeCraftingRecipes = read(values, "remove_crafting_recipes", removeCraftingRecipes);
         stirringRequired = read(values, "stirring_required", stirringRequired);
         recipeBook = read(values, "recipe_book", recipeBook);
@@ -221,6 +225,10 @@ public final class HandsOnConfig {
 
     public static boolean cask() {
         return cask;
+    }
+
+    public static boolean fermentingJar() {
+        return fermentingJar;
     }
 
     /** Whether Youkai's Feasts draws its squares of what its blocks take next; this mod hides them unless turned on. */

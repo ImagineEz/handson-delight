@@ -32,7 +32,8 @@ import java.util.function.Supplier;
  * what its menu did. Youkai's Feasts' fermentation tank ({@link #TANK_TYPE}) is the same station: eight things, one each, in water or
  * a juice under its own lid, its drinks dipped out at the opening, as it has no tap. Hearth and Harvest's keg ({@link #HEARTH_TYPE})
  * is the keg's station with two slots and a tank of its own for the drink; its cask ({@link #CASK_TYPE}) one with no liquid, its
- * lid its block's seal, what has aged given out sealed.
+ * lid its block's seal, what has aged given out sealed. Vintage Delight's fermenting jar ({@link #JAR_TYPE}) is one too: six
+ * things and the bottle or bowl some recipes take, in the brine it always stands full of, under a lid the station keeps.
  */
 public final class KegStation {
     public static final String MOD_ID = "brewinandchewin";
@@ -47,6 +48,11 @@ public final class KegStation {
     public static final ResourceLocation BIG_KEG_ID = HandsOnDelight.id("hearth_big_keg");
     /** Hearth and Harvest's cask: four places for what ages, its lid its block's seal. */
     public static final ResourceLocation CASK_ID = HandsOnDelight.id("hearth_cask");
+    public static final String VINTAGE_MOD_ID = "vintagedelight";
+    /** Vintage Delight's fermenting jar. */
+    public static final ResourceLocation JAR_ID = HandsOnDelight.id("vintage_jar");
+    /** The jar's six ingredient slots and, last, its container slot: a recipe's bottle or bowl goes in as its other things do. */
+    public static final int JAR_INGREDIENTS = 7;
     /** Hearth and Harvest's keg has two slots, read in any order, each a stack. */
     public static final int HEARTH_INGREDIENTS = 2;
     /** The tank holds eight things, one in each slot, as its own container does. */
@@ -106,6 +112,9 @@ public final class KegStation {
     @SuppressWarnings("removal")
     public static final Supplier<Block> CASK = () -> BuiltInRegistries.BLOCK.get(new ResourceLocation(HEARTH_MOD_ID, "cask"));
 
+    @SuppressWarnings("removal")
+    public static final Supplier<Block> JAR = () -> BuiltInRegistries.BLOCK.get(new ResourceLocation(VINTAGE_MOD_ID, "fermenting_jar"));
+
     public static final StationSchema SCHEMA = schema(KitchenKeg.INGREDIENTS, SlotRules.DEFAULT.kept());
     public static final StationSchema TANK_SCHEMA = schema(TANK_INGREDIENTS, SlotRules.DEFAULT.kept().maxStack(1));
 
@@ -130,6 +139,8 @@ public final class KegStation {
             .idleLogic()
             .build();
     public static final StationType CASK_TYPE = type(CASK_ID, CASK, schema(KitchenKeg.INGREDIENTS, SlotRules.DEFAULT.kept()), state -> true);
+
+    public static final StationType JAR_TYPE = type(JAR_ID, JAR, schema(JAR_INGREDIENTS, SlotRules.DEFAULT.kept()), state -> true);
 
     private KegStation() {
     }
@@ -215,6 +226,12 @@ public final class KegStation {
     public static void registerCask() {
         if (Platform.INSTANCE.isLoaded(HEARTH_MOD_ID)) {
             Diegesis.register(CASK_TYPE);
+        }
+    }
+
+    public static void registerJar() {
+        if (Platform.INSTANCE.isLoaded(VINTAGE_MOD_ID)) {
+            Diegesis.register(JAR_TYPE);
         }
     }
 

@@ -112,6 +112,10 @@ Built on [Diegesis](https://www.curseforge.com/minecraft/mc-mods/diegesis).
   bottles to age, salt and meat for jerky or a cheese, and put the lid back on to seal it. Sealed, a wine ages a bottle at
   a time into its next vintage, faster in a dark cellar; what is done waits before the cask and is taken without breaking
   the seal. The book shows each recipe's time where the cask stands.
+- **Fermenting jar** of [Vintage Delight](https://modrinth.com/mod/vintage-delight). Lift its lid, drop the cucumbers and
+  salt into the brine, and a bottle or bowl with them when the recipe takes one. Under the lid it ferments, bubbling, the
+  brine taking the colour of what is in it and the badge counting down; the pickles wait before the jar and are taken
+  with the lid on. The book puts a recipe in from your inventory.
 - **Grill** of [Barbeque's Delight](https://modrinth.com/mod/barbeques-delight-forge). Two skewers lie over its fire.
   One smokes when its lower side is done: click it to turn it over, once. Click a skewer with a powder to shake it over
   or with a sauce to dab it on, and the seasoning stays on it. A skewer left on after it is done darkens, smokes and
@@ -191,6 +195,7 @@ How much of each mod's kitchen opens as stations right in the world. A dash mean
 | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/sable-trees.png" width="20" height="20" align="top"> [Sable Trees](https://www.curseforge.com/minecraft/mc-mods/sable-trees) | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/bar-100.png" width="64" height="8"> 100% | - | ✅ |
 | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/trailtales-delight.png" width="20" height="20" align="top"> [Trail&Tales Delight](https://modrinth.com/mod/trailtales-delight) | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/bar-50.png" width="64" height="8"> 50% | ✅ | ✅ |
 | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/twilight-delight.png" width="20" height="20" align="top"> [Twilight's Flavor & Delight](https://modrinth.com/mod/twilight-delight) | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/bar-100.png" width="64" height="8"> 100% | ✅ | ✅ |
+| <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/vintage-delight.png" width="20" height="20" align="top"> [Vintage Delight](https://modrinth.com/mod/vintage-delight) | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/bar-100.png" width="64" height="8"> 100% | ✅ | - |
 | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/youkaishomecoming.png" width="20" height="20" align="top"> [Youkai's Homecoming](https://modrinth.com/mod/youkaishomecoming) | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/bar-83.png" width="64" height="8"> 83% | ✅ | - |
 | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/berries-and-cherries.png" width="20" height="20" align="top"> [Berries and Cherries Delight](https://modrinth.com/mod/berries-and-cherries) | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/bar-0.png" width="64" height="8"> *planned* | | |
 | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/cuisine-delight.png" width="20" height="20" align="top"> [Cuisine Delight](https://modrinth.com/mod/cuisine-delight) | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/bar-0.png" width="64" height="8"> *planned* | | |
@@ -201,7 +206,6 @@ How much of each mod's kitchen opens as stations right in the world. A dash mean
 | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/legendary-delicacies.png" width="20" height="20" align="top"> [Legendary Delicacies](https://www.curseforge.com/minecraft/mc-mods/legendary-delicacies) | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/bar-0.png" width="64" height="8"> *planned* | | |
 | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/survivors-delight.png" width="20" height="20" align="top"> [Survivor's Delight](https://www.curseforge.com/minecraft/mc-mods/survivors-delight) | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/bar-0.png" width="64" height="8"> *planned* | | |
 | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/ubes-delight.png" width="20" height="20" align="top"> [Ube's Delight](https://modrinth.com/mod/ubes-delight) | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/bar-0.png" width="64" height="8"> *planned* | | |
-| <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/vintage-delight.png" width="20" height="20" align="top"> [Vintage Delight](https://modrinth.com/mod/vintage-delight) | <img src="https://cdn.jsdelivr.net/gh/Pocky-l/handson-delight@main/docs/compat/bar-0.png" width="64" height="8"> *planned* | | |
 
 </details>
 <!-- stations:end -->
@@ -226,7 +230,8 @@ its [Iron's Spells 'n Spellbooks](https://modrinth.com/mod/irons-spells-n-spellb
 [Barbeque's Delight](https://modrinth.com/mod/barbeques-delight-forge)'s kebabs and bibimbap are put together on the
 board and keep the seasoning of their skewers.
 [Cooking for Blockheads](https://modrinth.com/mod/cooking-for-blockheads)'s oven opens as a station in each of its
-colours, its tools still standing on top, and so do [Hearth and Harvest](https://modrinth.com/mod/hearth-and-harvest)'s keg and cask.
+colours, its tools still standing on top, and so do [Hearth and Harvest](https://modrinth.com/mod/hearth-and-harvest)'s keg and cask
+and [Vintage Delight](https://modrinth.com/mod/vintage-delight)'s fermenting jar.
 
 Hoppers, pipes and drops use the blocks' own inventories. A pot fed by automation cooks by itself, as in Farmer's Delight.
 
@@ -246,6 +251,7 @@ which each player sets in their own file.
 | `youkai_steamer` | `true` | Youkai's Feasts' steamer as a station. Off, it is used as before. It keeps its own steaming times |
 | `youkai_tank` | `true` | Youkai's Feasts' fermentation tank as a station. Off, it is used as before. It keeps its own fermenting times |
 | `cask` | `true` | Hearth and Harvest's cask as a station. Off, it keeps its own menu. It keeps its own aging times, faster in the dark |
+| `fermenting_jar` | `true` | Vintage Delight's fermenting jar as a station. Off, it keeps its own menu. It keeps its own fermenting times |
 | `oven` | `true` | Cooking for Blockheads' oven as a station. Off, it keeps its own menu. It keeps its own baking time |
 | `youkai_hints` | `false` | Youkai's Feasts' squares on the right of the screen while one of its blocks is looked at (what it takes next, what lies in it). Hidden unless on |
 | `remove_crafting_recipes` | `true` | Farmer's Delight's food crafts are made on the board only |

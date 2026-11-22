@@ -29,7 +29,8 @@ import java.util.function.Predicate;
  * The keg's menu by hand: the slots are the keg's own, buckets and drinks go through the keg's own use, and what the station shows
  * is read from it. Fermenting is left to the keg. It also runs on the clients around a keg nobody works at; there it only reads.
  * Youkai's Feasts' fermentation tank is worked the same way: its lid is its block's, which it also lifts itself when something is
- * done, and while it is off the tank goes back in its count as it always does.
+ * done, and while it is off the tank goes back in its count as it always does. Vintage Delight's fermenting jar too: after the food
+ * is laid out, its bottle or bowl is put in the slot the jar takes it from ({@link KitchenKeg#handson$settle}).
  */
 public final class KegLogic implements StationLogic {
     /** The most sets of ingredients one pick in the book puts in. */
@@ -51,7 +52,7 @@ public final class KegLogic implements StationLogic {
         StationState state = station.state();
         ingredients = storage(keg, 0, keg.handson$ingredients());
         state.bindSlots(KegStation.INGREDIENTS, ingredients);
-        state.bindSlots(KegStation.SERVED, keg.handson$hasOutput() ? storage(keg, KitchenKeg.OUTPUT_SLOT, 1) : NO_OUTPUT);
+        state.bindSlots(KegStation.SERVED, keg.handson$hasOutput() ? storage(keg, keg.handson$outputSlot(), 1) : NO_OUTPUT);
     }
 
     /** The served slot of a keg without an output: what ferments into things stays where it lay. */
@@ -126,6 +127,7 @@ public final class KegLogic implements StationLogic {
                 unsorted = false;
                 arrangedFor = keg.handson$fluid();
                 arrange();
+                keg.handson$settle();
             }
         }
         refresh(station);
@@ -424,6 +426,7 @@ public final class KegLogic implements StationLogic {
         if (filled != null) {
             wanted = recipe.id();
             StationRecipes.lay(ingredients, filled.kinds(), filled.parts(), perSlot);
+            keg.handson$settle();
         }
     }
 

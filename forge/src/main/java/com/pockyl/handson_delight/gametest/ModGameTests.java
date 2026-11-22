@@ -7,7 +7,7 @@ import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
 import com.pockyl.handson_delight.HandsOnDelight;
 
-/** {@link PotTests}, {@link CopperPotTests}, {@link MonsterPotTests}, {@link FieryPotTests}, {@link AlchemistPotTests}, {@link KegTests}, {@link KettleTests}, {@link OvenTests}, {@link YoukaiKettleTests}, {@link YoukaiBoardTests}, {@link YoukaiPotTests}, {@link YoukaiSteamerTests}, {@link YoukaiTankTests}, {@link HearthKegTests}, {@link HearthCaskTests}, {@link BoardTests}, {@link SkilletTests}, {@link StoveTests} and {@link RecipeAudit} on Forge. */
+/** {@link PotTests}, {@link CopperPotTests}, {@link MonsterPotTests}, {@link FieryPotTests}, {@link AlchemistPotTests}, {@link KegTests}, {@link KettleTests}, {@link OvenTests}, {@link YoukaiKettleTests}, {@link YoukaiBoardTests}, {@link YoukaiPotTests}, {@link YoukaiSteamerTests}, {@link YoukaiTankTests}, {@link HearthKegTests}, {@link HearthCaskTests}, {@link VintageJarTests}, {@link BoardTests}, {@link SkilletTests}, {@link StoveTests} and {@link RecipeAudit} on Forge. */
 @GameTestHolder(HandsOnDelight.MOD_ID)
 @PrefixGameTestTemplate(false)
 public final class ModGameTests {
@@ -977,6 +977,26 @@ public final class ModGameTests {
     @GameTest(template = "empty")
     public static void hearthCaskBookLaysJerky(GameTestHelper helper) {
         HearthCaskTests.hearthCaskBookLaysJerky(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void vintageJarReadsItsRecipes(GameTestHelper helper) {
+        VintageJarTests.vintageJarReadsItsRecipes(helper);
+    }
+
+    @GameTest(template = "empty")
+    public static void vintageJarLaysOutWhatIsThrownIn(GameTestHelper helper) {
+        VintageJarTests.vintageJarLaysOutWhatIsThrownIn(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 100)
+    public static void vintagePicklesFermentUnderTheLid(GameTestHelper helper) {
+        VintageJarTests.vintagePicklesFermentUnderTheLid(helper);
+    }
+
+    @GameTest(template = "empty", timeoutTicks = 100)
+    public static void vintageOatsTakeTheirBowl(GameTestHelper helper) {
+        VintageJarTests.vintageOatsTakeTheirBowl(helper);
     }
 
     @GameTest(template = "empty")

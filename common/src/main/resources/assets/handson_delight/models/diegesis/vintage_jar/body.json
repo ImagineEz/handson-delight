@@ -1,0 +1,170 @@
+{
+  "__comment": "Vintage Delight's fermenting jar without its lid, its clasps and the brine painted in it, in its own texture by id: its glass as it has it, the top left as a rim 2 px wide round the mouth the lid covers (x, z 5..11), mapped as its whole top is. The jar's scene draws it while its block is hidden; the brine is the scene's liquid.",
+  "render_type": "minecraft:cutout",
+  "texture_size": [
+    32,
+    32
+  ],
+  "textures": {
+    "1": "vintagedelight:block/fermenting_jar",
+    "particle": "vintagedelight:block/fermenting_jar"
+  },
+  "elements": [
+    {
+      "from": [
+        3,
+        0,
+        3
+      ],
+      "to": [
+        13,
+        12,
+        13
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            5,
+            6
+          ],
+          "texture": "#1"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            5,
+            6
+          ],
+          "texture": "#1"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            5,
+            6
+          ],
+          "texture": "#1"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            5,
+            6
+          ],
+          "texture": "#1"
+        },
+        "down": {
+          "uv": [
+            5,
+            5,
+            10,
+            10
+          ],
+          "texture": "#1"
+        }
+      },
+      "name": "glass"
+    },
+    {
+      "name": "rim_north",
+      "from": [
+        3,
+        12,
+        3
+      ],
+      "to": [
+        13,
+        12,
+        5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            5.0,
+            0.0,
+            10.0,
+            1.0
+          ],
+          "texture": "#1"
+        }
+      }
+    },
+    {
+      "name": "rim_south",
+      "from": [
+        3,
+        12,
+        11
+      ],
+      "to": [
+        13,
+        12,
+        13
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            5.0,
+            4.0,
+            10.0,
+            5.0
+          ],
+          "texture": "#1"
+        }
+      }
+    },
+    {
+      "name": "rim_west",
+      "from": [
+        3,
+        12,
+        5
+      ],
+      "to": [
+        5,
+        12,
+        11
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            5.0,
+            1.0,
+            6.0,
+            4.0
+          ],
+          "texture": "#1"
+        }
+      }
+    },
+    {
+      "name": "rim_east",
+      "from": [
+        11,
+        12,
+        5
+      ],
+      "to": [
+        13,
+        12,
+        11
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            9.0,
+            1.0,
+            10.0,
+            4.0
+          ],
+          "texture": "#1"
+        }
+      }
+    }
+  ]
+}

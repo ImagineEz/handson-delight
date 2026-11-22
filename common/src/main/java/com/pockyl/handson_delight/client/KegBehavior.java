@@ -40,7 +40,8 @@ import java.util.Optional;
  * What the keg shows while somebody works at it: the lid swung open, the liquid at its level, looking like the drink it is, with
  * what ferments floating on it, the tap in front. While nobody does, the keg is the block itself, shut: the station hides the block
  * while it is used and until the lid has fallen shut behind the last one to leave. Youkai's Feasts' fermentation tank is shown the
- * same way; it has no tap, so a drink is dipped out at the opening as a bowl at the pot.
+ * same way; it has no tap, so a drink is dipped out at the opening as a bowl at the pot. Vintage Delight's fermenting jar too: its
+ * brine is the liquid, always there, and takes a little of the colour of what ferments in it.
  */
 public final class KegBehavior implements StationBehavior {
     /**
@@ -88,6 +89,14 @@ public final class KegBehavior implements StationBehavior {
         public static final Shape CASK = new Shape(1.0F, 10.0F, null, 8.0F, 8.0F, 4.0F, 12.0F, 4.0F, 12.0F, 13.05F, false, 1.6F, 0.0F,
                 new LidPath(new Vector3f(0.0F, 5.0F, 0.0F), new Vector3f(-12.0F, 7.0F, 0.0F), new Vector3f(-7.0F, -7.6F, 0.0F)),
                 new Vector3f(5.0F, 0.25F, -7.0F), true, 8.0F);
+        /**
+         * Vintage Delight's fermenting jar: glass x, z 3..13 to y 12, its brine x, z 4..12 from y 1 to y 10, always there; its lid
+         * (x, z 4.5..11.5, with a clasp on either side) sits on the glass over a mouth x, z 5..11. What ferments floats on the brine;
+         * what is done waits outside, on the floor before it on the side the lid is set down (the book stands on the other), taken
+         * whether the lid is on or off.
+         */
+        public static final Shape JAR = new Shape(1.0F, 10.0F, null, 8.0F, 8.0F, 5.0F, 11.0F, 5.0F, 11.0F, 12.05F, false, 2.1F, 0.0F,
+                new LidPath(LidPath.LIFT, LidPath.SWING, new Vector3f(-7.3F, -6.7F, 0.0F)), new Vector3f(-3.0F, 0.25F, -7.5F), false, 8.0F);
         /**
          * Eight of Hearth and Harvest's kegs built into a big keg, a cube of 32: walls 1 px thick, floor y 1, a hatch in the middle of
          * its top (x and z 8..24) with a lid; full (8000 mB), three quarters up the inside. Its tap sticks out of the front head where
@@ -151,6 +160,8 @@ public final class KegBehavior implements StationBehavior {
     private static final int WATER_IN_WOOD = 0x1E2B30;
     private static final float WATER_MOTTLE = 0.1F;
     private static final int DRINK_ALPHA = 0xF0;
+    /** How far a brine that is always there (the fermenting jar's) takes the colour of what ferments in it: it stays clear. */
+    private static final float BRINE_TINGE = 0.45F;
     /** Bubbles a second while it ferments, on top of the drink's own fizz; how hard it seethes along the staves then. */
     private static final float FERMENT_BUBBLES = 1.5F;
     private static final float FERMENT_SEETHE = 0.2F;
@@ -263,7 +274,7 @@ public final class KegBehavior implements StationBehavior {
     public KegBehavior(StationView view, Shape shape) {
         this.shape = shape;
         book = new RecipeBook(new KegBook(shape == Shape.TANK ? "youkai_tank" : shape == Shape.HEARTH || shape == Shape.BIG ? "hearth_keg"
-                : shape == Shape.CASK ? "hearth_cask" : ""));
+                : shape == Shape.CASK ? "hearth_cask" : shape == Shape.JAR ? "vintage_jar" : ""));
         Arrays.fill(shown, ItemStack.EMPTY);
         Arrays.fill(arriveAge, Float.NaN);
     }
@@ -288,8 +299,17 @@ public final class KegBehavior implements StationBehavior {
         return new KegBehavior(view, Shape.CASK);
     }
 
+    public static KegBehavior jar(StationView view) {
+        return new KegBehavior(view, Shape.JAR);
+    }
+
     public static KegBehavior big(StationView view) {
         return new KegBehavior(view, Shape.BIG);
+    }
+
+    /** A jar of glass under a lid of fired clay: its lid clinks where a keg's wood creaks and knocks. */
+    private boolean isJar() {
+        return shape == Shape.JAR;
     }
 
     private boolean hasTap() {
@@ -743,8 +763,11 @@ public final class KegBehavior implements StationBehavior {
             KitchenKeg.Fermenting recipe = making.get();
             int result = recipe.resultFluid() != Fluids.EMPTY ? colourOf(view, keg, recipe.resultFluid())
                     : 0xFF000000 | FoodColors.main(recipe.resultItem());
-            // What steeps in it colours it early, as a wort does: it is the drink's colour by a third of the way.
-            colour = blend(base, result, KitchenMotions.smooth(progress * 3.0F));
+            // What steeps in it colours it early, as a wort does: it is the drink's colour by a third of the way. A brine stays as
+            // clear as it was, tinged with it.
+            boolean brine = keg.handson$fluid() == Fluids.EMPTY && keg.handson$brine() != 0;
+            colour = brine ? blend(base, base & 0xFF000000 | result & 0xFFFFFF, BRINE_TINGE * KitchenMotions.smooth(progress * 3.0F))
+                    : blend(base, result, KitchenMotions.smooth(progress * 3.0F));
         }
         liquidColor = colour & 0xFFFFFF;
         int shownColour = colour;
@@ -756,7 +779,7 @@ public final class KegBehavior implements StationBehavior {
 
     private static int colourOf(StationView view, KitchenKeg keg, Fluid fluid) {
         if (fluid == Fluids.EMPTY) {
-            return WATER_ALPHA << 24;
+            return keg != null && keg.handson$brine() != 0 ? keg.handson$brine() : WATER_ALPHA << 24;
         }
         if (fluid.isSame(Fluids.WATER)) {
             return WATER_ALPHA << 24 | blend(BiomeColors.getAverageWaterColor(view.level(), view.pos()), WATER_IN_WOOD, 0.5F) & 0xFFFFFF;
@@ -818,7 +841,8 @@ public final class KegBehavior implements StationBehavior {
         // The keg comes shut, as it stands; the cook takes the lid off.
         boolean lidOff = inUse && isLidOff(view);
         if (lidOff && !wasOpen) {
-            view.playSound(SoundEvents.BARREL_OPEN, "lid", 0.45F, 1.05F + view.level().random.nextFloat() * 0.1F);
+            view.playSound(isJar() ? SoundEvents.DECORATED_POT_HIT : SoundEvents.BARREL_OPEN, "lid", 0.45F,
+                    (isJar() ? 1.3F : 1.05F) + view.level().random.nextFloat() * 0.1F);
             if (view.state().getControl(KegStation.PROGRESS) > 0.0F || ready) {
                 ferment.opened(view, this::kegPoint, shape, view.state().getTank(KegStation.DRINK).amount() == 0, foamColor());
             }
@@ -897,9 +921,11 @@ public final class KegBehavior implements StationBehavior {
         float before = lid;
         lid = Mth.clamp(lid + (off ? dt : -dt) / LID_MOVE, 0.0F, 1.0F);
         if (before < 1.0F && lid >= 1.0F) {
-            view.playSound(SoundEvents.WOOD_PLACE, "lid", 0.35F, 1.1F + view.level().random.nextFloat() * 0.1F);
+            view.playSound(isJar() ? SoundEvents.DECORATED_POT_PLACE : SoundEvents.WOOD_PLACE, "lid", 0.35F,
+                    1.1F + view.level().random.nextFloat() * 0.1F);
         } else if (before > 0.0F && lid <= 0.0F) {
-            view.playSound(SoundEvents.BARREL_CLOSE, "lid", 0.4F, 1.0F + view.level().random.nextFloat() * 0.1F);
+            view.playSound(isJar() ? SoundEvents.DECORATED_POT_PLACE : SoundEvents.BARREL_CLOSE, "lid", 0.4F,
+                    (isJar() ? 0.9F : 1.0F) + view.level().random.nextFloat() * 0.1F);
         }
         float k = KitchenMotions.smooth(lid);
         float knock = lid <= 0.0F ? ferment.bump() : 0.0F;

@@ -16,7 +16,8 @@ import java.util.List;
  * counted as the keg's own inventory has them: four ingredients, the container, the output. Youkai's Feasts' fermentation tank is
  * the same station in its own way (eight things, one a slot, its lid a state of its block, no warmth, what ferments into things
  * stays where it lay): the defaults here are the keg's. Hearth and Harvest's keg is one too: two slots read in any order, the liquid
- * it ferments and the drink in two tanks, no warmth.
+ * it ferments and the drink in two tanks, no warmth. Vintage Delight's fermenting jar is one as well: six things and the container
+ * some recipes take, no liquid of its own but the brine it always stands full of, no warmth.
  */
 public interface KitchenKeg {
     int INGREDIENTS = 4;
@@ -36,6 +37,26 @@ public interface KitchenKeg {
     /** Whether what ferments into an item goes to an output slot of its own ({@link #OUTPUT_SLOT}); without one it stays where it lay. */
     default boolean handson$hasOutput() {
         return true;
+    }
+
+    /** The slot of {@link #handson$getItem} that what ferments into an item waits in. */
+    default int handson$outputSlot() {
+        return OUTPUT_SLOT;
+    }
+
+    /**
+     * A cook changed what lies in it and it was laid out for its recipe: puts whatever the block reads in a place of its own there
+     * (the fermenting jar's bottle or bowl, which its recipes take from its container slot). Never called for what came in by itself.
+     */
+    default void handson$settle() {
+    }
+
+    /**
+     * The colour (ARGB) of what it always stands full of, whatever is put in: the fermenting jar's brine. 0 for a keg that is dry
+     * until something is poured in.
+     */
+    default int handson$brine() {
+        return 0;
     }
 
     /** Whether it ferments only at a temperature (the keg's 1 to 5): the badge shows its thermometer. */

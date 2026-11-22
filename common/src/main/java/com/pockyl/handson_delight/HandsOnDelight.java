@@ -49,6 +49,9 @@ public final class HandsOnDelight {
         if (HandsOnConfig.cask()) {
             KegStation.registerCask();
         }
+        if (HandsOnConfig.fermentingJar()) {
+            KegStation.registerJar();
+        }
         if (HandsOnConfig.kettle()) {
             KettleStation.register();
         }

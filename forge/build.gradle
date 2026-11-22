@@ -91,6 +91,8 @@ dependencies {
     modCompileOnly "maven.modrinth:hearth-and-harvest:${hearth_and_harvest_version}"
     // Nether's Delight's blackstone stove is a stove station too, on a copy of Farmer's Delight's class: compiled against it only.
     modCompileOnly "maven.modrinth:nethers-delight:${nethers_delight_version}"
+    // Vintage Delight's fermenting jar is a keg station too: compiled against it only.
+    modCompileOnly "maven.modrinth:vintage-delight:${vintage_delight_version}"
     devMods "com.pockyl.diegesis:forge:${diegesis_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
@@ -121,6 +123,7 @@ if (providers.gradleProperty('addons').isPresent()) {
                 'cooking-for-blockheads:W87tG8sG', // Cooking for Blockheads 16.0.15: its oven
                 'balm:dDN38ae7',                  // Balm 7.3.44, needed by Cooking for Blockheads
                 "hearth-and-harvest:${hearth_and_harvest_version}", // Hearth and Harvest 1.4.3: its keg
+                "vintage-delight:${vintage_delight_version}", // Vintage Delight 0.1.6: its fermenting jar
         ].each { modRuntimeOnly "maven.modrinth:${it}" }
         // -Paddons=wide adds the next most downloaded addons that need no other mods: more food, own crafts and tags.
         if (providers.gradleProperty('addons').get() == 'wide') {
@@ -129,7 +132,6 @@ if (providers.gradleProperty('addons').isPresent()) {
                     'ubes-delight:FOEkFTgl',          // Ube's Delight forge-1.20.1-0.4.15
                     'crabbers-delight:9NT9IkSs',      // Crabber's Delight 1.2.3
                     'cultural-delights:mO8IB07o',     // Cultural Delights 0.16.7
-                    'vintage-delight:q8Ght7Bo',       // Vintage Delight 0.1.6
                     'barbeques-delight-forge:LsvcmS2n', // Barbeque's Delight 1.0.6
                     'festive-delight:4rjkNzGf',       // Festive Delight 2.0.0
                     "farmers-spell:${farmers_spell_version}", // Farmer's Spell 'n Spell Book 1.0.7: its alchemist pot
