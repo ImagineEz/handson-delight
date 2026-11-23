@@ -7,6 +7,7 @@
 
 ### Fixed
 - The cooking pot's timer and book count the time Twilight's Flavor & Delight's maze stove saves on Twilight dishes.
+- Going over from a station to a [Hands-On Vanilla](https://www.curseforge.com/minecraft/mc-mods/hands-on-vanilla) one, the recipe book goes away at once instead of hanging in the air for a second. Thanks to hummusaki ([#57](https://github.com/Pocky-l/handson-delight/pull/57)).
 
 ## [1.6.2+1.20.1] - 2026-11-22
 ### Changed
