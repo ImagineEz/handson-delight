@@ -317,6 +317,58 @@ public final class BoardTests {
         helper.succeed();
     }
 
+    /**
+     * Another recipe of a dish's ingredients (a datapack's) is what a player's grid makes then: the lookup steps past the dish, a list
+     * of every match (Polymorph's choice) holds the other recipe alone, and the grid leaves what that recipe leaves. A machine's grid
+     * still makes the dish. A manager of the test's own holds the recipes with each dish looked at first, as a server's may: the dough
+     * from water is of a type of its own (hidden at the lookup's end), the hamburger shapeless (hidden while matching).
+     */
+    public static void aDishsIngredientsMakeAnotherRecipeInTheGrid(GameTestHelper helper) {
+        Level level = helper.getLevel();
+        RecipeManager server = level.getRecipeManager();
+        Recipe<?> dough = server.byKey(FarmersDelightContent.id("wheat_dough_from_water")).orElseThrow();
+        Recipe<?> hamburger = server.byKey(FarmersDelightContent.id("hamburger")).orElseThrow();
+        ShapelessRecipe paperOfDough = new ShapelessRecipe(HandsOnDelight.id("paper_of_dough"), "", CraftingBookCategory.MISC,
+                new ItemStack(Items.PAPER),
+                NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.WHEAT), Ingredient.of(Items.WATER_BUCKET)));
+        ShapelessRecipe paperOfBurger = new ShapelessRecipe(HandsOnDelight.id("paper_of_burger"), "", CraftingBookCategory.MISC,
+                new ItemStack(Items.PAPER), hamburger.getIngredients());
+        RecipeManager manager = new RecipeManager();
+        manager.replaceRecipes(List.of(dough, hamburger, paperOfDough, paperOfBurger));
+        List<CraftingRecipe> order = manager.getAllRecipesFor(RecipeType.CRAFTING);
+        helper.assertTrue(order.indexOf(dough) < order.indexOf(paperOfDough) && order.indexOf(hamburger) < order.indexOf(paperOfBurger),
+                "each dish is looked at first: " + order.stream().map(Recipe::getId).toList());
+        Player player = helper.makeMockPlayer();
+        for (boolean ofDough : List.of(true, false)) {
+            Recipe<?> dish = ofDough ? dough : hamburger;
+            ShapelessRecipe other = ofDough ? paperOfDough : paperOfBurger;
+            CraftingContainer table = new TransientCraftingContainer(new CraftingMenu(0, player.getInventory()), 3, 3);
+            CraftingContainer machine = new TransientCraftingContainer(new MachineMenu(), 3, 3);
+            for (CraftingContainer grid : List.of(table, machine)) {
+                if (ofDough) {
+                    grid.setItem(0, new ItemStack(Items.WHEAT));
+                    grid.setItem(1, new ItemStack(Items.WATER_BUCKET));
+                } else {
+                    burger(grid);
+                }
+            }
+            String name = dish.getId().getPath();
+            helper.assertTrue(manager.getRecipeFor(RecipeType.CRAFTING, table, level).orElse(null) == other,
+                    "the table makes the paper of " + name + "'s ingredients");
+            helper.assertTrue(manager.getRecipesFor(RecipeType.CRAFTING, table, level).equals(List.of(other)),
+                    "and lists it alone among the matches");
+            helper.assertTrue(manager.getRecipeFor(RecipeType.CRAFTING, machine, level).orElse(null) == dish,
+                    "an autocrafter makes " + name);
+            if (ofDough) {
+                ItemStack left = manager.getRemainingItemsFor(RecipeType.CRAFTING, table, level).get(1);
+                helper.assertTrue(left.is(Items.BUCKET), "the paper leaves the bucket empty: " + left);
+                ItemStack kept = manager.getRemainingItemsFor(RecipeType.CRAFTING, machine, level).get(1);
+                helper.assertTrue(kept.is(Items.WATER_BUCKET), "the dough keeps its water: " + kept);
+            }
+        }
+        helper.succeed();
+    }
+
     /** A shaped recipe: the crust first, then all the rest in any order; the pie is a block and lies on the board. */
     public static void aPieGoesIntoItsCrust(GameTestHelper helper) {
         Board setup = board(helper);

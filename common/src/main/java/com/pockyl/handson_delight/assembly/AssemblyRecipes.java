@@ -30,8 +30,10 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.item.crafting.ShapelessRecipe;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CakeBlock;
 import vectorwing.farmersdelight.common.block.FeastBlock;
@@ -289,17 +291,35 @@ public final class AssemblyRecipes {
      * Whether {@code grid} is a player's crafting table or inventory grid, which does not make {@code recipe}: the board does.
      * Automation crafts with grids of its own (Create's crafters, AE2's assemblers, Refined Storage) and goes on making it, as without
      * this mod. So does a player whose client lacks the mod, or has the board's station off: it cannot open the board, the crafting
-     * table stays theirs.
+     * table stays theirs. On a client the grid is its own player's, and the dishes are those its server named ({@link BoardDishes}):
+     * a mod that lists what the grid matches there (Hands-On Vanilla's choice of recipes) leaves them out, as the server does.
      */
     public static boolean notInThisGrid(Recipe<?> recipe, Container grid) {
-        if (!(grid instanceof TransientCraftingContainer table) || !HandsOnConfig.removeCraftingRecipes()
-                || !isMadeOnTheBoard(recipe.getId()) || SEEING_EVERY_RECIPE.get()) {
+        if (!(grid instanceof TransientCraftingContainer table) || SEEING_EVERY_RECIPE.get()) {
             return false;
         }
         AbstractContainerMenu menu = ((TransientCraftingContainerAccessor) table).handson$menu();
         Player player = menu instanceof CraftingMenu crafting ? ((CraftingMenuAccessor) crafting).handson$player()
                 : menu instanceof InventoryMenu inventory ? ((InventoryMenuAccessor) inventory).handson$owner() : null;
-        return player != null && !(player instanceof ServerPlayer server && !Platform.INSTANCE.hasBoard(server));
+        if (player == null) {
+            return false;
+        }
+        if (player.level().isClientSide()) {
+            // A client never loads the recipes: only its server knows which are dishes, and tells it.
+            return BoardDishes.notInTheGrid().contains(recipe.getId());
+        }
+        return HandsOnConfig.removeCraftingRecipes() && isMadeOnTheBoard(recipe.getId())
+                && !(player instanceof ServerPlayer server && !Platform.INSTANCE.hasBoard(server));
+    }
+
+    /**
+     * What a player's {@code grid} makes when the first recipe it matches is a dish it leaves to the board: the next match that is not
+     * one, as if the dish were not there (a datapack's recipe of the same ingredients), or nothing.
+     */
+    public static <C extends Container, T extends Recipe<C>> Optional<T> firstInThisGrid(RecipeManager manager, RecipeType<T> type,
+            C grid, Level level) {
+        return manager.getAllRecipesFor(type).stream().filter(recipe -> !notInThisGrid(recipe, grid) && recipe.matches(grid, level))
+                .findFirst();
     }
 
     /**

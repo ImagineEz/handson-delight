@@ -52,13 +52,22 @@ abstract class RecipeManagerMixin {
         AssemblyRecipes.collect(recipes, handson$taken);
     }
 
-    /** A recipe of a type of its own (Farmer's Delight's dough from water) is not made in a player's grid either. */
+    /**
+     * A recipe of a type of its own (Farmer's Delight's dough from water) is not made in a player's grid either: the grid makes what
+     * else its stacks match, as if the dish were not there.
+     */
     @Inject(method = "getRecipeFor(Lnet/minecraft/world/item/crafting/RecipeType;Lnet/minecraft/world/Container;"
             + "Lnet/minecraft/world/level/Level;)Ljava/util/Optional;", at = @At("RETURN"), cancellable = true)
     private void handson$notInThisGrid(RecipeType<?> type, Container grid, Level level, CallbackInfoReturnable<Optional<?>> callback) {
         if (callback.getReturnValue().orElse(null) instanceof Recipe<?> recipe && AssemblyRecipes.notInThisGrid(recipe, grid)) {
-            callback.setReturnValue(Optional.empty());
+            callback.setReturnValue(handson$firstInThisGrid(type, grid, level));
         }
+    }
+
+    @Unique
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    private Optional<?> handson$firstInThisGrid(RecipeType<?> type, Container grid, Level level) {
+        return AssemblyRecipes.firstInThisGrid((RecipeManager) (Object) this, (RecipeType) type, grid, level);
     }
 
     /**
@@ -76,15 +85,17 @@ abstract class RecipeManagerMixin {
     }
 
     /**
-     * What a player's grid leaves comes from the recipe that matches, hidden or not: when another mod's crafting table made a dish
-     * by a lookup of its own, vanilla would find no recipe and give the grid's own stacks back, doubling them and losing the last of
-     * each (Farmer's Delight's dough from water: the wheat doubled and the water bucket was gone).
+     * What a player's grid leaves comes from the recipe that made what was taken: the one the grid makes, which may be another recipe
+     * of a dish's ingredients; failing that the dish itself. When another mod's crafting table made a dish by a lookup of its own,
+     * vanilla would find no recipe and give the grid's own stacks back, doubling them and losing the last of each (Farmer's Delight's
+     * dough from water: the wheat doubled and the water bucket was gone).
      */
     @Inject(method = "getRemainingItemsFor", at = @At("HEAD"), cancellable = true)
     private void handson$leftByTheRecipeItself(RecipeType<?> type, Container grid, Level level,
             CallbackInfoReturnable<NonNullList<ItemStack>> callback) {
         if (grid instanceof TransientCraftingContainer) {
-            AssemblyRecipes.seeingEveryRecipe(() -> handson$recipeFor(type, grid, level))
+            handson$recipeFor(type, grid, level)
+                    .or(() -> AssemblyRecipes.seeingEveryRecipe(() -> handson$recipeFor(type, grid, level)))
                     .ifPresent(recipe -> callback.setReturnValue(recipe.getRemainingItems(grid)));
         }
     }
