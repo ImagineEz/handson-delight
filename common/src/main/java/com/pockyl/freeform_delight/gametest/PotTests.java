@@ -140,11 +140,14 @@ public final class PotTests {
         setup.logic.onCustomAction(setup.station, player, CookingPotStation.ACTION_COOK, click);
         helper.assertTrue(setup.station.state().data().getBoolean(CookingPotStation.FREEFORM_ACTIVE), "Cook starts without a recipe or heat");
 
-        for (int tick = 5; tick <= 75; tick += 5) {
+        for (int tick = 5; tick <= 79; tick++) {
             double angle = tick * 0.16;
+            boolean stir = tick % 5 == 0;
             helper.runAfterDelay(tick, () -> {
                 setup.logic.tick(setup.station);
-                setup.logic.onCustomAction(setup.station, player, CookingPotStation.ACTION_STIR, spoonAt(angle));
+                if (stir) {
+                    setup.logic.onCustomAction(setup.station, player, CookingPotStation.ACTION_STIR, spoonAt(angle));
+                }
             });
         }
         helper.runAfterDelay(4, () -> {

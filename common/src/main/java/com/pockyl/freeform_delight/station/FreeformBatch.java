@@ -14,10 +14,12 @@ final class FreeformBatch {
     static final int STIR_TICKS = 60;
     final List<ItemStack> ingredients;
     int ticks;
+    int grade;
 
-    private FreeformBatch(List<ItemStack> ingredients, int ticks) {
+    private FreeformBatch(List<ItemStack> ingredients, int ticks, int grade) {
         this.ingredients = ingredients;
         this.ticks = ticks;
+        this.grade = grade;
     }
 
     static FreeformBatch start(KitchenPot pot) {
@@ -25,7 +27,7 @@ final class FreeformBatch {
         for (int slot = 0; slot < pot.handson$slots(); slot++) {
             ingredients.add(pot.handson$getItem(slot).copy());
         }
-        return hasIngredients(ingredients) ? new FreeformBatch(ingredients, 0) : null;
+        return hasIngredients(ingredients) ? new FreeformBatch(ingredients, 0, 0) : null;
     }
 
     boolean matches(KitchenPot pot) {
@@ -45,6 +47,7 @@ final class FreeformBatch {
         CompoundTag data = new CompoundTag();
         data.put("Slots", slots);
         data.putInt("StirTicks", ticks);
+        data.putInt("StirGrade", grade);
         return data;
     }
 
@@ -58,7 +61,8 @@ final class FreeformBatch {
             ingredients.add(ItemStack.of(slots.getCompound(slot)));
         }
         return hasIngredients(ingredients)
-                ? new FreeformBatch(ingredients, Mth.clamp(data.getInt("StirTicks"), 0, STIR_TICKS)) : null;
+                ? new FreeformBatch(ingredients, Mth.clamp(data.getInt("StirTicks"), 0, STIR_TICKS),
+                        Mth.clamp(data.getInt("StirGrade"), 0, (int) StirSkill.MOST)) : null;
     }
 
     private static boolean hasIngredients(List<ItemStack> ingredients) {

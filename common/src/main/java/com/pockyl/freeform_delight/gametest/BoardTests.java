@@ -847,7 +847,7 @@ public final class BoardTests {
     public static void aClientPlansTheMarksItsServerPlans(GameTestHelper helper) {
         Level level = helper.getLevel();
         ItemStack chicken = new ItemStack(Items.CHICKEN);
-        CuttingBoardRecipe wings = new CuttingBoardRecipe(HandsOnDelight.id("test_chicken_wings_5808"), "", Ingredient.of(Items.CHICKEN),
+        CuttingBoardRecipe wings = new CuttingBoardRecipe(HandsOnDelight.id("test_chicken_wings_69176"), "", Ingredient.of(Items.CHICKEN),
                 Ingredient.of(fd("iron_knife")), NonNullList.of(ChanceResult.EMPTY, new ChanceResult(new ItemStack(fd("chicken_cuts"), 2), 1.0F),
                         new ChanceResult(new ItemStack(Items.FEATHER, 2), 1.0F), new ChanceResult(new ItemStack(Items.BONE_MEAL), 1.0F)), "");
         List<Recipe<?>> recipes = new ArrayList<>(level.getRecipeManager().getRecipes());

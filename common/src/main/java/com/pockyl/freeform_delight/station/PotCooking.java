@@ -113,12 +113,15 @@ public final class PotCooking {
         }
         if (freeform.ticks < FreeformBatch.STIR_TICKS && isStirred(now) && here()) {
             freeform.ticks++;
+            if (freeform.ticks == FreeformBatch.STIR_TICKS) {
+                freeform.grade = skill.grade(now);
+            }
             pot.handson$blockEntity().setChanged();
         }
         if (freeform.ticks < FreeformBatch.STIR_TICKS || !pot.handson$meal().isEmpty()) {
             return;
         }
-        int stirGrade = skill.grade(now);
+        int stirGrade = freeform.grade;
         ItemStack dish = FreeformMeal.cooked(freeform.ingredients, freeform.ticks, stirGrade);
         if (dish.isEmpty()) {
             return;
