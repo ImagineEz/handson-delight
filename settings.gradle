@@ -17,6 +17,3 @@ rootProject.name = 'freeform_delight'
 
 // Phase 1 targets Forge. Keep the upstream Fabric sources available for a future port.
 include 'common', 'forge'
-
-// The Diegesis library comes from its working copy while both are developed together.
-includeBuild(providers.gradleProperty('diegesisCheckout').getOrElse('../diegesis'))

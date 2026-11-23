@@ -28,7 +28,7 @@ legacyForge {
 
         gameTestServer {
             type = 'gameTestServer'
-            // Own directory, with Diegesis in its mods folder (see syncDevMods).
+            // Own directory to keep the tests separate from the dev client's world.
             gameDirectory = project.file('run/gametest')
             systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
         }
@@ -51,23 +51,10 @@ configurations {
     runtimeClasspath.extendsFrom localRuntime
 }
 
-configurations {
-    // Diegesis is a mod with mixins from an included build: it runs from a mods folder, as in the playtest client.
-    devMods {
-        canBeConsumed = false
-        transitive = false
-        attributes {
-            attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage, Usage.JAVA_RUNTIME))
-            attribute(Category.CATEGORY_ATTRIBUTE, objects.named(Category, Category.LIBRARY))
-            attribute(LibraryElements.LIBRARY_ELEMENTS_ATTRIBUTE, objects.named(LibraryElements, LibraryElements.JAR))
-        }
-    }
-}
-
 dependencies {
     // Published mods use SRG names; the mod* configurations remap them to the development mappings.
     modImplementation "maven.modrinth:farmers-delight:${farmers_delight_version}"
-    compileOnly "com.pockyl.diegesis:forge:${diegesis_version}"
+    modImplementation diegesisForge
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     modCompileOnly "mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"
     modCompileOnly "dev.emi:emi-forge:${emi_version}:api"
@@ -91,7 +78,6 @@ dependencies {
     modCompileOnly "maven.modrinth:hearth-and-harvest:${hearth_and_harvest_version}"
     // Nether's Delight's blackstone stove is a stove station too, on a copy of Farmer's Delight's class: compiled against it only.
     modCompileOnly "maven.modrinth:nethers-delight:${nethers_delight_version}"
-    devMods "com.pockyl.diegesis:forge:${diegesis_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
@@ -230,11 +216,6 @@ if (crafttweaker) {
     }
 }
 
-var syncDevMods = tasks.register('syncDevMods', Sync) {
-    from(configurations.devMods)
-    into 'run/gametest/mods'
-}
-
 // Forge 1.20.1 runs the game tests on a dedicated server, in a world made from server.properties: a flat one.
 var prepareGameTestServer = tasks.register('prepareGameTestServer') {
     var dir = project.file('run/gametest')
@@ -299,7 +280,7 @@ var prepareGameTestServer = tasks.register('prepareGameTestServer') {
         }
     }
 }
-tasks.named('runGameTestServer') { dependsOn syncDevMods, prepareGameTestServer }
+tasks.named('runGameTestServer') { dependsOn prepareGameTestServer }
 
 // Refmaps translate the mixin targets to the SRG names Forge uses at runtime.
 mixin {

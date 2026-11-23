@@ -19,9 +19,9 @@ Freeform Delight `0.1.0` แยกจาก Hands-On Delight `v1.6.2` ใช้ 
 
 ## บิลด์และ GameTests
 
-Workflow **Forge build and GameTests** ใช้ Java 21 สำหรับ Gradle และ Java 17 สำหรับ Forge ดึง Diegesis จากแท็ก `v1.0.0-beta.17` และอัปโหลด JAR เป็น artifact `freeform-delight-forge-1.20.1` เมื่อบิลด์และทดสอบผ่าน
+Workflow **Forge build and GameTests** ใช้ Java 21 สำหรับ Gradle และ Java 17 สำหรับ Forge ใช้ไฟล์ Diegesis Forge จาก GitHub Release `v1.0.0-beta.17` และอัปโหลด JAR เป็น artifact `freeform-delight-forge-1.20.1` เมื่อบิลด์และทดสอบผ่าน
 
-สำหรับรันในเครื่อง ให้มี JDK ทั้งสองรุ่นแล้ววางซอร์ส Diegesis ไว้ในโฟลเดอร์ `diegesis` ระดับเดียวกับ Fork
+สำหรับรันในเครื่อง ให้ติดตั้ง JDK ทั้งสองรุ่น Gradle จะดาวน์โหลด Diegesis ให้เมื่อบิลด์
 
 ```sh
 bash gradlew --no-daemon --no-configuration-cache :forge:build :forge:runGameTestServer

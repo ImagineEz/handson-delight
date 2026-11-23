@@ -12,8 +12,21 @@ base {
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
+ext.diegesisForge = "com.pockyl.diegesis:diegesis-forge-${minecraft_version}-${diegesis_version}:v${diegesis_version}"
+
 repositories {
     mavenCentral()
+    exclusiveContent {
+        forRepository {
+            ivy {
+                name = 'Diegesis Releases'
+                url = 'https://github.com/Pocky-l/diegesis/releases/download'
+                patternLayout { artifact '[revision]/[artifact].[ext]' }
+                metadataSources { artifact() }
+            }
+        }
+        filter { includeGroup('com.pockyl.diegesis') }
+    }
     exclusiveContent {
         forRepository {
             maven {

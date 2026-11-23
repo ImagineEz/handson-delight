@@ -16,15 +16,6 @@ jobs:
       - name: Check out Freeform Delight
         uses: actions/checkout@v4
         with:
-          path: fork
-          persist-credentials: false
-
-      - name: Check out the matching Diegesis release
-        uses: actions/checkout@v4
-        with:
-          repository: Pocky-l/diegesis
-          ref: v1.0.0-beta.17
-          path: diegesis
           persist-credentials: false
 
       - name: Set up Java 17 and 21
@@ -35,8 +26,12 @@ jobs:
             17
             21
 
+      - name: Set up the Gradle cache
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-read-only: false
+
       - name: Build and run the Forge GameTests
-        working-directory: fork
         run: bash gradlew --no-daemon --no-configuration-cache -Porg.gradle.java.installations.fromEnv=JAVA_HOME_17_X64 :forge:build :forge:runGameTestServer
 
       - name: Upload the Forge mod
@@ -44,7 +39,7 @@ jobs:
         with:
           name: freeform-delight-forge-1.20.1
           path: |
-            fork/forge/build/libs/*.jar
-            !fork/forge/build/libs/*-sources.jar
-            !fork/forge/build/libs/*-javadoc.jar
+            forge/build/libs/*.jar
+            !forge/build/libs/*-sources.jar
+            !forge/build/libs/*-javadoc.jar
           if-no-files-found: error
