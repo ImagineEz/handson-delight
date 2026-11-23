@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.7.0+1.20.1] - Unreleased
+## [1.7.0+1.20.1] - 2026-11-23
 ### New
 - [Twilight's Flavor & Delight](https://modrinth.com/mod/twilight-delight)'s fiery cooking pot is a pot station with a molten broth that glows like lava.
 - [Vintage Delight](https://modrinth.com/mod/vintage-delight)'s fermenting jar is a station: lift the lid, drop what ferments into the brine, and take the pickles when they are done.
