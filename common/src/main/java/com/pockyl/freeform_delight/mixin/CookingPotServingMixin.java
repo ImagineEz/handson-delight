@@ -1,0 +1,32 @@
+package com.pockyl.freeform_delight.mixin;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import vectorwing.farmersdelight.common.block.CookingPotBlock;
+
+import com.pockyl.freeform_delight.station.PotServing;
+
+/** A serving taken with a bowl in the hand, without opening the pot, counts as made: {@link PotServing}. */
+@Mixin(CookingPotBlock.class)
+abstract class CookingPotServingMixin {
+    @Inject(method = "use", at = @At("HEAD"))
+    private void handson$rememberTheMeal(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit,
+            CallbackInfoReturnable<InteractionResult> callback) {
+        PotServing.before(level, pos);
+    }
+
+    @Inject(method = "use", at = @At("RETURN"))
+    private void handson$countTheServing(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit,
+            CallbackInfoReturnable<InteractionResult> callback) {
+        PotServing.after(level, pos, player);
+    }
+}

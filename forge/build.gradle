@@ -249,7 +249,7 @@ var prepareGameTestServer = tasks.register('prepareGameTestServer') {
         new File(dir, 'server.properties').text = [
                 'level-type=minecraft:flat', 'generate-structures=false', 'spawn-protection=0'
         ].join(System.lineSeparator()) + System.lineSeparator()
-        var script = new File(dir, 'kubejs/server_scripts/handson_delight_test.js')
+        var script = new File(dir, 'kubejs/server_scripts/freeform_delight_test.js')
         if (kubejs) {
             script.parentFile.mkdirs()
             // A modpack's own dish: a script's recipe, brought to the board by tagging its result. A modpack's edits of Farmer's
@@ -267,12 +267,12 @@ var prepareGameTestServer = tasks.register('prepareGameTestServer') {
                     // With -Pculinary: a Pam craft Culinary Compat cuts together, edited before it reads it.
                     "  event.replaceInput({id: 'pamhc2foodcore:caramelyogurtitem'}, '#forge:caramel', 'minecraft:honey_bottle')",
                     "})",
-                    "ServerEvents.tags('item', event => event.add('handson_delight:assembled', 'minecraft:mushroom_stew'))"
+                    "ServerEvents.tags('item', event => event.add('freeform_delight:assembled', 'minecraft:mushroom_stew'))"
             ].join(System.lineSeparator()) + System.lineSeparator()
         } else {
             script.delete()
         }
-        var tweak = new File(dir, 'scripts/handson_delight_test.zs')
+        var tweak = new File(dir, 'scripts/freeform_delight_test.zs')
         if (crafttweaker) {
             tweak.parentFile.mkdirs()
             tweak.text = ['craftingTable.removeByName("farmersdelight:chicken_sandwich");',

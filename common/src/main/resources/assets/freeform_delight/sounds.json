@@ -1,0 +1,66 @@
+{
+  "pot.body": {
+    "sounds": [
+      {
+        "name": "freeform_delight:pot/body",
+        "stream": false
+      }
+    ]
+  },
+  "pot.stir": {
+    "sounds": [
+      {
+        "name": "freeform_delight:pot/stir",
+        "stream": false
+      }
+    ]
+  },
+  "pot.plop": {
+    "sounds": [
+      "freeform_delight:pot/plop1",
+      "freeform_delight:pot/plop2",
+      "freeform_delight:pot/plop3"
+    ]
+  },
+  "pot.burst": {
+    "sounds": [
+      "freeform_delight:pot/burst1",
+      "freeform_delight:pot/burst2",
+      "freeform_delight:pot/burst3"
+    ]
+  },
+  "pot.blub": {
+    "sounds": [
+      "freeform_delight:pot/blub1",
+      "freeform_delight:pot/blub2",
+      "freeform_delight:pot/blub3",
+      "freeform_delight:pot/blub4"
+    ]
+  },
+  "pot.scoop": {
+    "sounds": [
+      "freeform_delight:pot/scoop1",
+      "freeform_delight:pot/scoop2"
+    ]
+  },
+  "keg.pour": {
+    "sounds": [
+      "freeform_delight:keg/pour1",
+      "freeform_delight:keg/pour2"
+    ]
+  },
+  "keg.pour_quick": {
+    "sounds": [
+      "freeform_delight:keg/pour_quick1",
+      "freeform_delight:keg/pour_quick2"
+    ]
+  },
+  "kettle.whistle": {
+    "sounds": [
+      {
+        "name": "freeform_delight:kettle/whistle",
+        "stream": false
+      }
+    ]
+  }
+}

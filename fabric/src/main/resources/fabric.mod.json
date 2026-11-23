@@ -13,16 +13,16 @@
   "license": "${mod_license}",
   "environment": "*",
   "entrypoints": {
-    "main": ["com.pockyl.handson_delight.fabric.HandsOnDelightFabric"],
-    "client": ["com.pockyl.handson_delight.fabric.HandsOnDelightFabricClient"],
-    "jei_mod_plugin": ["com.pockyl.handson_delight.compat.jei.HandsOnJeiPlugin"],
-    "emi": ["com.pockyl.handson_delight.compat.emi.HandsOnEmiPlugin"],
-    "rei_client": ["com.pockyl.handson_delight.fabric.rei.HandsOnReiPlugin"],
-    "fabric-gametest": ["com.pockyl.handson_delight.fabric.FabricPotTests", "com.pockyl.handson_delight.fabric.FabricBoardTests",
-      "com.pockyl.handson_delight.fabric.FabricSkilletTests",
-      "com.pockyl.handson_delight.fabric.FabricStoveTests", "com.pockyl.handson_delight.fabric.FabricRecipeEditTests"]
+    "main": ["com.pockyl.freeform_delight.fabric.HandsOnDelightFabric"],
+    "client": ["com.pockyl.freeform_delight.fabric.HandsOnDelightFabricClient"],
+    "jei_mod_plugin": ["com.pockyl.freeform_delight.compat.jei.HandsOnJeiPlugin"],
+    "emi": ["com.pockyl.freeform_delight.compat.emi.HandsOnEmiPlugin"],
+    "rei_client": ["com.pockyl.freeform_delight.fabric.rei.HandsOnReiPlugin"],
+    "fabric-gametest": ["com.pockyl.freeform_delight.fabric.FabricPotTests", "com.pockyl.freeform_delight.fabric.FabricBoardTests",
+      "com.pockyl.freeform_delight.fabric.FabricSkilletTests",
+      "com.pockyl.freeform_delight.fabric.FabricStoveTests", "com.pockyl.freeform_delight.fabric.FabricRecipeEditTests"]
   },
-  "mixins": ["handson_delight.mixins.json"],
+  "mixins": ["freeform_delight.mixins.json"],
   "depends": {
     "fabricloader": ">=${fabric_loader_version}",
     "fabric-api": ">=${fabric_api_version}",

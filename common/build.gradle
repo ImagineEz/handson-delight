@@ -54,7 +54,7 @@ artifacts {
 // fabric is refused under parallel builds.
 ext.refabricatedForCompile = layout.buildDirectory
         .file("refabricated/farmers-delight-refabricated-${farmers_delight_refabricated_version}.jar").get().asFile
-if (!refabricatedForCompile.isFile()) {
+if (findProject(':fabric') != null && !refabricatedForCompile.isFile()) {
     def release = configurations.detachedConfiguration(
             dependencies.create("maven.modrinth:farmers-delight-refabricated:${farmers_delight_refabricated_version}"))
     release.transitive = false

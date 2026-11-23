@@ -5,7 +5,7 @@
         "facing": "north"
       },
       "apply": {
-        "model": "handson_delight:diegesis/copper_pot/body"
+        "model": "freeform_delight:diegesis/copper_pot/body"
       }
     },
     {
@@ -13,7 +13,7 @@
         "facing": "east"
       },
       "apply": {
-        "model": "handson_delight:diegesis/copper_pot/body",
+        "model": "freeform_delight:diegesis/copper_pot/body",
         "y": 90
       }
     },
@@ -22,7 +22,7 @@
         "facing": "south"
       },
       "apply": {
-        "model": "handson_delight:diegesis/copper_pot/body",
+        "model": "freeform_delight:diegesis/copper_pot/body",
         "y": 180
       }
     },
@@ -31,7 +31,7 @@
         "facing": "west"
       },
       "apply": {
-        "model": "handson_delight:diegesis/copper_pot/body",
+        "model": "freeform_delight:diegesis/copper_pot/body",
         "y": 270
       }
     },
@@ -41,7 +41,7 @@
         "support": "tray"
       },
       "apply": {
-        "model": "handson_delight:diegesis/pot/tray"
+        "model": "freeform_delight:diegesis/pot/tray"
       }
     },
     {
@@ -50,7 +50,7 @@
         "support": "tray"
       },
       "apply": {
-        "model": "handson_delight:diegesis/pot/tray",
+        "model": "freeform_delight:diegesis/pot/tray",
         "y": 90
       }
     },
@@ -60,7 +60,7 @@
         "support": "tray"
       },
       "apply": {
-        "model": "handson_delight:diegesis/pot/tray",
+        "model": "freeform_delight:diegesis/pot/tray",
         "y": 180
       }
     },
@@ -70,7 +70,7 @@
         "support": "tray"
       },
       "apply": {
-        "model": "handson_delight:diegesis/pot/tray",
+        "model": "freeform_delight:diegesis/pot/tray",
         "y": 270
       }
     },
@@ -80,7 +80,7 @@
         "support": "handle"
       },
       "apply": {
-        "model": "handson_delight:diegesis/copper_pot/hoop"
+        "model": "freeform_delight:diegesis/copper_pot/hoop"
       }
     },
     {
@@ -89,7 +89,7 @@
         "support": "handle"
       },
       "apply": {
-        "model": "handson_delight:diegesis/copper_pot/hoop",
+        "model": "freeform_delight:diegesis/copper_pot/hoop",
         "y": 90
       }
     },
@@ -99,7 +99,7 @@
         "support": "handle"
       },
       "apply": {
-        "model": "handson_delight:diegesis/copper_pot/hoop",
+        "model": "freeform_delight:diegesis/copper_pot/hoop",
         "y": 180
       }
     },
@@ -109,7 +109,7 @@
         "support": "handle"
       },
       "apply": {
-        "model": "handson_delight:diegesis/copper_pot/hoop",
+        "model": "freeform_delight:diegesis/copper_pot/hoop",
         "y": 270
       }
     }

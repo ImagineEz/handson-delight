@@ -1,5 +1,5 @@
 {
-  "parent": "handson_delight:diegesis/pot/body_hoop",
+  "parent": "freeform_delight:diegesis/pot/body_hoop",
   "textures": {
     "cooking_pot_top": "vanilladelight:block/black/cooking_pot_top",
     "particle": "vanilladelight:block/black/cooking_pot_side",

@@ -1,7 +1,0 @@
-{
-  "parent": "handson_delight:diegesis/pot/ladle",
-  "textures": {
-    "particle": "dungeonsdelight:block/monster_pot_parts",
-    "cooking_pot_parts": "dungeonsdelight:block/monster_pot_parts"
-  }
-}

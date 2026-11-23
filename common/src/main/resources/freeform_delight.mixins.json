@@ -1,0 +1,46 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.pockyl.freeform_delight.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "freeform_delight.refmap.json",
+  "plugin": "com.pockyl.freeform_delight.compat.OptionalMixins",
+  "mixins": [
+    "CookingPotStirringMixin",
+    "CookingPotServingMixin",
+    "ItemUtilsMixin",
+    "RecipeManagerMixin",
+    "RecipeManagerAccessor",
+    "KubeJsRecipesMixin",
+    "ShapelessRecipeMixin",
+    "ShapedRecipeMixin",
+    "TransientCraftingContainerAccessor",
+    "CraftingMenuAccessor",
+    "InventoryMenuAccessor",
+    "ServerRecipeBookMixin",
+    "CuttingBoardBlockEntityMixin",
+    "CuttingBoardBlockEntityAccessor",
+    "CuttingBoardBlockMixin",
+    "SkilletBlockEntityMixin",
+    "StoveBlockEntityMixin",
+    "StoveBlockMixin",
+    "PlayerListMixin",
+    "CfbOvenTopMixin"
+  ],
+  "client": [
+    "CookingPotBlockEntityMixin",
+    "CookingPotBlockMixin",
+    "SpriteContentsAccessor",
+    "MinecraftAccessor",
+    "StationRenderersMixin",
+    "StoveSmokeMixin",
+    "AddonStoveSmokeMixin",
+    "CampfireSmokeMixin",
+    "GrillSmokeMixin",
+    "GrillSizzleMixin",
+    "CfbOvenToolsMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

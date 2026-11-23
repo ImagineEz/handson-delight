@@ -1,5 +1,5 @@
 {
-  "parent": "handson_delight:diegesis/pot/body_tray",
+  "parent": "freeform_delight:diegesis/pot/body_tray",
   "textures": {
     "cooking_pot_top": "farmersdelight:block/cooking_pot_top",
     "particle": "farmersdelight:block/cooking_pot_side",

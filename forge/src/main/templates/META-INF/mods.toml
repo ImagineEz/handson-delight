@@ -10,8 +10,6 @@ displayName="${mod_name}"
 authors="${mod_authors}"
 displayURL="${mod_url}"
 description='''${mod_description}'''
-# Adds nothing to the registries: a player without the mod keeps the menus of Farmer's Delight.
-displayTest="IGNORE_ALL_VERSION"
 
 [[dependencies.${mod_id}]]
     modId="forge"
@@ -39,4 +37,12 @@ displayTest="IGNORE_ALL_VERSION"
     mandatory=true
     versionRange="${diegesis_version_range}"
     ordering="AFTER"
+    side="BOTH"
+
+# Both mods patch the same pot. Optional means absent is fine, but an installed upstream version must fail validation.
+[[dependencies.${mod_id}]]
+    modId="handson_delight"
+    mandatory=false
+    versionRange="[0]"
+    ordering="NONE"
     side="BOTH"

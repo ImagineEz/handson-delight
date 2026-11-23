@@ -13,11 +13,10 @@ plugins {
     id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
 }
 
-rootProject.name = 'handson_delight'
+rootProject.name = 'freeform_delight'
 
-// common: the stations, scenes and assets, compiled against plain Minecraft and Farmer's Delight; forge / fabric: the
-// loader glue. Each loader project compiles the common sources into its own jar.
-include 'common', 'forge', 'fabric'
+// Phase 1 targets Forge. Keep the upstream Fabric sources available for a future port.
+include 'common', 'forge'
 
 // The Diegesis library comes from its working copy while both are developed together.
-includeBuild('../diegesis')
+includeBuild(providers.gradleProperty('diegesisCheckout').getOrElse('../diegesis'))

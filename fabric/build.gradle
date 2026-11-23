@@ -72,7 +72,7 @@ tasks.named('processResources', ProcessResources) {
     }
     // Forge finds its SRG names through the refmap the mixin config names; Loom remaps the mixins in the jar itself
     // and writes none, so the Fabric jar leaves the line out.
-    filesMatching('handson_delight.mixins.json') {
+    filesMatching('freeform_delight.mixins.json') {
         filter { String line -> line.contains('"refmap"') ? null : line }
     }
 }
